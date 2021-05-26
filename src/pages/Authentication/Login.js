@@ -133,14 +133,7 @@ const Login = props => {
                         </label>
                       </div>
 
-
                       <div className="mt-3 d-grid">
-                        {/* <button
-                          className="btn btn-primary btn-block"
-                          type="submit"
-                        >
-                          Log In
-                        </button> */}
                         <Button block type="submit" loading={loading}>Log In</Button>
                       </div>
 

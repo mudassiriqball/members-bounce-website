@@ -1,0 +1,52 @@
+@import 'theme.scss';
+
+#members-large-label {
+  color: $primary;
+  font-size: 200px;
+  font-weight: 900;
+  transform: rotate(-90deg);
+  /* Safari */
+  -webkit-transform: rotate(-90deg);
+  /* Firefox */
+  -moz-transform: rotate(-90deg);
+  /* IE */
+  -ms-transform: rotate(-90deg);
+  /* Opera */
+  -o-transform: rotate(-90deg);
+  line-height: 1000px;
+  white-space: nowrap;
+  padding: 0%;
+  margin: 0%;
+}
+
+.members-row {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.membership-card-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tick-box-icon {
+  margin-right: 20px;
+}
+
+.border-right {
+  border-right: 1px solid lightgrey;
+}
+
+.otp-container {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.otp-input {
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  padding: 5px 0px;
+  margin: 5px;
+}

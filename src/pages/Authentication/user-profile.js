@@ -71,7 +71,7 @@ const UserProfile = props => {
               {props.error && props.error ? (
                 <Alert color="danger">{props.error}</Alert>
               ) : null}
-              {props.success? (
+              {props.success ? (
                 <Alert color="success">{props.success}</Alert>
               ) : null}
 

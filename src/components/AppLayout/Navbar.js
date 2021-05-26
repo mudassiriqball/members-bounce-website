@@ -92,8 +92,7 @@ const Navbar = props => {
                     className="nav-link dropdown-toggle arrow-none"
                     to={routeNames.Home}
                   >
-                    <i className="bx bx-home-circle me-2"></i>
-                    {'Home'}
+                    <i className="bx-fw bx bx-home-circle me-2"></i>Home
                   </Link>
                 </li>
                 <li className="nav-item dropdown">
@@ -101,7 +100,7 @@ const Navbar = props => {
                     className="nav-link dropdown-toggle arrow-none"
                     to={routeNames.Dashboard}
                   >
-                    <i className="bx bx-home-circle me-2"></i>
+                    <i className="bx bxs-dashboard me-2"></i>
                     {'Dashboard'}
                   </Link>
                 </li>
@@ -110,7 +109,7 @@ const Navbar = props => {
                     className="nav-link dropdown-toggle arrow-none"
                     to={routeNames.AboutUs}
                   >
-                    <i className="bx bx-home-circle me-2"></i>
+                    <i class='bx-fw bx bx-info-circle me-2'  ></i>
                     {'About'}
                   </Link>
                 </li>
@@ -119,8 +118,8 @@ const Navbar = props => {
                     className="nav-link dropdown-toggle arrow-none"
                     to={routeNames.Membership}
                   >
-                    <i className="bx bx-home-circle me-2"></i>
-                    {'Membership'}
+                    <i className="bx-fw bx bx-id-card me-2"></i>
+                    Membership
                   </Link>
                 </li>
                 <li className="nav-item dropdown">
@@ -128,7 +127,7 @@ const Navbar = props => {
                     className="nav-link dropdown-toggle arrow-none"
                     to={routeNames.Events}
                   >
-                    <i className="bx bx-home-circle me-2"></i>
+                    <i className="bx-fw bx bx-calendar me-2"></i>
                     {'Events'}
                   </Link>
                 </li>
@@ -137,7 +136,7 @@ const Navbar = props => {
                     className="nav-link dropdown-toggle arrow-none"
                     to={routeNames.ContactUs}
                   >
-                    <i className="bx bx-home-circle me-2"></i>
+                    <i className="bx-fw bx bx-support me-2"></i>
                     {'Contact'}
                   </Link>
                 </li>

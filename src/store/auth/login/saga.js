@@ -6,27 +6,24 @@ import { LOGIN_USER, LOGOUT_USER } from "./actionTypes"
 import { apiError, loginSuccess, logoutUserSuccess } from "./actions"
 
 //Include Both Helper File with needed methods
-import { getFirebaseBackend } from "../../../helpers/firebase_helper"
 import { saveToken } from "helpers/authentication"
 import { setIsLoggedIn, setUser } from "../user/actions"
 import { postRequest } from "helpers/api_helper";
 import routeNames from "routes/routeNames";
-
-const fireBaseBackend = getFirebaseBackend()
+import { urls } from "helpers";
 
 function* loginUser({ payload: { user, history } }) {
   try {
-    const response = yield call(postRequest, {
+    const response = yield call(postRequest, urls.LOGIN, {
       email: user.email,
       password: user.password,
     })
 
     saveToken(response.token);
     const _token = jwt_decode(response.token);
-
     yield all([
       yield put(loginSuccess(response.token)),
-      yield put(setUser(_token)),
+      yield put(setUser(_token.data)),
       yield put(setIsLoggedIn(true)),
     ]);
     history.push(routeNames.Dashboard);
@@ -37,13 +34,13 @@ function* loginUser({ payload: { user, history } }) {
 
 function* logoutUser({ payload: { history } }) {
   try {
-    localStorage.removeItem("authUser")
-
-    if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
-      const response = yield call(fireBaseBackend.logout)
-      yield put(logoutUserSuccess(response))
-    }
-    history.push(routeNames.Home)
+    localStorage.removeItem("authUser");
+    yield all([
+      yield put(setUser(null)),
+      yield put(setIsLoggedIn(false)),
+      yield put(logoutUserSuccess())
+    ]);
+    history.push(routeNames.Home);
   } catch (error) {
     yield put(apiError(error))
   }
