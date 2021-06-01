@@ -3,7 +3,7 @@ import firebase from "firebase/app"
 // Add the Firebase products that you want to use
 import "firebase/auth"
 import "firebase/firestore"
-import routeNames from "routes/routeNames"
+import routeNames from "../routes/routeNames"
 
 class FirebaseAuthBackend {
   constructor(firebaseConfig) {

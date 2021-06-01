@@ -11,7 +11,7 @@ import { withRouter, Link } from "react-router-dom"
 import img from "../../assets/images/members-text-img.svg"
 import img1 from "../../assets/images/megamenu-img.png"
 
-import Button from 'components/Common/Button';
+import Button from '../../components/Common/Button';
 
 
 const Home = props => {

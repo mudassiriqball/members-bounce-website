@@ -1,4 +1,4 @@
-import Button from 'components/Common/Button';
+import Button from '../../../components/Common/Button';
 import React, { useState } from 'react';
 import { Label } from 'reactstrap';
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { urls } from 'helpers';
+import { urls } from '../helpers';
 
 export default function getMembersOnlyClubs() {
   const [MEMBERS_ONLY_CLUBS_FOR_PICKER, setList] = useState([]);

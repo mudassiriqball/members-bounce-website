@@ -1,7 +1,7 @@
-import TopHundredBucketListCard from 'components/Common/Cards/TopHundredBucketListCard';
-import NoDataFound from 'components/Common/NoDataFound';
-import PAGE_TEXTS from 'constants/PAGE_TEXTS';
-import { getBearerToken } from 'helpers/authentication';
+import TopHundredBucketListCard from '../../components/Common/Cards/TopHundredBucketListCard';
+import NoDataFound from '../../components/Common/NoDataFound';
+import PAGE_TEXTS from '../../constants/PAGE_TEXTS';
+import { getBearerToken } from '../../helpers/authentication';
 import React, { useState, useEffect, useRef } from 'react';
 import { MetaTags } from "react-meta-tags";
 import { connect } from "react-redux";
@@ -10,10 +10,10 @@ import { Col, Container, Label, Row } from "reactstrap";
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb"
 import axios from 'axios';
-import { urls } from 'helpers';
-import { AccessDeniedAlert, ErrorAlert, SuccessAlert } from 'components/Common/Alerts';
-import { BucketListSearchFilter } from 'components/Common';
-import { applyTopHundredFilters, getGolfCoursesRegAndProfile, getMyCustomBucketList, handleTopHundredSearch } from 'hooks';
+import { urls } from '../../helpers';
+import { AccessDeniedAlert, ErrorAlert, SuccessAlert } from '../../components/Common/Alerts';
+import { BucketListSearchFilter } from '../../components/Common';
+import { applyTopHundredFilters, getGolfCoursesRegAndProfile, getMyCustomBucketList, handleTopHundredSearch } from '../../hooks';
 
 const CreateCustomBucketList = (props) => {
   const { isLoggedIn, user } = props;

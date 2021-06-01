@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Route, Redirect } from "react-router-dom"
-import routeNames from "routes/routeNames"
+import routeNames from "../../routes/routeNames"
 
 const Authmiddleware = ({
   component: Component,

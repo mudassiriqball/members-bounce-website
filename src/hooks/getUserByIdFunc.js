@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { urls } from "helpers";
+import { urls } from "../helpers";
 
 export default async function getUserByIdFunc(token, _id) {
   await axios({

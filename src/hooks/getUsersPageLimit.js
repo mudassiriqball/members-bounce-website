@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { urls } from "helpers";
+import { urls } from "../helpers";
 
 export default function getUsersPageLimit(refresh, role, status, pageNumber, limit) {
   const [USERS_PAGE_LOADING, setLoading] = useState(false)

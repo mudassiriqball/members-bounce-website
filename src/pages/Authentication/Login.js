@@ -15,12 +15,12 @@ import { AvForm, AvField } from "availity-reactstrap-validation"
 import { loginUser, apiError } from "../../store/actions"
 
 // import images
-import profile from "assets/images/profile-img.png"
-import logo from "assets/images/_logo.jpeg"
+import profile from "../../assets/images/profile-img.png"
+import logo from "../../assets/images/_logo.jpeg"
 
 // Components
-import Button from 'components/Common/Button';
-import Error from 'components/Common/Error';
+import Button from '../../components/Common/Button';
+import Error from '../../components/Common/Error';
 
 const Login = props => {
   const { error, loading, loginUser } = props;

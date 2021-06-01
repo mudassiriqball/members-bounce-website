@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { urls } from "helpers";
+import { urls } from "../../helpers";
 
 export default function getMyReciprocalRequests(token, refresh, _id, isHistory) {
   const [IS_LOADING, setLoading] = useState(false);

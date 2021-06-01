@@ -1,10 +1,10 @@
-import TopHundredBucketListCard from 'components/Common/Cards/TopHundredBucketListCard';
-import Loading from 'components/Common/Loading';
-import NoDataFound from 'components/Common/NoDataFound';
-import PAGE_TEXTS from 'constants/PAGE_TEXTS';
-import { getBearerToken } from 'helpers/authentication';
-import getMyBucketList from 'hooks/Top-100-Bucket-list/getMyBucketList';
-import getTopHundredBucketList from 'hooks/Top-100-Bucket-list/getTopHundredBucketList';
+import TopHundredBucketListCard from '../../components/Common/Cards/TopHundredBucketListCard';
+import Loading from '../../components/Common/Loading';
+import NoDataFound from '../../components/Common/NoDataFound';
+import PAGE_TEXTS from '../../constants/PAGE_TEXTS';
+import { getBearerToken } from '../../helpers/authentication';
+import getMyBucketList from '../../hooks/Top-100-Bucket-list/getMyBucketList';
+import getTopHundredBucketList from '../../hooks/Top-100-Bucket-list/getTopHundredBucketList';
 import React, { useState, useEffect, useRef } from 'react';
 import { MetaTags } from "react-meta-tags";
 import { connect } from "react-redux";
@@ -13,12 +13,11 @@ import { Col, Container, Label, Row } from "reactstrap";
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb"
 import axios from 'axios';
-import { urls } from 'helpers';
-import SweetAlert from "react-bootstrap-sweetalert"
-import { AccessDeniedAlert, ErrorAlert, SuccessAlert } from 'components/Common/Alerts';
-import { BucketListSearchFilter } from 'components/Common';
-import handleTopHundredSearch from 'hooks/Searching/handleTopHundredSearch';
-import applyTopHundredFilters from 'hooks/Filtering/applyTopHundredFilters';
+import { urls } from '../../helpers';
+import { AccessDeniedAlert, ErrorAlert, SuccessAlert } from '../../components/Common/Alerts';
+import { BucketListSearchFilter } from '../../components/Common';
+import handleTopHundredSearch from '../../hooks/Searching/handleTopHundredSearch';
+import applyTopHundredFilters from '../../hooks/Filtering/applyTopHundredFilters';
 
 const CreateTop100BucketList = (props) => {
   const { isLoggedIn, user } = props;

@@ -11,7 +11,7 @@ import { Container, Row, Col, CardBody, Card, Button } from "reactstrap"
 import profileImg from "../../assets/images/profile-img.png"
 import logoImg from "../../assets/images/logo.svg"
 import avatar from "../../assets/images/users/avatar-1.jpg"
-import routeNames from "routes/routeNames";
+import routeNames from "../../routes/routeNames";
 
 const LockScreen = () => {
   return (

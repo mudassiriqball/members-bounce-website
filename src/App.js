@@ -24,8 +24,8 @@ import "./assets/scss/my_custom.scss"
 
 // import fakeBackend from "./helpers/AuthType/fakeBackend"
 import AppLayout from './components/AppLayout'
-import { authenticateUser } from 'store/actions';
-import routeNames from 'routes/routeNames'
+import { authenticateUser } from './store/actions';
+import routeNames from './routes/routeNames'
 
 // Activating fake backend
 // fakeBackend()

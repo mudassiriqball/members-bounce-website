@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 // import PhoneInput from 'react-native-phone-number-input';
 // import DateTimePickerModal from "react-native-modal-datetime-picker";
 import axios from 'axios';
-import { urls } from 'helpers';
+import { urls } from '../../../helpers';
 import AvField from 'availity-reactstrap-validation/lib/AvField';
 // import DatePicker from 'react-native-datepicker';
 import { Col, Label, Row } from 'reactstrap';
-import Button from 'components/Common/Button';
+import Button from '../../../components/Common/Button';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
-import Error from 'components/Common/Error';
+import Error from '../../../components/Common/Error';
 import OtpInput from 'react-otp-input';
 
 export default function GeneralInfo(props) {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { urls } from "helpers";
+import { urls } from "../../helpers";
 
 export default async function sendPushNotification(token, _id, title, body, user) {
   await axios({

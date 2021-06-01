@@ -33,7 +33,7 @@ import slack from "../../assets/images/brands/slack.png"
 
 //i18n
 import { withTranslation } from "react-i18next"
-import routeNames from "routes/routeNames";
+import routeNames from "../../routes/routeNames";
 
 const Header = props => {
   const [menu, setMenu] = useState(false)

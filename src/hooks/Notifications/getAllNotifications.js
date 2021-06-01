@@ -1,5 +1,5 @@
 import axios from "axios";
-import { urls } from "helpers";
+import { urls } from "../../helpers";
 import { useEffect, useState } from 'react';
 
 export default function getAllNotifications(token, user_id, refresh) {

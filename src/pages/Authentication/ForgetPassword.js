@@ -17,10 +17,10 @@ import { userForgetPassword } from "../../store/actions"
 // import images
 import profile from "../../assets/images/profile-img.png"
 import logo from "../../assets/images/logo.svg"
-import Button from 'components/Common/Button';
+import Button from '../../components/Common/Button';
 import axios from 'axios';
-import { urls } from 'helpers';
-import Error from 'components/Common/Error';
+import { urls } from '../../helpers';
+import Error from '../../components/Common/Error';
 
 const ForgetPasswordPage = props => {
   const { history } = props;

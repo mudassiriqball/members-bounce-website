@@ -6,11 +6,11 @@ import { LOGIN_USER, LOGOUT_USER } from "./actionTypes"
 import { apiError, loginSuccess, logoutUserSuccess } from "./actions"
 
 //Include Both Helper File with needed methods
-import { saveToken } from "helpers/authentication"
+import { saveToken } from "../../../helpers/authentication"
 import { setIsLoggedIn, setUser } from "../user/actions"
-import { postRequest } from "helpers/api_helper";
-import routeNames from "routes/routeNames";
-import { urls } from "helpers";
+import { postRequest } from "../../../helpers/api_helper";
+import routeNames from "../../../routes/routeNames";
+import { urls } from "../../../helpers";
 
 function* loginUser({ payload: { user, history } }) {
   try {

@@ -5,19 +5,19 @@ import { withRouter } from "react-router-dom";
 import { Container, Row, Col, Label } from "reactstrap";
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb"
-import { ErrorAlert, SuccessAlert } from 'components/Common/Alerts';
+import { ErrorAlert, SuccessAlert } from '../../components/Common/Alerts';
 
-import TopHundredBucketListCard from 'components/Common/Cards/TopHundredBucketListCard';
-import Loading from 'components/Common/Loading';
-import NoDataFound from 'components/Common/NoDataFound';
-import PAGE_TEXTS from 'constants/PAGE_TEXTS';
-import { getBearerToken } from 'helpers/authentication';
+import TopHundredBucketListCard from '../../components/Common/Cards/TopHundredBucketListCard';
+import Loading from '../../components/Common/Loading';
+import NoDataFound from '../../components/Common/NoDataFound';
+import PAGE_TEXTS from '../../constants/PAGE_TEXTS';
+import { getBearerToken } from '../../helpers/authentication';
 import axios from 'axios';
-import { urls } from 'helpers';
-import getTopHundredPlayed from 'hooks/Top-100-Bucket-list/getTopHundredPlayed';
-import { BucketListSearchFilter } from 'components/Common';
-import handleTopHundredSearch from 'hooks/Searching/handleTopHundredSearch';
-import applyTopHundredFilters from 'hooks/Filtering/applyTopHundredFilters';
+import { urls } from '../../helpers';
+import getTopHundredPlayed from '../../hooks/Top-100-Bucket-list/getTopHundredPlayed';
+import { BucketListSearchFilter } from '../../components/Common';
+import handleTopHundredSearch from '../../hooks/Searching/handleTopHundredSearch';
+import applyTopHundredFilters from '../../hooks/Filtering/applyTopHundredFilters';
 
 const Top100BucketListPlayed = (props) => {
   const { user, isLoggedIn } = props;

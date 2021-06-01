@@ -27,7 +27,7 @@ import bgimg1 from "../../assets/images/sidebar/img1.jpg";
 import bgimg2 from "../../assets/images/sidebar/img2.jpg";
 import bgimg3 from "../../assets/images/sidebar/img3.jpg";
 import bgimg4 from "../../assets/images/sidebar/img4.jpg";
-import routeNames from "routes/routeNames"
+import routeNames from "../../routes/routeNames"
 
 const RightSidebar = (props) => {
   const { onClose } = props;

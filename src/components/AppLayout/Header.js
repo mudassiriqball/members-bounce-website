@@ -28,7 +28,7 @@ import Button from '../Common/Button';
 
 //i18n
 import { withTranslation } from "react-i18next"
-import routeNames from "routes/routeNames";
+import routeNames from "../../routes/routeNames";
 
 const Header = props => {
   const { isLoggedIn, user, history } = props;

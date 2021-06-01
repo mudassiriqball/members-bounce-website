@@ -7,18 +7,18 @@ import { Card, CardBody, Col, Container, Label, Row } from 'reactstrap';
 import GeneralInfo from './GeneralInfo';
 import PersonalInfo from './PersonalInfo';
 import RegisterReview from './RegisterReview';
-import getMembersOnlyClubs from 'hooks/getMembersOnlyClubs';
-import { verifyPostCode } from 'helpers/RestService';
-import { urls } from 'helpers';
-import Button from 'components/Common/Button';
+import getMembersOnlyClubs from '../../../hooks/getMembersOnlyClubs';
+import { verifyPostCode } from '../../../helpers/RestService';
+import { urls } from '../../../helpers';
+import Button from '../../../components/Common/Button';
 import { MetaTags } from 'react-meta-tags';
 import { Link } from 'react-router-dom';
 // import images
-import profileImg from "assets/images/profile-img.png"
-import logoImg from "assets/images/_logo.jpeg"
-import routeNames from "routes/routeNames";
+import profileImg from "../../../assets/images/profile-img.png"
+import logoImg from "../../../assets/images/_logo.jpeg"
+import routeNames from "../../../routes/routeNames";
 import AvForm from 'availity-reactstrap-validation/lib/AvForm';
-import getGolfCoursesRegAndProfile from 'hooks/getGolfCoursesRegAndProfile';
+import getGolfCoursesRegAndProfile from '../../../hooks/getGolfCoursesRegAndProfile';
 
 
 const schema = yup.object({

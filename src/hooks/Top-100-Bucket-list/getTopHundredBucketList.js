@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { urls } from 'helpers';
+import { urls } from '../../helpers';
 
 export default function getTopHundredBucketList(token, refresh) {
   const [IS_LOADING, setLoading] = useState(false);

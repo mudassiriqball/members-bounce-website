@@ -11,7 +11,7 @@ import { withRouter, Link } from "react-router-dom"
 import img from "../../assets/images/megamenu-img.png"
 import img1 from "../../assets/images/sidebar/img3.jpg"
 
-import Button from 'components/Common/Button';
+import Button from '../../components/Common/Button';
 
 
 const Membership = props => {

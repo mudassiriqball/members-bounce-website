@@ -9,7 +9,7 @@ import Countdown from "react-countdown"
 //Import Images
 import logo from "../../assets/images/logo-dark.png"
 import maintanence from "../../assets/images/coming-soon.svg"
-import routeNames from "routes/routeNames";
+import routeNames from "../../routes/routeNames";
 
 const PagesComingsoon = () => {
   const renderer = ({ days, hours, minutes, seconds, completed }) => {

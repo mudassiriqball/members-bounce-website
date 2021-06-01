@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { urls } from 'helpers';
+import { urls } from '../helpers';
 
 export default function getGolfCoursesRegAndProfile() {
   const [GOLF_COURSES_LIST_REG_PROFILE_FOR_PICKER, setList] = useState([]);

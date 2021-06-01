@@ -10,7 +10,7 @@ import { withTranslation } from "react-i18next"
 
 //i18n
 import i18n from "../../../i18n"
-import languages from "common/languages"
+import languages from "../../../common/languages"
 
 const LanguageDropdown = () => {
   // Declare a new state variable, which we'll call "menu"
@@ -49,9 +49,8 @@ const LanguageDropdown = () => {
             <DropdownItem
               key={key}
               onClick={() => changeLanguageAction(key)}
-              className={`notify-item ${
-                selectedLang === key ? "active" : "none"
-              }`}
+              className={`notify-item ${selectedLang === key ? "active" : "none"
+                }`}
             >
               <img
                 src={get(languages, `${key}.flag`)}

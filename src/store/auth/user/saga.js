@@ -5,10 +5,10 @@ import { AUTHENTICATE_USER, } from "./actionTypes"
 import { setIsLoggedIn, setUser } from "./actions"
 
 //Include Both Helper File with needed methods
-import { urls } from "helpers"
-import { getBearerToken, getDecodedToken } from "helpers/authentication"
+import { urls } from "../../../helpers"
+import { getBearerToken, getDecodedToken } from "../../../helpers/authentication"
 import { profileSuccess } from "../profile/actions"
-import { getRequest } from "helpers/api_helper"
+import { getRequest } from "../../../helpers/api_helper"
 
 function* authenticate() {
   try {

@@ -11,7 +11,7 @@ import { Link } from "react-router-dom"
 
 //i18n
 import { withTranslation } from "react-i18next"
-import routeNames from "routes/routeNames"
+import routeNames from "../../routes/routeNames"
 
 const SidebarContent = props => {
   const ref = useRef()

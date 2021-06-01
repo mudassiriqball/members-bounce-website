@@ -1,5 +1,5 @@
 import AvField from 'availity-reactstrap-validation/lib/AvField';
-import Error from 'components/Common/Error';
+import Error from '../../../components/Common/Error';
 import React, { useState } from 'react'
 import { Label } from 'reactstrap';
 

@@ -8,7 +8,7 @@ import classname from "classnames"
 import { withTranslation } from "react-i18next"
 
 import { connect } from "react-redux"
-import routeNames from "routes/routeNames"
+import routeNames from "../../routes/routeNames"
 
 const Navbar = props => {
   const [dashboard, setdashboard] = useState(false)

@@ -7,7 +7,7 @@ import { registerUserSuccessful, registerUserFailed } from "./actions"
 //Include Both Helper File with needed methods
 import { getFirebaseBackend } from "../../../helpers/firebase_helper"
 
-import { postRequest } from "helpers/api_helper"
+import { postRequest } from "../../../helpers/api_helper"
 
 // initialize relavant method of both Auth
 const fireBaseBackend = getFirebaseBackend()

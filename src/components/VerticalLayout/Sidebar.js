@@ -13,7 +13,7 @@ import logo from "../../assets/images/logo.svg"
 import logoLight from "../../assets/images/logo-light.png"
 import logoLightSvg from "../../assets/images/logo-light.svg"
 import logoDark from "../../assets/images/logo-dark.png"
-import routeNames from "routes/routeNames"
+import routeNames from "../../routes/routeNames"
 
 const Sidebar = props => {
 

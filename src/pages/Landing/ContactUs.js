@@ -10,7 +10,7 @@ import { withRouter, Link } from "react-router-dom"
 // Import Imgs
 import img1 from "../../assets/images/sidebar/img3.jpg"
 
-import Button from 'components/Common/Button';
+import Button from '../../components/Common/Button';
 import { AvForm, AvField } from "availity-reactstrap-validation"
 
 

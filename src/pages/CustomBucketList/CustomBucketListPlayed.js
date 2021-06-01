@@ -5,17 +5,17 @@ import { withRouter } from "react-router-dom";
 import { Container, Row, Col, Label } from "reactstrap";
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb"
-import { ErrorAlert, SuccessAlert } from 'components/Common/Alerts';
+import { ErrorAlert, SuccessAlert } from '../../components/Common/Alerts';
 
-import TopHundredBucketListCard from 'components/Common/Cards/TopHundredBucketListCard';
-import Loading from 'components/Common/Loading';
-import NoDataFound from 'components/Common/NoDataFound';
-import PAGE_TEXTS from 'constants/PAGE_TEXTS';
-import { getBearerToken } from 'helpers/authentication';
+import TopHundredBucketListCard from '../../components/Common/Cards/TopHundredBucketListCard';
+import Loading from '../../components/Common/Loading';
+import NoDataFound from '../../components/Common/NoDataFound';
+import PAGE_TEXTS from '../../constants/PAGE_TEXTS';
+import { getBearerToken } from '../../helpers/authentication';
 import axios from 'axios';
-import { urls } from 'helpers';
-import { BucketListSearchFilter } from 'components/Common';
-import { applyTopHundredFilters, getCustomBucketListPlayed, handleTopHundredSearch } from 'hooks';
+import { urls } from '../../helpers';
+import { BucketListSearchFilter } from '../../components/Common';
+import { applyTopHundredFilters, getCustomBucketListPlayed, handleTopHundredSearch } from '../../hooks';
 
 const CustomBucketListPlayed = (props) => {
   const { user, isLoggedIn } = props;

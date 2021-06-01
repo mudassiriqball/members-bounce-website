@@ -17,7 +17,7 @@ import {
 } from "./actions"
 
 //Include Both Helper File with needed methods
-import { deleteRequest, getRequest, postRequest, putRequest } from "helpers/api_helper"
+import { deleteRequest, getRequest, postRequest, putRequest } from "../../helpers/api_helper"
 
 function* fetchUsers() {
   try {

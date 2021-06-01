@@ -9,7 +9,7 @@ import CardMaintenance from "./card-maintenance"
 //Import Images
 import maintenance from "../../assets/images/maintenance.svg"
 import logo from "../../assets/images/logo-dark.png"
-import routeNames from "routes/routeNames";
+import routeNames from "../../routes/routeNames";
 
 const PagesMaintenance = () => {
   return (

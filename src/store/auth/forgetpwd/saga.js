@@ -6,7 +6,7 @@ import { userForgetPasswordSuccess, userForgetPasswordError } from "./actions"
 
 //Include Both Helper File with needed methods
 import { getFirebaseBackend } from "../../../helpers/firebase_helper"
-import { postRequest } from "helpers/api_helper"
+import { postRequest } from "../../../helpers/api_helper"
 
 const fireBaseBackend = getFirebaseBackend()
 

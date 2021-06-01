@@ -5,7 +5,7 @@ import { Container, Row, Col } from "reactstrap"
 
 //Import Images
 import error from "../../assets/images/error-img.png"
-import routeNames from "routes/routeNames";
+import routeNames from "../../routes/routeNames";
 
 const Pages500 = () => {
   return (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { urls } from "helpers";
+import { urls } from "../helpers";
 
 export default function getUsersBySearch(refresh, role, status, fieldName, query, pageNumber, limit) {
   const [USERS_SEARCH_LOADING, setLoading] = useState(false);

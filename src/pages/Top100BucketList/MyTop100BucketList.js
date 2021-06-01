@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
-import TopHundredBucketListCard from 'components/Common/Cards/TopHundredBucketListCard';
-import Loading from 'components/Common/Loading';
-import NoDataFound from 'components/Common/NoDataFound';
-import PAGE_TEXTS from 'constants/PAGE_TEXTS';
-import { getBearerToken } from 'helpers/authentication';
-import getMyBucketList from 'hooks/Top-100-Bucket-list/getMyBucketList';
+import TopHundredBucketListCard from '../../components/Common/Cards/TopHundredBucketListCard';
+import Loading from '../../components/Common/Loading';
+import NoDataFound from '../../components/Common/NoDataFound';
+import PAGE_TEXTS from '../../constants/PAGE_TEXTS';
+import { getBearerToken } from '../../helpers/authentication';
+import getMyBucketList from '../../hooks/Top-100-Bucket-list/getMyBucketList';
 import { MetaTags } from "react-meta-tags";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -12,11 +12,11 @@ import { Container, Label, Row, Col } from "reactstrap";
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import axios from 'axios';
-import { urls } from 'helpers';
-import { ErrorAlert, SuccessAlert } from 'components/Common/Alerts';
-import { BucketListSearchFilter } from 'components/Common';
-import handleTopHundredSearch from 'hooks/Searching/handleTopHundredSearch';
-import applyTopHundredFilters from 'hooks/Filtering/applyTopHundredFilters';
+import { urls } from '../../helpers';
+import { ErrorAlert, SuccessAlert } from '../../components/Common/Alerts';
+import { BucketListSearchFilter } from '../../components/Common';
+import handleTopHundredSearch from '../../hooks/Searching/handleTopHundredSearch';
+import applyTopHundredFilters from '../../hooks/Filtering/applyTopHundredFilters';
 
 const MyTop100BucketList = (props) => {
   const { user, isLoggedIn } = props;
