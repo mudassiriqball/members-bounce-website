@@ -27,7 +27,7 @@ const Top100BucketListPlayed = (props) => {
   const [refresh, setRefresh] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [list, setList] = useState([]);
-  const [searchList, setSerachList] = useState([]);
+  const [searchList, setSearchList] = useState([]);
   const { IS_LOADING, TOP_HUNDRED_PLAYED } = getTopHundredPlayed(token, refresh, user && user._id);
 
   // Filters
@@ -74,7 +74,7 @@ const Top100BucketListPlayed = (props) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <div className='page-content h-100'>
         <MetaTags>
           <title>Top 100 Played | Members Bounce</title>
@@ -93,11 +93,10 @@ const Top100BucketListPlayed = (props) => {
           />
           <BucketListSearchFilter
             from={'TopHundredBucketList'}
-            colors={colors}
             query={query}
-            handleSearch={(val) => handleTopHundredSearch(list, val, setQuery, setIsSearch, setSerachList)}
+            handleSearch={(val) => handleTopHundredSearch(list, val, setQuery, setIsSearch, setSearchList)}
             // Filter
-            applyFilter={() => applyTopHundredFilters(setList, MY_BUCKET_LIST, filterBy, filterType)}
+            applyFilter={() => applyTopHundredFilters(setList, TOP_HUNDRED_PLAYED, filterBy, filterType)}
             clearFilter={clearFilter}
             filterBy={filterBy}
             filterType={filterType}
@@ -157,7 +156,7 @@ const Top100BucketListPlayed = (props) => {
           }
         </Container>
       </div>
-    </>
+    </React.Fragment>
   )
 }
 

@@ -59,7 +59,7 @@ class AppLayout extends Component {
 
   render() {
     return (
-      <>
+      <React.Fragment>
         <div id="preloader">
           <div id="status">
             <div className="spinner-chase">
@@ -86,7 +86,7 @@ class AppLayout extends Component {
         </div>
 
         {this.props.showRightSidebar ? <Rightbar hideOptions={true} /> : null}
-      </>
+      </React.Fragment>
     )
   }
 }

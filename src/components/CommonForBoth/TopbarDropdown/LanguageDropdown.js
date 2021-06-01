@@ -34,7 +34,7 @@ const LanguageDropdown = () => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <Dropdown isOpen={menu} toggle={toggle} className="d-inline-block">
         <DropdownToggle className="btn header-item " tag="button">
           <img
@@ -65,7 +65,7 @@ const LanguageDropdown = () => {
           ))}
         </DropdownMenu>
       </Dropdown>
-    </>
+    </React.Fragment>
   )
 }
 

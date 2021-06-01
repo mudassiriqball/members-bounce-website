@@ -94,7 +94,6 @@ export default function GeneralInfo(props) {
         setIsCodeVerified(true);
         setPrevEmail(values.email);
       } else {
-        setToastType('err');
         setCodeErr('Invalid Code!');
       }
     }
@@ -213,10 +212,10 @@ export default function GeneralInfo(props) {
       </div>
       {/* Code Input */}
       {!isCodeVerified &&
-        <>
+        <React.Fragment>
           {isCodeSended &&
-            <>
-              <>
+            <React.Fragment>
+              <React.Fragment>
                 <div className="mb-3">
                   <OtpInput
                     value={code}
@@ -229,7 +228,7 @@ export default function GeneralInfo(props) {
                   />
                 </div>
                 {codeErr !== '' && <Error>{codeErr}</Error>}
-              </>
+              </React.Fragment>
               {/* <CodeField
                 ref={codeFieldRef}
                 value={code}
@@ -248,7 +247,7 @@ export default function GeneralInfo(props) {
                 )}
               />
               {codeErr !== '' && renderError(codeErr)} */}
-            </>
+            </React.Fragment>
           }
           <div>
             {isCodeSended ?
@@ -288,7 +287,7 @@ export default function GeneralInfo(props) {
               </Row>
             }
           </div>
-        </>
+        </React.Fragment>
       }
     </div>
   )

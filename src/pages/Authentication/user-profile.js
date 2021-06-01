@@ -149,5 +149,5 @@
 //   connect(mapStatetoProps, { editProfile, resetProfileFlag })(UserProfile)
 // )
 export default function name() {
-  return <></>
+  return <React.Fragment></React.Fragment>
 }

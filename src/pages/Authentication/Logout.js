@@ -10,7 +10,7 @@ const Logout = props => {
     props.logoutUser(props.history)
   })
 
-  return <></>
+  return <React.Fragment></React.Fragment>
 }
 
 Logout.propTypes = {

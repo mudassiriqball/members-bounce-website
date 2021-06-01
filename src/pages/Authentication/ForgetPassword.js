@@ -28,7 +28,6 @@ const ForgetPasswordPage = props => {
   // function handleValidSubmit(event, values) {
   //   props.userForgetPassword(values, props.history)
   // }
-  const { navigation } = props;
   const [email, setEmail] = useState('');
   const [emailErr, setEmailErr] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -71,7 +70,7 @@ const ForgetPasswordPage = props => {
 
   // Send Code
   const handleSendCode = async () => {
-    var emailReg = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
+    var emailReg = /^(([^<React.Fragment>()\[\]\\.,;:\s@”]+(\.[^<React.Fragment>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
     if (!emailReg.test(email)) {
       setEmailErr('Invalid email!');
       // toastRef && toastRef.current && toastRef.current.show('Fix error first !', CONSTS.TOAST_MEDIUM_DURATION, () => {});
@@ -245,7 +244,7 @@ const ForgetPasswordPage = props => {
 
                       {/* Verify Code */}
                       {isCodeSended && !isCodeVerified &&
-                        <>
+                        <React.Fragment>
                           <div className="mb-3">
                             <OtpInput
                               value={code}
@@ -258,12 +257,12 @@ const ForgetPasswordPage = props => {
                             />
                           </div>
                           {codeErr !== '' && <Error >{codeErr}</Error>}
-                        </>
+                        </React.Fragment>
                       }
 
                       {/* Set Password */}
                       {isCodeVerified &&
-                        <>
+                        <React.Fragment>
                           <div className="mb-3 position-relative">
                             <AvField
                               name="password"
@@ -294,7 +293,7 @@ const ForgetPasswordPage = props => {
                               <i onClick={() => setShowConfirmPassword(!showConfirmPassword)} className={!showConfirmPassword ? "mdi mdi-eye-outline" : "mdi mdi-eye-off-outline"} />
                             </div>
                           </div>
-                        </>
+                        </React.Fragment>
                       }
 
                       {/* Buttons */}

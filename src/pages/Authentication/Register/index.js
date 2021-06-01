@@ -19,6 +19,7 @@ import logoImg from "../../../assets/images/_logo.jpeg"
 import routeNames from "../../../routes/routeNames";
 import AvForm from 'availity-reactstrap-validation/lib/AvForm';
 import getGolfCoursesRegAndProfile from '../../../hooks/getGolfCoursesRegAndProfile';
+import golfersType from '../../../constants/golfersType';
 
 
 const schema = yup.object({
@@ -293,7 +294,7 @@ export default function Register(props) {
                           >
                             <div style={{ marginTop: '5%', marginBottom: '5%' }}>
                               {step === 1 ?
-                                <>
+                                <React.Fragment>
                                   <GeneralInfo
                                     values={values}
                                     handleChange={handleChange}
@@ -318,10 +319,10 @@ export default function Register(props) {
                         <Label style={[styles.text(colors), { color: colors.LINK }]}> Login</Label>
                       </TouchableOpacity> */}
                                   </div>
-                                </>
+                                </React.Fragment>
                                 :
                                 step === 2 ?
-                                  <>
+                                  <React.Fragment>
                                     <PersonalInfo
                                       values={values}
                                       handleChange={handleChange}
@@ -336,15 +337,15 @@ export default function Register(props) {
                                       setIsCodeVerified={setIsCodeVerified}
                                       {...props}
                                     />
-                                  </>
+                                  </React.Fragment>
                                   :
-                                  <>
+                                  <React.Fragment>
                                     <RegisterReview
                                       values={values}
                                       handleRegister={handleSubmit}
                                       isSubmitting={isSubmitting}
                                     />
-                                  </>
+                                  </React.Fragment>
                               }
                             </div>
                           </AvForm>

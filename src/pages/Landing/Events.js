@@ -3,7 +3,7 @@ import { Col, Label, Row } from 'reactstrap';
 
 const Events = () => {
   return (
-    <>
+    <React.Fragment>
       <Row>
         <Col className="member-lg">
           <Label>MEMBERS BOUNCE</Label>
@@ -12,7 +12,7 @@ const Events = () => {
 
         </Col>
       </Row>
-    </>
+    </React.Fragment>
   )
 }
 

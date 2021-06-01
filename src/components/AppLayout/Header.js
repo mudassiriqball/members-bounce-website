@@ -131,19 +131,19 @@ const Header = props => {
             </div>
 
             {isLoggedIn ?
-              <>
+              <React.Fragment>
                 <NotificationDropdown />
                 <ProfileMenu />
-              </>
+              </React.Fragment>
               :
-              <>
+              <React.Fragment>
                 <div className="d-flex align-items-center m-2">
                   <Button onClick={() => history.push('/register')}>Join Now</Button>
                 </div>
                 <div className="d-flex align-items-center m-2">
                   <Button onClick={() => history.push('/login')}>Login</Button>
                 </div>
-              </>
+              </React.Fragment>
             }
 
             <div className="dropdown d-inline-block">

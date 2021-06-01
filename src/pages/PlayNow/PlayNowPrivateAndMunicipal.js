@@ -7,7 +7,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb"
 
 const PlayNowPrivateAndMunicipal = (props) => {
   return (
-    <>
+    <React.Fragment>
       <div className='page-content'>
         <MetaTags>
           <title>Private & Municipal | Members Bounce</title>
@@ -21,7 +21,7 @@ const PlayNowPrivateAndMunicipal = (props) => {
 
         </Container>
       </div>
-    </>
+    </React.Fragment>
   )
 }
 

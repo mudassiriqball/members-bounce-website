@@ -17,7 +17,9 @@ import { AvForm, AvField } from "availity-reactstrap-validation"
 const ContactUs = props => {
   const { history } = props;
   const [loading, setLoading] = useState(false);
+  const handleValidSubmit = () => {
 
+  }
   return (
     <React.Fragment>
       <div className="page-content">

@@ -60,7 +60,7 @@ const PagesTimeline = () => {
                       id="timeline-carousel"
                     >
                       {step1 ? (
-                        <>
+                        <React.Fragment>
                           <div
                             className="item event-list"
                             style={{ display: "inline-table" }}
@@ -132,11 +132,11 @@ const PagesTimeline = () => {
                               </div>
                             </div>
                           </div>
-                        </>
+                        </React.Fragment>
                       ) : null}
 
                       {step2 ? (
-                        <>
+                        <React.Fragment>
                           <div
                             className="item event-list"
                             style={{ display: "inline-table" }}
@@ -208,7 +208,7 @@ const PagesTimeline = () => {
                               </div>
                             </div>
                           </div>
-                        </>
+                        </React.Fragment>
                       ) : null}
 
                       <div className="owl-nav" style={{ textAlign: "center" }}>

@@ -46,7 +46,6 @@ const Home = props => {
                     className='m-2'
                     id="showtoast"
                     onClick={() => {
-                      showToast()
                     }}
                   >
                     {'FIND OUT MORE'}
@@ -80,7 +79,6 @@ const Home = props => {
                       className='m-2'
                       id="showtoast"
                       onClick={() => {
-                        showToast()
                       }}
                     >
                       {'DOWNLOAD APPLE APP'}
@@ -91,7 +89,6 @@ const Home = props => {
                       className='m-2'
                       id="showtoast"
                       onClick={() => {
-                        showToast()
                       }}
                     >
                       {'DOWNLOAD ANDROID APP'}

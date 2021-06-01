@@ -62,7 +62,7 @@ const RightSidebar = (props) => {
             {/* TODO: replace this by some better logic */}
             {(window.location.pathname !== routeNames.Home || window.location.pathname !== routeNames.AboutUs || window.location.pathname !== routeNames.ContactUs ||
               window.location.pathname !== routeNames.Membership || window.location.pathname !== routeNames.Events) &&
-              <>
+              <React.Fragment>
                 <div className="radio-toolbar">
                   <span className="mb-2 d-block">Layouts</span>
                   <input
@@ -141,7 +141,7 @@ const RightSidebar = (props) => {
                   <label htmlFor="radioscrollable">Scrollable</label>
                 </div>
                 <hr className="mt-1" />
-              </>
+              </React.Fragment>
             }
             <div className="radio-toolbar">
               <span className="mb-2 d-block" id="radio-title">
@@ -176,7 +176,7 @@ const RightSidebar = (props) => {
               <label htmlFor="radioThemeDark">Dark</label>
               {"   "}
               {props.layoutType === "vertical" ? null : (
-                <>
+                <React.Fragment>
                   {" "}
                   <input
                     type="radio"
@@ -191,7 +191,7 @@ const RightSidebar = (props) => {
                     }}
                   />
                   <label htmlFor="radioThemeColored">Colored</label>{" "}
-                </>
+                </React.Fragment>
               )}
             </div>
 

@@ -18,7 +18,7 @@ const PagesComingsoon = () => {
       return <span>You are good to go!</span>
     } else {
       return (
-        <>
+        <React.Fragment>
           <div className="coming-box">
             {days} <span>Days</span>
           </div>{" "}
@@ -31,7 +31,7 @@ const PagesComingsoon = () => {
           <div className="coming-box">
             {seconds} <span>Seconds</span>
           </div>
-        </>
+        </React.Fragment>
       )
     }
   }

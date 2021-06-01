@@ -7,7 +7,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb"
 
 const ReciprocalGolfMyRequests = (props) => {
   return (
-    <>
+    <React.Fragment>
       <div className='page-content'>
         <MetaTags>
           <title>My Requests | Members Bounce</title>
@@ -21,7 +21,7 @@ const ReciprocalGolfMyRequests = (props) => {
 
         </Container>
       </div>
-    </>
+    </React.Fragment>
   )
 }
 

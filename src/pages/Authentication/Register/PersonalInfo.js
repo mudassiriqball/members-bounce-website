@@ -60,7 +60,7 @@ export default function PersonalInfo(props) {
       </div>
 
       {values.isMember &&
-        <>
+        <React.Fragment>
           {/* Home Club */}
           {/* <CustomPicker
             colors={colors}
@@ -100,7 +100,7 @@ export default function PersonalInfo(props) {
               required
             />
           </div>
-        </>
+        </React.Fragment>
       }
       {/* Postal Code District (outward code/start only) */}
       <div className="mb-3">
@@ -155,7 +155,7 @@ export default function PersonalInfo(props) {
           required
           placeholder="Re-enter Password"
           errorMessage={(touched.confirm_password && errors.confirm_password) ? errors.confirm_password : ''}
-          onChange={(e, val) => setConfirmPassword(val)}
+          // onChange={(e, val) => setConfirmPassword(val)}
           value={values.confirm_password}
         />
         <div>
@@ -166,11 +166,11 @@ export default function PersonalInfo(props) {
         <div>
           <Label>
             {'I confirm that am I over 18 years old and agree to the '}
-            <Label onClick={() => navigation.navigate('TermsOfUse')}>{' Terms of Use'}</Label>
+            {/* <Label onClick={() => navigation.navigate('TermsOfUse')}>{' Terms of Use'}</Label> */}
           </Label>
         </div>
         <div >
-          <Switch value={isTermsOfUse} color={colors.SEC_MAIN} onValueChange={(e) => onToggleTermsOfUseSwitch(e)} />
+          {/* <Switch value={isTermsOfUse} color={colors.SEC_MAIN} onValueChange={(e) => onToggleTermsOfUseSwitch(e)} /> */}
         </div>
       </div>
       {(errors.termsOfUse && touched.termsOfUse) && Error(errors.termsOfUse)}
@@ -179,7 +179,7 @@ export default function PersonalInfo(props) {
         <div>
           <Label>
             {'I have read and accept the '}
-            <Label onClick={() => navigation.navigate('PrivacyPolicy')}>{' Privacy Notice'}</Label>
+            {/* <Label onClick={() => navigation.navigate('PrivacyPolicy')}>{' Privacy Notice'}</Label> */}
           </Label>
         </div>
         <div >

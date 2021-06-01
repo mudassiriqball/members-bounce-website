@@ -90,7 +90,7 @@ const MyCustomBucketList = (props) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <div className='page-content h-100'>
         <MetaTags>
           <title>My Custom Bucket-list | Members Bounce</title>
@@ -109,7 +109,6 @@ const MyCustomBucketList = (props) => {
           />
           <BucketListSearchFilter
             from={'TopHundredBucketList'}
-            colors={colors}
             query={query}
             handleSearch={(val) => handleTopHundredSearch(list, val, setQuery, setIsSearch, setSearchList)}
             // Filter
@@ -173,7 +172,7 @@ const MyCustomBucketList = (props) => {
           }
         </Container>
       </div>
-    </>
+    </React.Fragment>
   )
 }
 

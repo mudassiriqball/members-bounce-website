@@ -7,7 +7,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb"
 
 const PlayNowHomeClub = (props) => {
   return (
-    <>
+    <React.Fragment>
       <div className='page-content'>
         <MetaTags>
           <title>Home Club | Members Bounce</title>
@@ -21,7 +21,7 @@ const PlayNowHomeClub = (props) => {
 
         </Container>
       </div>
-    </>
+    </React.Fragment>
   )
 }
 

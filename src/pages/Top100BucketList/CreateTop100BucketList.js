@@ -78,7 +78,7 @@ const CreateTop100BucketList = (props) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <div className='page-content h-100'>
         <MetaTags>
           <title>Create Bucket-list | Members Bounce</title>
@@ -170,7 +170,7 @@ const CreateTop100BucketList = (props) => {
           }
         </Container>
       </div>
-    </>
+    </React.Fragment>
   )
 }
 

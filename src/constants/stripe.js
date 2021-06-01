@@ -1,0 +1,4 @@
+export default {
+  STRIPE_PUBLISH_KEY: 'pk_test_51IXjwiKmSl5mToLo5OZGVj4TU7QkByTvEVCXroAPzxaF6H0PW40WOarmTa77zeetN7BH1LjcpheIm9NALkxyOSHG00WA5ej5Og',
+  STRIPE_SECRET_KET: 'sk_test_51IXjwiKmSl5mToLoD1H7STVxkqtbRrdMUGkaLkZUl1BEmouEToSKUQqMpzVYFKMcaFx0rg8NnrtBghmLR6lBVb4V00li9Ndbv2',
+}

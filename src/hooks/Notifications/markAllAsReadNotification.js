@@ -12,7 +12,7 @@ export default async function markAllAsReadNotification(token, user_id) {
     });
     return true;
   } catch (error) {
-    console.log('markAllAsReadNotification err:', err);
+    console.log('markAllAsReadNotification err:', error);
     return false;
   }
 }

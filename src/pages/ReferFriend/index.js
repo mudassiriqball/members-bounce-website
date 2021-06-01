@@ -7,7 +7,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb"
 
 const ReferFriend = (props) => {
   return (
-    <>
+    <React.Fragment>
       <div className='page-content'>
         <MetaTags>
           <title>Refer Friend | Members Bounce</title>
@@ -21,7 +21,7 @@ const ReferFriend = (props) => {
 
         </Container>
       </div>
-    </>
+    </React.Fragment>
   )
 }
 
