@@ -13,8 +13,8 @@ const Recoverpw2 = () => {
   return (
     <React.Fragment>
       <div>
-      <MetaTags>
-          <title>Recover Password 2 | Skote - React Admin & Dashboard Template</title>
+        <MetaTags>
+          <title>Recover Password 2 | Members Bounce</title>
         </MetaTags>
         <Container fluid className="p-0">
           <Row className="g-0">
@@ -52,20 +52,20 @@ const Recoverpw2 = () => {
                         >
                           Enter your Email and instructions will be sent to
                           you!
-                          </div>
-
-                      <AvForm className="form-horizontal">
-                        <div className="mb-3">
-                          <AvField
-                            name="email"
-                            label="Email"
-                            className="form-control"
-                            placeholder="Enter email"
-                            type="email"
-                            required
-                          />
                         </div>
-                        <div className="text-end">
+
+                        <AvForm className="form-horizontal">
+                          <div className="mb-3">
+                            <AvField
+                              name="email"
+                              label="Email"
+                              className="form-control"
+                              placeholder="Enter email"
+                              type="email"
+                              required
+                            />
+                          </div>
+                          <div className="text-end">
                             <button
                               className="btn btn-primary w-md "
                               type="submit"
@@ -81,8 +81,8 @@ const Recoverpw2 = () => {
                               className="fw-medium text-primary"
                             >
                               {" "}
-                                Sign In here
-                              </Link>{" "}
+                              Sign In here
+                            </Link>{" "}
                           </p>
                         </div>
                       </div>
@@ -91,8 +91,8 @@ const Recoverpw2 = () => {
                       <p className="mb-0">
                         © {new Date().getFullYear()} Skote. Crafted with{" "}
                         <i className="mdi mdi-heart text-danger"></i> by
-                          Themesbrand
-                        </p>
+                        Themesbrand
+                      </p>
                     </div>
                   </div>
                 </div>

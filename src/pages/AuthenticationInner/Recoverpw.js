@@ -22,8 +22,8 @@ const Recoverpw = () => {
   return (
     <React.Fragment>
       <div className="account-pages my-5 pt-sm-5">
-      <MetaTags>
-          <title>Recover Password | Skote - React Admin & Dashboard Template</title>
+        <MetaTags>
+          <title>Recover Password | Members Bounce</title>
         </MetaTags>
         <Container>
           <Row className="justify-content-center">
@@ -69,25 +69,25 @@ const Recoverpw = () => {
                     > Enter your Email and instructions will be sent to you! </div>
 
                     <AvForm className="form-horizontal">
-                        <div className="mb-3">
-                          <AvField
-                            name="email"
-                            label="Email"
-                            className="form-control"
-                            placeholder="Enter email"
-                            type="email"
-                            required
-                          />
-                        </div>
-                        <div className="text-end">
+                      <div className="mb-3">
+                        <AvField
+                          name="email"
+                          label="Email"
+                          className="form-control"
+                          placeholder="Enter email"
+                          type="email"
+                          required
+                        />
+                      </div>
+                      <div className="text-end">
                         <button
                           className="btn btn-primary w-md "
                           type="submit"
                         >
                           Reset
-                            </button>
+                        </button>
                       </div>
-                        </AvForm>
+                    </AvForm>
                   </div>
                 </CardBody>
               </Card>
@@ -99,13 +99,13 @@ const Recoverpw = () => {
                     className="fw-medium text-primary"
                   >
                     {" "}
-                      Sign In here
-                    </Link>{" "}
+                    Sign In here
+                  </Link>{" "}
                 </p>
                 <p>
                   © {new Date().getFullYear()} Skote. Crafted with{" "}
                   <i className="mdi mdi-heart text-danger"></i> by Themesbrand
-                  </p>
+                </p>
               </div>
             </Col>
           </Row>

@@ -44,7 +44,7 @@ class AppLayout extends Component {
     let currentage = title.charAt(1).toUpperCase() + title.slice(2)
 
     document.title =
-      currentage + " | Skote - React Admin & Dashboard Template"
+      currentage + " | Members Bounce"
 
     if (this.props.topbarTheme) {
       this.props.changeTopbarTheme(this.props.topbarTheme)

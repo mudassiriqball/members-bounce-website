@@ -140,7 +140,7 @@ const Chat = props => {
     <React.Fragment>
       <div className="page-content">
         <MetaTags>
-          <title>Chat | Skote - React Admin & Dashboard Template</title>
+          <title>Chat | Members Bounce</title>
         </MetaTags>
         <Container fluid>
           {/* Render Breadcrumb */}
@@ -170,23 +170,23 @@ const Chat = props => {
                           </p>
                         </Media>
 
- 
 
-                          <Dropdown
-                            isOpen={menu1}
-                            toggle={() => setMenu1(!menu1)}
-                            className="float-end ms-2"
-                          >
-                            <DropdownToggle tag="i" className="text-muted">
-                              <i className="mdi mdi-dots-horizontal font-size-18"></i>
-                            </DropdownToggle>
-                            <DropdownMenu>
-                              <DropdownItem href="#">Action</DropdownItem>
-                              <DropdownItem href="#">Another action</DropdownItem>
-                              <DropdownItem href="#">Something else</DropdownItem>
-                            </DropdownMenu>
-                          </Dropdown>
-                       
+
+                        <Dropdown
+                          isOpen={menu1}
+                          toggle={() => setMenu1(!menu1)}
+                          className="float-end ms-2"
+                        >
+                          <DropdownToggle tag="i" className="text-muted">
+                            <i className="mdi mdi-dots-horizontal font-size-18"></i>
+                          </DropdownToggle>
+                          <DropdownMenu>
+                            <DropdownItem href="#">Action</DropdownItem>
+                            <DropdownItem href="#">Another action</DropdownItem>
+                            <DropdownItem href="#">Something else</DropdownItem>
+                          </DropdownMenu>
+                        </Dropdown>
+
                       </Media>
                     </div>
 
@@ -627,7 +627,7 @@ const Chat = props => {
                               onClick={() =>
                                 addMessage(currentRoomId, currentUser.name)
                               }
-                              
+
                               className="btn btn-primary btn-rounded chat-send w-md "
                             >
                               <span className="d-none d-sm-inline-block me-2">

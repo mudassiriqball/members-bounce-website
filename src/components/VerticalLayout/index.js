@@ -50,7 +50,7 @@ class Layout extends Component {
     // let currentage = this.capitalizeFirstLetter(this.props.location.pathname)
 
     // document.title =
-    //   currentage + " | Skote - React Admin & Dashboard Template"
+    //   currentage + " | Members Bounce"
     if (this.props.leftSideBarTheme) {
       this.props.changeSidebarTheme(this.props.leftSideBarTheme)
     }
@@ -92,18 +92,18 @@ class Layout extends Component {
           </div>
         </div>
 
-        <div id="layout-wrapper">
+        <div id="layout-wrapper" className='h-100'>
           <Header toggleMenuCallback={this.toggleMenuCallback} />
           <Sidebar
             theme={this.props.leftSideBarTheme}
             type={this.props.leftSideBarType}
             isMobile={this.state.isMobile}
           />
-          <div className="main-content">{this.props.children}</div>
+          <div className="main-content h-100" >{this.props.children}</div>
           <Footer />
         </div>
         {this.props.showRightSidebar ? <Rightbar /> : null}
-      </React.Fragment>
+      </React.Fragment >
     )
   }
 }

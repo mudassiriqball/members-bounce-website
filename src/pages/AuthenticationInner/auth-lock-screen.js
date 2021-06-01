@@ -17,7 +17,7 @@ const LockScreen = () => {
   return (
     <React.Fragment>
       <MetaTags>
-        <title>Lock Screen | Skote - React Admin & Dashboard Template</title>
+        <title>Lock Screen | Members Bounce</title>
       </MetaTags>
       <div className="home-btn d-none d-sm-block">
         <Link to="/" className="text-dark">

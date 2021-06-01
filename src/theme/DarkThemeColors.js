@@ -1,5 +1,3 @@
-import { DefaultTheme } from "@react-navigation/native";
-
 export default {
   isDark: true,
   MAIN: 'rgb(0,19,28)',

@@ -11,8 +11,8 @@ const EmailVerification2 = () => {
   return (
     <React.Fragment>
       <div>
-      <MetaTags>
-          <title>Email Verification 2 | Skote - React Admin & Dashboard Template</title>
+        <MetaTags>
+          <title>Email Verification 2 | Members Bounce</title>
         </MetaTags>
         <Container fluid className="p-0">
           <Row className="g-0">
@@ -51,16 +51,16 @@ const EmailVerification2 = () => {
                             We have sent you verification email{" "}
                             <span className="font-weight-semibold">
                               example@abc.com
-                              </span>
-                              , Please check it
-                            </p>
+                            </span>
+                            , Please check it
+                          </p>
                           <div className="mt-4">
                             <a
                               href="/"
                               className="btn btn-success w-md"
                             >
                               Verify email
-                              </a>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -70,8 +70,8 @@ const EmailVerification2 = () => {
                       <p className="mb-0">
                         © {new Date().getFullYear()} Skote. Crafted with{" "}
                         <i className="mdi mdi-heart text-danger"></i> by
-                          Themesbrand
-                        </p>
+                        Themesbrand
+                      </p>
                     </div>
                   </div>
                 </div>

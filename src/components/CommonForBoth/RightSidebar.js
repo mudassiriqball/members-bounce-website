@@ -452,29 +452,6 @@ const RightSidebar = (props) => {
                 <hr className="mt-1" />
               </React.Fragment>
             ) : null}
-
-            {/* <FormGroup>
-              <span className="mb-2 d-block" id="radio-title">
-                Preloader
-              </span>
-
-              <div className="form-check form-switch">
-                <input
-                  type="checkbox"
-                  className="form-check-input checkbox"
-                  id="checkbox_1"
-                  checked={props.isPreloader}
-                  onChange={() => {
-                    props.changePreloader(!props.isPreloader)
-                  }}
-                />
-
-                <label className="form-check-label" htmlFor="checkbox_1">
-                  Preloader
-                </label>
-              </div>
-            </FormGroup> */}
-
           </div>
         </div>
       </SimpleBar>

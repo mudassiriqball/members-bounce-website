@@ -17,7 +17,7 @@ const LockScreen2 = (props) => {
     <React.Fragment>
       <div>
         <MetaTags>
-          <title>Lock Screen 2 | Skote - React Admin & Dashboard Template</title>
+          <title>Lock Screen 2 | Members Bounce</title>
         </MetaTags>
         <Container fluid className="p-0">
           <Row className="g-0">
@@ -48,7 +48,7 @@ const LockScreen2 = (props) => {
                         <h5 className="text-primary">Lock screen</h5>
                         <p className="text-muted">
                           Enter your password to unlock the screen!
-                          </p>
+                        </p>
                       </div>
 
                       <div className="mt-4">
@@ -89,7 +89,7 @@ const LockScreen2 = (props) => {
                               className="fw-medium text-primary"
                             >
                               {" "}
-                                Sign In{" "}
+                              Sign In{" "}
                             </Link>{" "}
                           </p>
                         </div>
@@ -100,10 +100,10 @@ const LockScreen2 = (props) => {
                       <p className="mb-0">
                         ©{" "}
                         {new Date().getFullYear()}{" "}
-                          Skote. Crafted with{" "}
+                        Skote. Crafted with{" "}
                         <i className="mdi mdi-heart text-danger"></i> by
-                          Themesbrand
-                        </p>
+                        Themesbrand
+                      </p>
                     </div>
                   </div>
                 </div>

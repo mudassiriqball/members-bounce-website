@@ -27,7 +27,7 @@ const PagesFaqs = () => {
     <React.Fragment>
       <div className="page-content">
         <MetaTags>
-          <title>FAQs | Skote - React Admin & Dashboard Template</title>
+          <title>FAQs | Members Bounce</title>
         </MetaTags>
         <Container fluid>
           {/* Render Breadcrumbs */}
@@ -44,7 +44,7 @@ const PagesFaqs = () => {
                         setactiveTab("1")
                       }}
                     >
-                      <i className="bx bx-question-mark d-block check-nav-icon mt-4 mb-2"/>
+                      <i className="bx bx-question-mark d-block check-nav-icon mt-4 mb-2" />
                       <p className="font-weight-bold mb-4">General Questions</p>
                     </NavLink>
                   </NavItem>
@@ -55,7 +55,7 @@ const PagesFaqs = () => {
                         setactiveTab("2")
                       }}
                     >
-                      <i className="bx bx-check-shield d-block check-nav-icon mt-4 mb-2"/>
+                      <i className="bx bx-check-shield d-block check-nav-icon mt-4 mb-2" />
                       <p className="font-weight-bold mb-4">Privacy Policy</p>
                     </NavLink>
                   </NavItem>
@@ -66,7 +66,7 @@ const PagesFaqs = () => {
                         setactiveTab("3")
                       }}
                     >
-                      <i className="bx bx-support d-block check-nav-icon mt-4 mb-2"/>
+                      <i className="bx bx-support d-block check-nav-icon mt-4 mb-2" />
                       <p className="font-weight-bold mb-4">Support</p>
                     </NavLink>
                   </NavItem>
@@ -82,7 +82,7 @@ const PagesFaqs = () => {
                         </CardTitle>
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">
@@ -97,7 +97,7 @@ const PagesFaqs = () => {
                         </Media>
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">
@@ -112,7 +112,7 @@ const PagesFaqs = () => {
                         </Media>
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">
@@ -127,7 +127,7 @@ const PagesFaqs = () => {
                         </Media>
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">Why do we use it?</h5>
@@ -140,7 +140,7 @@ const PagesFaqs = () => {
                         </Media>
                         <Media className="faq-box">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">
@@ -159,7 +159,7 @@ const PagesFaqs = () => {
 
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">
@@ -174,7 +174,7 @@ const PagesFaqs = () => {
                         </Media>
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">
@@ -189,7 +189,7 @@ const PagesFaqs = () => {
                         </Media>
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">
@@ -204,7 +204,7 @@ const PagesFaqs = () => {
                         </Media>
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">Why do we use it?</h5>
@@ -217,7 +217,7 @@ const PagesFaqs = () => {
                         </Media>
                         <Media className="faq-box">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">
@@ -236,7 +236,7 @@ const PagesFaqs = () => {
 
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">
@@ -251,7 +251,7 @@ const PagesFaqs = () => {
                         </Media>
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">
@@ -267,7 +267,7 @@ const PagesFaqs = () => {
 
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">Why do we use it?</h5>
@@ -280,7 +280,7 @@ const PagesFaqs = () => {
                         </Media>
                         <Media className="faq-box mb-4">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">
@@ -296,7 +296,7 @@ const PagesFaqs = () => {
 
                         <Media className="faq-box">
                           <div className="faq-icon me-3">
-                            <i className="bx bx-help-circle font-size-20 text-success"/>
+                            <i className="bx bx-help-circle font-size-20 text-success" />
                           </div>
                           <Media body>
                             <h5 className="font-size-15">

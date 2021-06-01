@@ -14,8 +14,8 @@ const Register2 = () => {
   return (
     <React.Fragment>
       <div>
-      <MetaTags>
-          <title>Register 2 | Skote - React Admin & Dashboard Template</title>
+        <MetaTags>
+          <title>Register 2 | Members Bounce</title>
         </MetaTags>
         <Container fluid className="p-0">
           <Row className="g-0">
@@ -51,40 +51,40 @@ const Register2 = () => {
 
                       <div className="mt-4">
 
-                      <AvForm className="form-horizontal">
-                      <div className="mb-3">
-                          <AvField
-                            name="username"
-                            label="Username"
-                            className="form-control"
-                            placeholder="Enter username"
-                            type="text"
-                            required
-                          />
-                        </div>
+                        <AvForm className="form-horizontal">
+                          <div className="mb-3">
+                            <AvField
+                              name="username"
+                              label="Username"
+                              className="form-control"
+                              placeholder="Enter username"
+                              type="text"
+                              required
+                            />
+                          </div>
 
-                        <div className="mb-3">
-                          <AvField
-                            name="email"
-                            label="Email"
-                            className="form-control"
-                            placeholder="Enter email"
-                            type="email"
-                            required
-                          />
-                        </div>
-                        <div className="mb-3">
-                          <AvField
-                            name="password"
-                            label="Password"
-                            className="form-control"
-                            placeholder="Enter password"
-                            type="password"
-                            required
-                          />
-                        </div>
+                          <div className="mb-3">
+                            <AvField
+                              name="email"
+                              label="Email"
+                              className="form-control"
+                              placeholder="Enter email"
+                              type="email"
+                              required
+                            />
+                          </div>
+                          <div className="mb-3">
+                            <AvField
+                              name="password"
+                              label="Password"
+                              className="form-control"
+                              placeholder="Enter password"
+                              type="password"
+                              required
+                            />
+                          </div>
 
-                        <div>
+                          <div>
                             <p className="mb-0">
                               By registering you agree to the Skote{" "}
                               <a href="#" className="text-primary">
