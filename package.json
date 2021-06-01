@@ -2,6 +2,14 @@
   "name": "skote-react-hook",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build ",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{js,jsx,json,md,html,css,less,scss}\"",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@fullcalendar/bootstrap": "^5.5.0",
     "@fullcalendar/core": "^5.5.0",
@@ -103,14 +111,6 @@
     "styled-components": "^5.2.1",
     "toastr": "^2.1.4",
     "yup": "^0.32.9"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build ",
-    "lint": "eslint .",
-    "format": "prettier --write \"**/*.{js,jsx,json,md,html,css,less,scss}\"",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
