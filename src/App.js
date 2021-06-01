@@ -23,8 +23,7 @@ import "./assets/scss/my_custom.scss"
 // import { initFirebaseBackend } from "./helpers/firebase_helper"
 
 // import fakeBackend from "./helpers/AuthType/fakeBackend"
-import AppLayout from 'components/AppLayout'
-import { getBearerToken, getDecodedToken } from 'helpers/authentication'
+import AppLayout from './components/AppLayout'
 import { authenticateUser } from 'store/actions';
 import routeNames from 'routes/routeNames'
 
