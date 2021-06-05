@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
-// import PhoneInput from 'react-native-phone-number-input';
-// import DateTimePickerModal from "react-native-modal-datetime-picker";
 import axios from 'axios';
 import { urls } from 'helpers';
-// import CustomAvField from '../../../components/Common/CustomAvField';
-// import CustomAvField from 'availity-reactstrap-validation/lib/CustomAvField';
-
-// import DatePicker from 'react-native-datepicker';
+import CustomAvField from '../../../components/Common/CustomAvField';
 import { Col, Label, Row } from 'reactstrap';
 import Button from 'components/Common/Button';
 import PhoneInput from 'react-phone-input-2'
@@ -113,22 +108,6 @@ export default function GeneralInfo(props) {
     setFieldValue('dob', event);
   };
 
-  const CustomAvField = (props) => {
-    const { error, otherProps } = props;
-    return (
-      <div className="mb-3">
-        {/* <div style={{ border: error ? `1px solid $danger` : '1px solid lightgrey' }}> */}
-        {/* <AvField
-        {...otherProps}
-      /> */}
-      </div>
-      // {error !== '' &&
-      //   <Error>{error}</Error>
-      // }
-      // </div >
-    )
-  }
-
   return (
     <div>
       {/* First Name */}
@@ -142,7 +121,7 @@ export default function GeneralInfo(props) {
         value={values.firstName}
         error={(errors.firstName && touched.firstName) ? errors.firstName : ''}
         onBlur={handleBlur('firstName')}
-        required
+        mandatory
       />
       {/* Last Name */}
       <CustomAvField
@@ -155,12 +134,12 @@ export default function GeneralInfo(props) {
         value={values.lastName}
         onBlur={handleBlur('lastName')}
         error={(errors.lastName && touched.lastName) ? errors.lastName : ''}
-        required
+        mandatory
       />
       {/* Mobile */}
       <div>
         <Label>{'Mobile'}</Label>
-        <Label class="text-danger">{'*'}</Label>
+        <span className="text-danger ms-1">&#9733;</span>
       </div>
       <PhoneInput
         country={'gb'}
@@ -173,55 +152,43 @@ export default function GeneralInfo(props) {
       {(errors.mobile && touched.mobile) && <Error>{errors.mobile}</Error>}
 
       {/* DOB */}
-      <div>
-        <Label >{'Date of Birth'}</Label>
-        <Label class="text-danger">{'*'}</Label>
-        <div className="mb-3">
-          <CustomAvField
-            name="dob"
-            // label="Last Name"
-            className="form-control"
-            type="date"
-            defaultValue={values.dob}
-            id="example-date-input"
-            placeholder="select date"
-            min="01-01-1900"
-            max={maxDate}
-            errorMessage={'errors.dob'}
-            onChange={(e, val) => setFieldValue('dob', val)}
-            value={values.dob}
-            required
-          />
-          {(errors.dob && touched.dob) &&
-            <Error>{errors.dob}</Error>
-          }
-        </div>
-      </div>
-      <div className="mb-3">
-        <Label >Email</Label>
-        <Label class="text-danger">{'*'}</Label>
-        <CustomAvField
-          name="email"
-          className="form-control"
-          placeholder="Enter Email"
-          type="email"
-          onChange={(e, val) => {
-            setFieldValue('email', val);
-            values.email !== prevEmail && (setIsCodeSended(false), setIsCodeVerified(false));
-          }}
-          value={values.email}
-          required
-        />
-        {(errors.dob && touched.dob) &&
-          <Error>{errors.firstName}</Error>
-        }
-      </div>
+      <CustomAvField
+        name="dob"
+        label="Date of Birth"
+        className="form-control"
+        type="date"
+        defaultValue={values.dob}
+        id="example-date-input"
+        placeholder="select date"
+        min="01-01-1900"
+        max={maxDate}
+        error={(errors.dob && touched.dob) ? errors.dob : ''}
+        onChange={(e, val) => setFieldValue('dob', val)}
+        value={values.dob}
+        mandatory
+      />
+      <CustomAvField
+        name="email"
+        label="Email"
+        className="form-control"
+        placeholder="Enter Email"
+        type="text"
+        onChange={(e, val) => {
+          setFieldValue('email', val);
+          values.email !== prevEmail && (setIsCodeSended(false), setIsCodeVerified(false));
+        }}
+        error={(errors.email && touched.email) ? errors.email : ''}
+        value={values.email}
+        mandatory
+      />
       {/* Code Input */}
       {!isCodeVerified &&
         <>
           {isCodeSended &&
             <>
               <div className="mb-3">
+                <Label>{'Verification Code'}</Label>
+                <span className="text-danger ms-1">&#9733;</span>
                 <OtpInput
                   value={code}
                   onChange={(val) => { setCode(val), setCodeErr('') }}

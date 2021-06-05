@@ -25,7 +25,7 @@ const CustomBucketListPlayed = (props) => {
   const [refresh, setRefresh] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [list, setList] = useState([]);
-  const [searchList, setSerachList] = useState([]);
+  const [searchList, setSearchList] = useState([]);
   const { IS_LOADING, TOP_HUNDRED_PLAYED } = getCustomBucketListPlayed(token, refresh, user && user._id);
 
   // Filters
@@ -35,7 +35,6 @@ const CustomBucketListPlayed = (props) => {
   // Alerts
   const [successAlert, setSuccessAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
-
 
   useEffect(() => {
     if (TOP_HUNDRED_PLAYED)
@@ -54,7 +53,7 @@ const CustomBucketListPlayed = (props) => {
     setIsLoading(true);
     await axios({
       method: 'PUT',
-      url: urls.SET_PLAYED_MY_BUCKET_LIST + item._id,
+      url: urls.SET_PLAYED_MY_CUSTOM_BUCKET_LIST + item._id,
       headers: {
         'authorization': token
       },
@@ -91,9 +90,8 @@ const CustomBucketListPlayed = (props) => {
           />
           <BucketListSearchFilter
             from={'TopHundredBucketList'}
-            colors={colors}
             query={query}
-            handleSearch={(val) => handleTopHundredSearch(list, val, setQuery, setIsSearch, setSerachList)}
+            handleSearch={(val) => handleTopHundredSearch(list, val, setQuery, setIsSearch, setSearchList)}
             // Filter
             applyFilter={() => applyTopHundredFilters(setList, MY_BUCKET_LIST, filterBy, filterType)}
             clearFilter={clearFilter}
@@ -110,7 +108,7 @@ const CustomBucketListPlayed = (props) => {
                 </Col>
                 {list.map((item, index) => {
                   return (
-                    <Col lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
                       <TopHundredBucketListCard
                         item={item}
                         user={user}
@@ -135,7 +133,7 @@ const CustomBucketListPlayed = (props) => {
                 </Col>
                 {searchList.map((item, index) => {
                   return (
-                    <Col lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
                       <TopHundredBucketListCard
                         item={item}
                         user={user}

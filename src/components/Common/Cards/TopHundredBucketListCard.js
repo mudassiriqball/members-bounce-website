@@ -4,44 +4,6 @@ import Button from '../Button';
 import CardListItem from './CardListItem';
 import Switch from "react-switch"
 
-const Offsymbol = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        fontSize: 12,
-        color: "#fff",
-        paddingRight: 2
-      }}
-    >
-      {" "}
-      No
-    </div>
-  )
-}
-
-const OnSymbol = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        fontSize: 12,
-        color: "#fff",
-        paddingRight: 2
-      }}
-    >
-      {" "}
-      Yes
-    </div>
-  )
-}
-
 export default function TopHundredBucketListCard(props) {
   const { item, user, from, loading, onClick, onCheckBoxPress } = props;
 

@@ -123,7 +123,7 @@ const CreateTop100BucketList = (props) => {
                     return;
                   }
                   return (
-                    <Col lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
                       <TopHundredBucketListCard
                         item={item}
                         user={user}
@@ -153,13 +153,15 @@ const CreateTop100BucketList = (props) => {
                     return;
                   }
                   return (
-                    <TopHundredBucketListCard
-                      item={item}
-                      user={user}
-                      from={'CreateBucketList'}
-                      loading={isLoading}
-                      onClick={() => addToBucketList(item, index)}
-                    />
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                      <TopHundredBucketListCard
+                        item={item}
+                        user={user}
+                        from={'CreateBucketList'}
+                        loading={isLoading}
+                        onClick={() => addToBucketList(item, index)}
+                      />
+                    </Col>
                   )
                 })}
               </Row>

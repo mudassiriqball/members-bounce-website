@@ -26,7 +26,7 @@ const MyTop100BucketList = (props) => {
   const [refresh, setRefresh] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [list, setList] = useState([]);
-  const [serachList, setSerachList] = useState([]);
+  const [serachList, setSearchList] = useState([]);
   const { IS_LOADING, MY_BUCKET_LIST } = getMyBucketList(token, refresh, user && user._id);
 
   // Filters
@@ -113,7 +113,7 @@ const MyTop100BucketList = (props) => {
             from={'TopHundredBucketList'}
             colors={colors}
             query={query}
-            handleSearch={(val) => handleTopHundredSearch(list, val, setQuery, setIsSearch, setSerachList)}
+            handleSearch={(val) => handleTopHundredSearch(list, val, setQuery, setIsSearch, setSearchList)}
             // Filter
             applyFilter={() => applyTopHundredFilters(setList, MY_BUCKET_LIST, filterBy, filterType)}
             clearFilter={clearFilter}
@@ -130,7 +130,7 @@ const MyTop100BucketList = (props) => {
                 </Col>
                 {list.map((item, index) => {
                   return (
-                    <Col lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
                       <TopHundredBucketListCard
                         item={item}
                         user={user}
@@ -156,14 +156,16 @@ const MyTop100BucketList = (props) => {
                 </Col>
                 {searchList.map((item, index) => {
                   return (
-                    <TopHundredBucketListCard
-                      item={item}
-                      user={user}
-                      from={'MyBucketList'}
-                      loading={isLoading}
-                      onCheckBoxPress={() => setPlayed(item)}
-                      onClick={() => removerToMyBucket(item, index)}
-                    />
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                      <TopHundredBucketListCard
+                        item={item}
+                        user={user}
+                        from={'MyBucketList'}
+                        loading={isLoading}
+                        onCheckBoxPress={() => setPlayed(item)}
+                        onClick={() => removerToMyBucket(item, index)}
+                      />
+                    </Col>
                   )
                 })}
               </Row>

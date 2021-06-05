@@ -13,9 +13,9 @@ export default function getMyCustomBucketList(token, refresh, _id) {
   useEffect(() => {
     const CancelToken = axios.CancelToken;
     const source = CancelToken.source();
-    const getData = () => {
+    const getData = async () => {
       setLoading(true);
-      axios({
+      await axios({
         method: 'GET',
         url: urls.MY_CUSTOM_BUCKET_LIST + _id,
         headers: {
@@ -23,7 +23,6 @@ export default function getMyCustomBucketList(token, refresh, _id) {
         },
         cancelToken: source.token
       }).then(res => {
-        debugger
         setLoading(false)
         setBucketList(res.data.data);
       }).catch(err => {
@@ -32,7 +31,7 @@ export default function getMyCustomBucketList(token, refresh, _id) {
         console.log('getMyCustomBucketList  Error:', err);
       });
     }
-    if (token) {
+    if (token && _id) {
       getData();
     }
     return () => {

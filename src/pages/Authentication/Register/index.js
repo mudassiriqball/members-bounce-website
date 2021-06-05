@@ -21,6 +21,7 @@ import AvForm from 'availity-reactstrap-validation/lib/AvForm';
 import getGolfCoursesRegAndProfile from 'hooks/getGolfCoursesRegAndProfile';
 import { convertToDOBFormate, getMaxDateForDob } from 'helpers/dateUtility';
 import { ErrorAlert, SuccessAlert } from 'components/Common';
+import golfersType from 'helpers/golfersType';
 
 
 const schema = yup.object({
@@ -87,15 +88,7 @@ export default function Register(props) {
         setFieldError('mobile', 'Invalid Phone!');
         setErrorAlert(true);
         setErrMsg('Fix error first!');
-      }
-      // if (values.firstName === '') {
-      //   setFieldError('firstName', 'Required*');
-      // }
-      // if (values.lastName === '') {
-      //   setFieldError('lastName', 'Required*');
-      // }
-
-      else if (!errors.email && !errors.firstName && !errors.lastName && !errors.mobile && !errors.dob) {
+      } else if (!errors.email && !errors.firstName && !errors.lastName && !errors.mobile && !errors.dob) {
         setSteps(2);
       } else {
         setErrorAlert(true);
@@ -133,6 +126,7 @@ export default function Register(props) {
       if ((values.isMember && (values.courseLocation === '' || values.cdhId === '')) ||
         values.termsOfUse === false || values.privacy === false ||
         (values.postCode !== '' && !isPostCodeValid)) {
+        debugger
         if (values.isMember && values.courseLocation === '')
           setFieldError('courseLocation', 'Required*');
         else
@@ -142,13 +136,16 @@ export default function Register(props) {
         else
           setFieldError('cdhId', '');
         if (values.postCode === '') {
+          debugger
           setFieldError('postCode', 'Required*');
         } else if (!isPostCodeValid) {
+          debugger
           setFieldError('postCode', 'Invalid Postal Code!');
         }
         setErrorAlert(true);
         setErrMsg('Fix error first!');
-      } else if (!errors.homeClucb && !errors.courseLocation && !errors.cdhId && !errors.password && !errors.confirm_password && !errors.postCode) {
+      } else if (!errors.homeClub && !errors.courseLocation && !errors.cdhId && !errors.password && !errors.confirm_password && !errors.postCode) {
+        debugger
         setSteps(3);
       } else {
         setErrorAlert(true);
@@ -183,7 +180,6 @@ export default function Register(props) {
                     <Col className="col-7">
                       <div className="text-primary p-4">
                         <h5 className="text-primary">Free Register</h5>
-                        <p>Get your free Skote account now.</p>
                       </div>
                     </Col>
                     <Col className="col-5 align-self-end">

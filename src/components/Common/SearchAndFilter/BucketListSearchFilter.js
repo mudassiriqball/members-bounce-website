@@ -3,29 +3,37 @@ import { Row, Col, Card, CardBody, ModalBody, Modal, ModalHeader, Button, Label 
 import Select from "react-select"
 
 const BucketListSearchFilter = (props) => {
+  const { handleSearch, query } = props;
   const [showModel, setShowModel] = useState();
 
   return (
-    <Card>
+    <div>
       <FilterModel
         visible={showModel}
         onHide={() => setShowModel(false)}
         {...props}
       />
-      <CardBody className='d-flex flex-row align-items-center w-100'>
-        <form className="app-search d-none d-lg-block w-100">
+      <div className='d-flex flex-row align-items-center justify-content-between w-100'>
+        <form className="app-search d-none d-lg-block w-50">
           <div className="position-relative">
             <input
               type="text"
+              value={query}
               className="form-control"
               placeholder={"Search here"}
+              onChange={(e) => handleSearch(e.target.value)}
             />
-            <span className="bx bx-search-alt" />
+            {query !== '' ?
+              <span className='bx bxs-x-circle text-danger' style={{ cursor: 'pointer' }} onClick={() => handleSearch('')} />
+              :
+              <span className="bx bx-search-alt" />
+            }
           </div>
         </form>
         <i class='bx bx-slider-alt bx-md' onClick={() => setShowModel(true)}></i>
-      </CardBody>
-    </Card >
+      </div>
+      <hr />
+    </div >
   )
 }
 
@@ -38,8 +46,6 @@ const FilterModel = (props) => {
 
   return (
     <Modal isOpen={visible} toggle={onHide} className={props.className}>
-
-
       <ModalBody>
         <div className='d-flex flex-row justify-content-between align-items-center'>
           <h4 className='p-0 m-0'>SORT BY</h4>

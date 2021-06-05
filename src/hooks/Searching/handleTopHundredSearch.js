@@ -1,13 +1,14 @@
 
-export default function handleTopHundredSearch(list, val, setQuery, setIsSearch, setSerachList) {
+export default function handleTopHundredSearch(list, val, setQuery, setIsSearch, setSearchList) {
   setQuery(val);
   if (val === '') {
+    setQuery('');
     setIsSearch(false);
-    setSerachList([]);
+    setSearchList([]);
   }
   else {
     setIsSearch(true);
-    setSerachList(list && list.filter(item => {
+    setSearchList(list && list.filter(item => {
       try {
         const itemData = `${item && item.course.toUpperCase()} ${item && item.region && item.region.toUpperCase()} ${item && item.courseType && item.courseType.toUpperCase()}`;
         const textData = val.toUpperCase();

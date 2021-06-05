@@ -23,8 +23,8 @@ export default {
     Top100BucketListPlayed: '/top-100-bucket-list/top-100-played',
 
     // Custom Bucket List
-    CreateCustomBucketList: '/custom-bucket-list/create-bucket-list',
-    MyCustomBucketList: '/custom-bucket-list/my-bucket-list',
+    CreateCustomBucketList: '/custom-bucket-list/create-custom-bucket-list',
+    MyCustomBucketList: '/custom-bucket-list/my-custom-bucket-list',
     CustomBucketListPlayed: '/custom-bucket-list/custom-bucket-list-played',
 
     // Play Now

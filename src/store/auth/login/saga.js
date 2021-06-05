@@ -26,7 +26,7 @@ function* loginUser({ payload: { user, history } }) {
       yield put(setUser(_token.data)),
       yield put(setIsLoggedIn(true)),
     ]);
-    history.push(routeNames.Dashboard);
+    history.push(routeNames.Private.Dashboard);
   } catch (error) {
     yield put(apiError(error));
   }
