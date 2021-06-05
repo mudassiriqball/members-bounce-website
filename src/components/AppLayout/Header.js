@@ -36,11 +36,10 @@ const Header = props => {
   const [menu, setMenu] = useState(false)
   const [isSearch, setSearch] = useState(false)
   const [socialDrp, setsocialDrp] = useState(false)
-  const [position, setPosition] = useState();
+  const [position, setPosition] = useState('right');
   const [open, setOpen] = useState(false);
 
   const toggleTopDrawer = () => {
-    setPosition('right');
     setOpen(!open)
   }
 
@@ -148,7 +147,7 @@ const Header = props => {
 
             <div className="dropdown d-inline-block">
               <button
-                onClick={toggleTopDrawer} disabled={open}
+                onClick={toggleTopDrawer}
                 type="button"
                 className="btn header-item noti-icon right-bar-toggle "
               >
@@ -158,13 +157,14 @@ const Header = props => {
           </div>
         </div>
       </header>
-      <ReactDrawer
+      {open && <ReactDrawer
         open={open}
         position={position}
         onClose={onDrawerClose}
       >
         <RightSidebar onClose={onDrawerClose} />
       </ReactDrawer>
+      }
     </React.Fragment >
   )
 }

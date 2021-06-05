@@ -219,7 +219,7 @@ const Header = props => {
             <ProfileMenu />
 
             <div
-              onClick={toggleTopDrawer} disabled={open}
+              onClick={toggleTopDrawer}
               className="dropdown d-inline-block"
             >
               <button

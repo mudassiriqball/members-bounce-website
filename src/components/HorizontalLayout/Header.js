@@ -392,7 +392,7 @@ const Header = props => {
 
             <div className="dropdown d-inline-block">
               <button
-                onClick={toggleTopDrawer} disabled={open}
+                onClick={toggleTopDrawer}
                 type="button"
                 className="btn header-item noti-icon right-bar-toggle "
               >
@@ -402,13 +402,14 @@ const Header = props => {
           </div>
         </div>
       </header>
-      <ReactDrawer
+      {open && <ReactDrawer
         open={open}
         position={position}
         onClose={onDrawerClose}
       >
         <RightSidebar onClose={onDrawerClose} />
       </ReactDrawer>
+      }
     </React.Fragment>
   )
 }

@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react'
 // import DateTimePickerModal from "react-native-modal-datetime-picker";
 import axios from 'axios';
 import { urls } from 'helpers';
-import AvField from 'availity-reactstrap-validation/lib/AvField';
+// import CustomAvField from '../../../components/Common/CustomAvField';
+// import CustomAvField from 'availity-reactstrap-validation/lib/CustomAvField';
+
 // import DatePicker from 'react-native-datepicker';
 import { Col, Label, Row } from 'reactstrap';
 import Button from 'components/Common/Button';
@@ -17,7 +19,7 @@ export default function GeneralInfo(props) {
     values, handleChange, errors, setFieldError, touched, handleBlur, setFieldValue,
     isCodeSended, setIsCodeSended, phoneRef,
     isCodeVerified, setIsCodeVerified,
-    setPhone, phone, country, setCountry
+    setPhone, phone, country, setCountry, maxDate, setErrorAlert, setErrMsg, setSuccessAlert, setSuccessMsg
   } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [isVerifyLoading, setIsVerifyLoading] = useState(false);
@@ -51,7 +53,8 @@ export default function GeneralInfo(props) {
   // Send Code
   const handleSendCode = async () => {
     if (errors.email) {
-      // toastRef && toastRef.current && toastRef.current.show('Fix error first !', CONSTS.TOAST_MEDIUM_DURATION, () => {});
+      setErrorAlert(true);
+      setErrMsg('Fix error first!');
     } else {
       setIsLoading(true);
       await axios({
@@ -63,17 +66,21 @@ export default function GeneralInfo(props) {
         setIsCodeSended(true);
         setIsLoading(false);
         setResponseCode(res.data.email_code);
-        // toastRef && toastRef.current && toastRef.current.show('Verification code has been sended to your email.Please check your email', CONSTS.TOAST_MEDIUM_DURATION, () => {});
+        setSuccessAlert(true);
+        setSuccessMsg('Verification code sended to your email.');
       }).catch(err => {
         setIsCodeSended(false);
         setIsLoading(false);
-        if (err.response.status === 409) {
+        if (err.response && err.response.status === 409) {
           setFieldError('email', 'This email already exist.')
-          // toastRef && toastRef.current && toastRef.current.show('This email already exists', CONSTS.TOAST_MEDIUM_DURATION, () => {});
-        } else if (err.response.status === 400) {
-          // toastRef && toastRef.current && toastRef.current.show('This email doesn\'t exist, Or something went wrong', CONSTS.TOAST_MEDIUM_DURATION, () => {});
+          setErrorAlert(true);
+          setErrMsg('This email already exists');
+        } else if (err.response && err.response.status === 400) {
+          setErrorAlert(true);
+          setErrMsg('This email doesn\'t exist, Or something went wrong');
         } else {
-          // toastRef && toastRef.current && toastRef.current.show('Something went wrong, Please try again later!', CONSTS.TOAST_MEDIUM_DURATION, () => {});
+          setErrorAlert(true);
+          setErrMsg('Something went wrong, Please try again later!');
         }
       })
     }
@@ -94,7 +101,6 @@ export default function GeneralInfo(props) {
         setIsCodeVerified(true);
         setPrevEmail(values.email);
       } else {
-        setToastType('err');
         setCodeErr('Invalid Code!');
       }
     }
@@ -107,42 +113,58 @@ export default function GeneralInfo(props) {
     setFieldValue('dob', event);
   };
 
+  const CustomAvField = (props) => {
+    const { error, otherProps } = props;
+    return (
+      <div className="mb-3">
+        {/* <div style={{ border: error ? `1px solid $danger` : '1px solid lightgrey' }}> */}
+        {/* <AvField
+        {...otherProps}
+      /> */}
+      </div>
+      // {error !== '' &&
+      //   <Error>{error}</Error>
+      // }
+      // </div >
+    )
+  }
+
   return (
     <div>
       {/* First Name */}
-      <div className="mb-3">
-        <AvField
-          name="firstName"
-          label="First Name"
-          className="form-control"
-          placeholder="Enter First Name"
-          type="text"
-          errorMessage={(touched.firstName && errors.firstName) ? errors.firstName : ''}
-          onChange={(e, val) => setFieldValue('firstName', val)}
-          value={values.firstName}
-          required
-        />
-      </div>
+      <CustomAvField
+        name="firstName"
+        label="First Name"
+        className="form-control"
+        placeholder="Enter First Name"
+        type="text"
+        onChange={(e, val) => setFieldValue('firstName', val)}
+        value={values.firstName}
+        error={(errors.firstName && touched.firstName) ? errors.firstName : ''}
+        onBlur={handleBlur('firstName')}
+        required
+      />
       {/* Last Name */}
-      <div className="mb-3">
-        <AvField
-          name="lastName"
-          label="Last Name"
-          className="form-control"
-          placeholder="Enter Last Name"
-          type="text"
-          errorMessage={(touched.lastName && errors.lastName) ? errors.lastName : ''}
-          onChange={(e, val) => setFieldValue('lastName', val)}
-          value={values.lastName}
-          required
-        />
-      </div>
+      <CustomAvField
+        name="lastName"
+        label="Last Name"
+        className="form-control"
+        placeholder="Enter Last Name"
+        type="text"
+        onChange={(e, val) => setFieldValue('lastName', val)}
+        value={values.lastName}
+        onBlur={handleBlur('lastName')}
+        error={(errors.lastName && touched.lastName) ? errors.lastName : ''}
+        required
+      />
       {/* Mobile */}
       <div>
         <Label>{'Mobile'}</Label>
+        <Label class="text-danger">{'*'}</Label>
       </div>
       <PhoneInput
-        country={country}
+        country={'gb'}
+        name="mobile"
         value={phone}
         onChange={phone => handlePhoneChange(phone)}
         inputClass='w-100'
@@ -153,56 +175,36 @@ export default function GeneralInfo(props) {
       {/* DOB */}
       <div>
         <Label >{'Date of Birth'}</Label>
-        <Label >{'*'}</Label>
-      </div>
-      <div>
-        {/* <DatePicker
-          style={[styles.datePickerStyle,
-          {
-            borderColor: (errors.dob && touched.dob) ?
-              colors.ERROR : colors.BORDER,
-            borderWidth: 1,
-          },
-          (errors.dob && touched.dob) && { marginBottom: 0 }
-          ]}
-          date={date} //initial date from state
-          mode="date" //The enum of date, datetime and time
-          placeholder="select date"
-          format="DD-MM-YYYY"
-          minDate="01-01-1900"
-          maxDate="01-01-2021"
-          confirmBtnText="Confirm"
-          cancelBtnText="Cancel"
-          customStyles={{
-            dateIcon: {
-              position: 'absolute',
-              left: 0,
-              top: 4,
-              marginLeft: 10,
-            },
-            dateInput: {
-              borderColor: 'transparent',
-              height: 57,
-              alignItems: 'center',
-              justifyContent: 'center'
-            },
-          }}
-          onDateChange={onChange}
-        /> */}
-      </div>
-      {/* {(errors.dob && touched.dob) &&
-        <div style={{ marginBottom: 15 }}>
-          {renderError(errors.dob)}
+        <Label class="text-danger">{'*'}</Label>
+        <div className="mb-3">
+          <CustomAvField
+            name="dob"
+            // label="Last Name"
+            className="form-control"
+            type="date"
+            defaultValue={values.dob}
+            id="example-date-input"
+            placeholder="select date"
+            min="01-01-1900"
+            max={maxDate}
+            errorMessage={'errors.dob'}
+            onChange={(e, val) => setFieldValue('dob', val)}
+            value={values.dob}
+            required
+          />
+          {(errors.dob && touched.dob) &&
+            <Error>{errors.dob}</Error>
+          }
         </div>
-      } */}
+      </div>
       <div className="mb-3">
-        <AvField
+        <Label >Email</Label>
+        <Label class="text-danger">{'*'}</Label>
+        <CustomAvField
           name="email"
-          label="EMail"
           className="form-control"
-          placeholder="Enter EMail"
-          type="text"
-          errorMessage={(touched.email && errors.email) ? errors.email : ''}
+          placeholder="Enter Email"
+          type="email"
           onChange={(e, val) => {
             setFieldValue('email', val);
             values.email !== prevEmail && (setIsCodeSended(false), setIsCodeVerified(false));
@@ -210,51 +212,35 @@ export default function GeneralInfo(props) {
           value={values.email}
           required
         />
+        {(errors.dob && touched.dob) &&
+          <Error>{errors.firstName}</Error>
+        }
       </div>
       {/* Code Input */}
       {!isCodeVerified &&
         <>
           {isCodeSended &&
             <>
-              <>
-                <div className="mb-3">
-                  <OtpInput
-                    value={code}
-                    onChange={(val) => { setCode(val), setCodeErr('') }}
-                    numInputs={6}
-                    separator={<span>-</span>}
-                    containerStyle='d-flex w-100 otp-container'
-                    inputStyle='d-flex w-100 otp-input'
-                    disabled={isCodeVerified}
-                  />
-                </div>
+              <div className="mb-3">
+                <OtpInput
+                  value={code}
+                  onChange={(val) => { setCode(val), setCodeErr('') }}
+                  numInputs={6}
+                  separator={<span>-</span>}
+                  containerStyle={codeErr === '' ? 'd-flex w-100 otp-container' : 'd-flex w-100 otp-container'}
+                  inputStyle='d-flex w-100 otp-input'
+                  disabled={isCodeVerified}
+                />
                 {codeErr !== '' && <Error>{codeErr}</Error>}
-              </>
-              {/* <CodeField
-                ref={codeFieldRef}
-                value={code}
-                onChangeText={(val) => { setCode(val), setCodeErr('') }}
-                cellCount={6}
-                rootStyle={[styles.codeFieldRoot(colors), codeErr && { borderColor: colors.ERROR, borderWidth: 2 }]}
-                keyboardType="number-pad"
-                textContentType="oneTimeCode"
-                renderCell={({ index, symbol, isFocused }) => (
-                  <Label
-                    key={index}
-                    style={[styles.cell(colors), isFocused && styles.focusCell(colors)]}
-                    onLayout={getCellOnLayoutHandler(index)}>
-                    {symbol || (isFocused ? <Cursor /> : null)}
-                  </Label>
-                )}
-              />
-              {codeErr !== '' && renderError(codeErr)} */}
+              </div>
             </>
           }
           <div>
             {isCodeSended ?
-              <Row>
-                <Col>
+              <div className="row my-4">
+                <div className="col d-flex justify-content-start">
                   <Button
+                    className="text-center"
                     loading={isLoading}
                     disabled={values.email === '' || isLoading || !canResendCode}
                     color='danger'
@@ -267,18 +253,17 @@ export default function GeneralInfo(props) {
                       </Label>
                     )}
                   </Button>
-                </Col>
-                <Col>
+                </div>
+                <div className="col d-flex justify-content-end">
                   <Button
                     loading={isVerifyLoading}
                     onClick={() => handleVerifyCode()}
                   >Verify</Button>
-                </Col>
-              </Row>
+                </div>
+              </div>
               :
               <Row>
-                <Col></Col>
-                <Col>
+                <Col className="text-cente my-3">
                   <Button
                     loading={isLoading}
                     disabled={values.email === '' || isLoading}

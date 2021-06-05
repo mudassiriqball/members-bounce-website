@@ -1,5 +1,5 @@
-const baseUrl = 'http://18.134.246.3:5000/api';
-// const baseUrl = 'http://localhost:5000/api';
+// const baseUrl = 'http://18.134.246.3:5000/api';
+const baseUrl = 'http://localhost:5000/api';
 
 export default {
   LOGIN: baseUrl + '/users/auth/login-user',
