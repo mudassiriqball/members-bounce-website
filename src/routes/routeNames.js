@@ -23,8 +23,8 @@ export default {
     Top100BucketListPlayed: '/top-100-bucket-list/top-100-played',
 
     // Custom Bucket List
-    CreateCustomBucketList: '/custom-bucket-list/create-bucket-list',
-    MyCustomBucketList: '/custom-bucket-list/my-bucket-list',
+    CreateCustomBucketList: '/custom-bucket-list/create-custom-bucket-list',
+    MyCustomBucketList: '/custom-bucket-list/my-custom-bucket-list',
     CustomBucketListPlayed: '/custom-bucket-list/custom-bucket-list-played',
 
     // Play Now
@@ -34,6 +34,8 @@ export default {
     PlayNow_HomeClub: '/play-now/home-club',
     PlayNow_MyRequests: '/play-now/my-requests',
     PlayNow_MyListings: '/play-now/my-listings',
+    PlayNow_ViewMatches: '/play-now/view-matches',
+    PlayNow_ViewAndRequest: '/play-now/view-and-request',
 
     // Reciprocal Golf
     ReciprocalGolf_CreateNewRequest: '/reciprocal-golf/create-new-request',
@@ -42,7 +44,13 @@ export default {
     ReciprocalGolf_MyListings: '/reciprocal-golf/my-listings',
 
     // Refer
-    ReferFriend: '/refer-friend'
+    ReferFriend: '/refer-friend',
+
+    // Chat 
+    Chat: '/chat',
+
+    // UserProfile
+    UserProfile: '/profile',
   }
 
 }

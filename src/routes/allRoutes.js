@@ -44,23 +44,25 @@ import Pages500 from "../pages/Utility/pages-500"
 //Contacts
 import { Home, Events, About, Membership, ContactUs, } from "../pages/Landing"
 import routeNames from "./routeNames"
-import CreateTop100BucketList from "../pages/Top100BucketList/CreateTop100BucketList"
-import MyTop100BucketList from "../pages/Top100BucketList/MyTop100BucketList"
-import Top100BucketListPlayed from "../pages/Top100BucketList/Top100BucketListPlayed"
-import CreateCustomBucketList from "../pages/CustomBucketList/CreateCustomBucketList"
-import MyCustomBucketList from "../pages/CustomBucketList/MyCustomBucketList"
-import CustomBucketListPlayed from "../pages/CustomBucketList/CustomBucketListPlayed"
-import PlayNowCreateNewOffer from "../pages/PlayNow/PlayNowCreateNewOffer"
-import PlayNowPrivateAndMunicipal from "../pages/PlayNow/PlayNowPrivateAndMunicipal"
-import PlayNowTop100 from "../pages/PlayNow/PlayNowTop100"
-import PlayNowHomeClub from "../pages/PlayNow/PlayNowHomeClub"
-import PlayNowMyRequests from "../pages/PlayNow/PlayNowMyRequests"
-import PlayNowMyListings from "../pages/PlayNow/PlayNowMyListings"
-import ReciprocalGolfCreateNewRequest from "../pages/ReciprocalGolf/ReciprocalGolfCreateNewRequest"
-import ReciprocalGolfAllRequests from "../pages/ReciprocalGolf/ReciprocalGolfAllRequests"
-import ReciprocalGolfMyRequests from "../pages/ReciprocalGolf/ReciprocalGolfMyRequests"
-import ReciprocalGolfMyListings from "../pages/ReciprocalGolf/ReciprocalGolfMyListings"
-import ReferFriend from "../pages/ReferFriend"
+import CreateTop100BucketList from "pages/Top100BucketList/CreateTop100BucketList"
+import MyTop100BucketList from "pages/Top100BucketList/MyTop100BucketList"
+import Top100BucketListPlayed from "pages/Top100BucketList/Top100BucketListPlayed"
+import CreateCustomBucketList from "pages/CustomBucketList/CreateCustomBucketList"
+import MyCustomBucketList from "pages/CustomBucketList/MyCustomBucketList"
+import CustomBucketListPlayed from "pages/CustomBucketList/CustomBucketListPlayed"
+import PlayNowCreateNewOffer from "pages/PlayNow/PlayNowCreateNewOffer"
+import PlayNowPrivateAndMunicipal from "pages/PlayNow/PlayNowPrivateAndMunicipal"
+import PlayNowTop100 from "pages/PlayNow/PlayNowTop100"
+import PlayNowHomeClub from "pages/PlayNow/PlayNowHomeClub"
+import PlayNowMyRequests from "pages/PlayNow/PlayNowMyRequests/index"
+import PlayNowMyListings from "pages/PlayNow/PlayNowMyListings/index"
+import ReciprocalGolfCreateNewRequest from "pages/ReciprocalGolf/ReciprocalGolfCreateNewRequest"
+import ReciprocalGolfAllRequests from "pages/ReciprocalGolf/ReciprocalGolfAllRequests"
+import ReciprocalGolfMyRequests from "pages/ReciprocalGolf/ReciprocalGolfMyRequests"
+import ReciprocalGolfMyListings from "pages/ReciprocalGolf/ReciprocalGolfMyListings"
+import ReferFriend from "pages/ReferFriend/index"
+import ViewMatches from "pages/PlayNow/PlayNowMyListings/ViewMatches"
+import ViewAndRequest from "pages/PlayNow/ViewAndRequest"
 
 const userRoutes = [
   { path: routeNames.Private.Dashboard, component: Dashboard },
@@ -82,6 +84,8 @@ const userRoutes = [
   { path: routeNames.Private.PlayNow_HomeClub, component: PlayNowHomeClub },
   { path: routeNames.Private.PlayNow_MyRequests, component: PlayNowMyRequests },
   { path: routeNames.Private.PlayNow_MyListings, component: PlayNowMyListings },
+  { path: routeNames.Private.PlayNow_ViewMatches, component: ViewMatches },
+  { path: routeNames.Private.PlayNow_ViewAndRequest, component: ViewAndRequest },
 
   // Reciprocal Golf
   { path: routeNames.Private.ReciprocalGolf_CreateNewRequest, component: ReciprocalGolfCreateNewRequest },
@@ -89,15 +93,17 @@ const userRoutes = [
   { path: routeNames.Private.ReciprocalGolf_MyRequests, component: ReciprocalGolfMyRequests },
   { path: routeNames.Private.ReciprocalGolf_MyListings, component: ReciprocalGolfMyListings },
 
-  // Profile
-  { path: '', component: UserProfile },
-  { path: '', component: Chat },
 
   // Refer
   { path: routeNames.Private.ReferFriend, component: ReferFriend },
 
+  // Profile
+  { path: routeNames.Private.UserProfile, component: UserProfile },
+  { path: routeNames.Private.Chat, component: Chat },
+
+
   // this route should be at the end of all other routes
-  { path: "/", exact: true, component: () => <Redirect to={routeNames.Dashboard} /> },
+  { path: "/", exact: true, component: () => <Redirect to={routeNames.CreateTop100BucketList} /> },
 ]
 
 const authRoutes = [

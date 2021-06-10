@@ -52,7 +52,7 @@ const MyCustomBucketList = (props) => {
     setIsLoading(true);
     await axios({
       method: 'DELETE',
-      url: urls.DELETE_MY_BUCKET_LIST + item._id,
+      url: urls.DELETE_MY_CUSTOM_BUCKET_LIST + item._id,
       headers: {
         'authorization': token
       },
@@ -73,7 +73,7 @@ const MyCustomBucketList = (props) => {
     setIsLoading(true);
     await axios({
       method: 'PUT',
-      url: urls.SET_PLAYED_MY_BUCKET_LIST + item._id,
+      url: urls.SET_PLAYED_MY_CUSTOM_BUCKET_LIST + item._id,
       headers: {
         'authorization': token
       },
@@ -127,7 +127,7 @@ const MyCustomBucketList = (props) => {
                 </Col>
                 {list.map((item, index) => {
                   return (
-                    <Col lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
                       <TopHundredBucketListCard
                         item={item}
                         user={user}
@@ -149,18 +149,20 @@ const MyCustomBucketList = (props) => {
             searchList && searchList.length > 0 ?
               <Row>
                 <Col lg={12} md={12} sm={12} style={{ marginBottom: '30px' }}>
-                  <Label >{PAGE_TEXTS.MY_BUCKET_LIST_TOP_100_BUCKET_LIST}</Label>
+                  <Label >{PAGE_TEXTS.CUSTOM_BUCKET_LIST}</Label>
                 </Col>
                 {searchList.map((item, index) => {
                   return (
-                    <TopHundredBucketListCard
-                      item={item}
-                      user={user}
-                      from={'MyBucketList'}
-                      loading={isLoading}
-                      onCheckBoxPress={() => setPlayed(item)}
-                      onClick={() => removerToMyBucket(item, index)}
-                    />
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                      <TopHundredBucketListCard
+                        item={item}
+                        user={user}
+                        from={'MyBucketList'}
+                        loading={isLoading}
+                        onCheckBoxPress={() => setPlayed(item)}
+                        onClick={() => removerToMyBucket(item, index)}
+                      />
+                    </Col>
                   )
                 })}
               </Row>
@@ -176,11 +178,11 @@ const MyCustomBucketList = (props) => {
   )
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   const { isLoggedIn, user } = state.User;
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
 };
 
-export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(MyCustomBucketList));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MyCustomBucketList));

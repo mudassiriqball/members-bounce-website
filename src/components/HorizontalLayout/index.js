@@ -94,12 +94,12 @@ class Layout extends Component {
   }
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   return {
     ...state.Layout,
   }
 }
-export default connect(mapStatetoProps, {
+export default connect(mapStateToProps, {
   changeTopbarTheme,
   changeLayout,
   changeLayoutWidth,

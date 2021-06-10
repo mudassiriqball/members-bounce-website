@@ -1,10 +1,10 @@
-import LigntThemeColors from './LightThemeColors';
+import LightThemeColors from './LightThemeColors';
 import DarkThemeColors from './DarkThemeColors';
 import SIZES from './Sizes';
 import FONTS from './Fonts';
 
 export default {
-  LigntThemeColors: LigntThemeColors,
+  LightThemeColors: LightThemeColors,
   DarkThemeColors: DarkThemeColors,
   SIZES,
   FONTS,

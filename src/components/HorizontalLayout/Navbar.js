@@ -206,6 +206,11 @@ const Navbar = props => {
                     <i className="bx bx-customize me-2"></i>
                     {'Refer Friend'} <div className="arrow-down"></div>
                   </Link>
+                  <div className={classname("dropdown-menu", { show: showReciprocal })}>
+                    <Link to={routeNames.Private.ReferFriend} className="dropdown-item">
+                      {'Refer Friend'}
+                    </Link>
+                  </div>
                 </li>
               </ul>
             </Collapse>
@@ -216,18 +221,11 @@ const Navbar = props => {
   )
 }
 
-Navbar.propTypes = {
-  leftMenu: PropTypes.any,
-  location: PropTypes.any,
-  menuOpen: PropTypes.any,
-  t: PropTypes.any,
-}
-
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   const { leftMenu } = state.Layout
   return { leftMenu }
 }
 
 export default withRouter(
-  connect(mapStatetoProps, {})(withTranslation()(Navbar))
+  connect(mapStateToProps, {})(withTranslation()(Navbar))
 )

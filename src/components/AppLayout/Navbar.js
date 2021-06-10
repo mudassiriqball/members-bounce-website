@@ -9,8 +9,10 @@ import { withTranslation } from "react-i18next"
 
 import { connect } from "react-redux"
 import routeNames from "../../routes/routeNames"
+import { authenticateUser } from "store/actions"
 
 const Navbar = props => {
+  const { isLoggedIn, user } = props;
   const [dashboard, setdashboard] = useState(false)
   const [ui, setui] = useState(false)
   const [app, setapp] = useState(false)
@@ -30,7 +32,11 @@ const Navbar = props => {
   const [extra, setextra] = useState(false)
   const [invoice, setinvoice] = useState(false)
   const [auth, setauth] = useState(false)
-  const [utility, setutility] = useState(false)
+  const [utility, setutility] = useState(false);
+
+  useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
 
   useEffect(() => {
     var matchingMenuItem = null
@@ -95,15 +101,17 @@ const Navbar = props => {
                     <i className="bx-fw bx bx-home-circle me-2"></i>Home
                   </Link>
                 </li>
-                <li className="nav-item dropdown">
-                  <Link
-                    className="nav-link dropdown-toggle arrow-none"
-                    to={routeNames.Dashboard}
-                  >
-                    <i className="bx bxs-dashboard me-2"></i>
-                    {'Dashboard'}
-                  </Link>
-                </li>
+                {isLoggedIn &&
+                  <li className="nav-item dropdown">
+                    <Link
+                      className="nav-link dropdown-toggle arrow-none"
+                      to={routeNames.Dashboard}
+                    >
+                      <i className="bx bxs-dashboard me-2"></i>
+                      {'Dashboard'}
+                    </Link>
+                  </li>
+                }
                 <li className="nav-item dropdown">
                   <Link
                     className="nav-link dropdown-toggle arrow-none"
@@ -149,18 +157,12 @@ const Navbar = props => {
   )
 }
 
-Navbar.propTypes = {
-  leftMenu: PropTypes.any,
-  location: PropTypes.any,
-  menuOpen: PropTypes.any,
-  t: PropTypes.any,
-}
-
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   const { leftMenu } = state.Layout
-  return { leftMenu }
+  const { isLoggedIn, user } = state.User;
+  return { leftMenu, isLoggedIn, user }
 }
 
 export default withRouter(
-  connect(mapStatetoProps, {})(withTranslation()(Navbar))
+  connect(mapStateToProps, {})(withTranslation()(Navbar))
 )

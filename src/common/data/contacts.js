@@ -15,7 +15,7 @@ const users = [
     designation: "Frontend Developer",
     email: "frank@skote.com",
     projects: "132",
-    tags: ["Html" , "Css" , "Php"],
+    tags: ["Html", "Css", "Php"],
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const users = [
     designation: "Backend Developer",
     email: "Rafael@skote.com",
     projects: "1112",
-    tags: ["Php" , "Java" , "Python" , "Html"],
+    tags: ["Php", "Java", "Python", "Html"],
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const users = [
     color: "success",
     email: "mark@skote.com",
     projects: "121",
-    tags: ["Ruby" , "Php" , "UI/UX Designer"],
+    tags: ["Ruby", "Php", "UI/UX Designer"],
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const users = [
     designation: "Frontend Developer",
     email: "minnie@skote.com",
     projects: "145",
-    tags: ["Html" , "Css" , "Java"],
+    tags: ["Html", "Css", "Java"],
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ const users = [
     designation: "UI/UX Designer",
     email: "shirley@skote.com",
     projects: "136",
-    tags: ["Photoshop" , "UI/UX Designer"],
+    tags: ["Photoshop", "UI/UX Designer"],
   },
   {
     id: 7,
@@ -60,7 +60,7 @@ const users = [
     color: "info",
     email: "john@skote.com",
     projects: "125",
-    tags: ["Ruby" , "Php" , "Java"],
+    tags: ["Ruby", "Php", "Java"],
   },
   {
     id: 8,
@@ -70,7 +70,7 @@ const users = [
     color: "",
     email: "colin@skote.com",
     projects: "136",
-    tags: ["Php" , "Java" , "Python" ],
+    tags: ["Php", "Java", "Python"],
   },
   {
     id: 9,
@@ -88,7 +88,7 @@ const users = [
     designation: "Frontend Developer",
     email: "frank@skote.com",
     projects: "132",
-    tags: ["Html" , "Css" , "Php"],
+    tags: ["Html", "Css", "Php"],
   },
   {
     id: 11,
@@ -97,7 +97,7 @@ const users = [
     designation: "Backend Developer",
     email: "Rafael@skote.com",
     projects: "1112",
-    tags: ["Php" , "Java" , "Python" , "Html"],
+    tags: ["Php", "Java", "Python", "Html"],
   },
   {
     id: 12,
@@ -106,7 +106,7 @@ const users = [
     color: "success",
     email: "mark@skote.com",
     projects: "121",
-    tags: ["Ruby" , "Php" , "UI/UX Designer"],
+    tags: ["Ruby", "Php", "UI/UX Designer"],
   },
   {
     id: 13,
@@ -115,7 +115,7 @@ const users = [
     designation: "Frontend Developer",
     email: "minnie@skote.com",
     projects: "145",
-    tags: ["Html" , "Css" , "Java"],
+    tags: ["Html", "Css", "Java"],
   },
 ]
 const userProfile = {
@@ -156,14 +156,14 @@ const userProfile = {
   projects: [
     {
       id: 1,
-      name: "Skote admin UI",
+      name: "Members Bounce admin UI",
       startDate: "2 Sep, 2019",
       deadline: "20 Oct, 2019",
       budget: "$506",
     },
     {
       id: 2,
-      name: "Skote admin Logo",
+      name: "Members Bounce admin Logo",
       startDate: "1 Sep, 2019",
       deadline: "2 Sep, 2019",
       budget: "$94",

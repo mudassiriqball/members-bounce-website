@@ -1,8 +1,8 @@
-import TopHundredBucketListCard from '../../components/Common/Cards/TopHundredBucketListCard';
-import NoDataFound from '../../components/Common/NoDataFound';
-import PAGE_TEXTS from '../../constants/PAGE_TEXTS';
-import { getBearerToken } from '../../helpers/authentication';
-import React, { useState, useEffect, useRef } from 'react';
+import TopHundredBucketListCard from 'components/Common/Cards/TopHundredBucketListCard';
+import NoDataFound from 'components/Common/NoDataFound';
+import PAGE_TEXTS from 'constants/PAGE_TEXTS';
+import { getBearerToken } from 'helpers/authentication';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { MetaTags } from "react-meta-tags";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -10,10 +10,13 @@ import { Col, Container, Label, Row } from "reactstrap";
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb"
 import axios from 'axios';
-import { urls } from '../../helpers';
-import { AccessDeniedAlert, ErrorAlert, SuccessAlert } from '../../components/Common/Alerts';
-import { BucketListSearchFilter } from '../../components/Common';
-import { applyTopHundredFilters, getGolfCoursesRegAndProfile, getMyCustomBucketList, handleTopHundredSearch } from '../../hooks';
+import { urls } from 'helpers';
+import { AccessDeniedAlert, ErrorAlert, SuccessAlert } from 'components/Common/Alerts';
+import { BucketListSearchFilter } from 'components/Common';
+import { applyTopHundredFilters, getGolfCoursesRegAndProfile, getMyCustomBucketList, handleTopHundredSearch } from 'hooks';
+import Loading from 'components/Common/Loading';
+import isBottomReached from 'hooks/isBottomReached';
+import { authenticateUser } from 'store/actions';
 
 const CreateCustomBucketList = (props) => {
   const { isLoggedIn, user } = props;
@@ -26,6 +29,32 @@ const CreateCustomBucketList = (props) => {
   const [list, setList] = useState([]);
   const [searchList, setSearchList] = useState([]);
   const { MY_BUCKET_LIST } = getMyCustomBucketList(token, refresh, user && user._id);
+  // Handle Load More
+  const { IS_BOTTOM_REACHED } = isBottomReached();
+  const [count, setCount] = useState(11);
+  const [IS_LOADING, setIS_LOADING] = useState(false);
+
+  useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
+
+  useEffect(() => {
+    if (IS_BOTTOM_REACHED) {
+      if (GOLF_COURSES_LIST_REG_PROFILE && count < GOLF_COURSES_LIST_REG_PROFILE.length) {
+        setIS_LOADING(true);
+        const append = GOLF_COURSES_LIST_REG_PROFILE.slice(count, parseInt(count) + 11);
+        setList(prev => {
+          return [...new Set([...prev, ...append])];
+        });
+        setCount(parseInt(count) + 11);
+        setTimeout(() => {
+          setIS_LOADING(false);
+        }, 100);
+      }
+    }
+  }, [IS_BOTTOM_REACHED]);
+
+  console.log('IS_BOTTOM_REACHED:', IS_BOTTOM_REACHED)
 
   // Alerts
   const [successAlert, setSuccessAlert] = useState(false);
@@ -37,8 +66,12 @@ const CreateCustomBucketList = (props) => {
   const [filterBy, setFilterBy] = useState('');
 
   useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
+
+  useEffect(() => {
     if (GOLF_COURSES_LIST_REG_PROFILE)
-      setList(GOLF_COURSES_LIST_REG_PROFILE);
+      setList(GOLF_COURSES_LIST_REG_PROFILE.slice(0, 11));
     return () => {}
   }, [GOLF_COURSES_LIST_REG_PROFILE]);
 
@@ -48,7 +81,6 @@ const CreateCustomBucketList = (props) => {
     setList(GOLF_COURSES_LIST_REG_PROFILE);
   }
 
-
   // Add to bucket-list
   const addToBucketList = async (item, index) => {
     if (user.level < 1) {
@@ -57,7 +89,7 @@ const CreateCustomBucketList = (props) => {
       setIsLoading(true);
       await axios({
         method: 'POST',
-        url: urls.CREATE_BUCKET_LIST + user._id,
+        url: urls.CREATE_CUSTOM_BUCKET_LIST + user._id,
         headers: {
           'authorization': token
         },
@@ -69,7 +101,7 @@ const CreateCustomBucketList = (props) => {
       }).catch(err => {
         setIsLoading(false);
         setErrorAlert(true);
-        console.log('ernnr:', err);
+        console.log('custom addToBucketList err:', err);
       });
     }
   }
@@ -119,7 +151,7 @@ const CreateCustomBucketList = (props) => {
                     return;
                   }
                   return (
-                    <Col lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
                       <TopHundredBucketListCard
                         item={item}
                         user={user}
@@ -137,7 +169,7 @@ const CreateCustomBucketList = (props) => {
             searchList && searchList.length > 0 ?
               <Row>
                 <Col lg={12} md={12} sm={12} style={{ marginBottom: '30px' }}>
-                  <Label >{PAGE_TEXTS.CREATE_BUCKET_LIST_TOP_100_BUCKET_LIST}</Label>
+                  <Label >{PAGE_TEXTS.CREATE_CUSTOM_BUCKET_LIST}</Label>
                 </Col>
                 {searchList.map((item, index) => {
                   let found = null;
@@ -146,30 +178,33 @@ const CreateCustomBucketList = (props) => {
                     return;
                   }
                   return (
-                    <TopHundredBucketListCard
-                      item={item}
-                      user={user}
-                      from={'CreateBucketList'}
-                      loading={isLoading}
-                      onClick={() => addToBucketList(item, index)}
-                    />
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                      <TopHundredBucketListCard
+                        item={item}
+                        user={user}
+                        from={'CreateBucketList'}
+                        loading={isLoading}
+                        onClick={() => addToBucketList(item, index)}
+                      />
+                    </Col>
                   )
                 })}
               </Row>
               :
               <NoDataFound />
           }
+          {IS_LOADING && <Loading />}
         </Container>
       </div>
     </React.Fragment>
   )
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   const { isLoggedIn, user } = state.User;
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
 };
 
-export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(CreateCustomBucketList));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateCustomBucketList));

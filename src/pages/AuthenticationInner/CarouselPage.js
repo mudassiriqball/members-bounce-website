@@ -32,15 +32,15 @@ const CarouselPage = () => {
                                   the files in the 'dist' folder...no need to
                                   install git and all the other stuff the
                                   documentation talks about. "
-                              </p>
+                                </p>
 
                                 <div>
                                   <h4 className="font-size-16 text-primary">
                                     Abs1981
-                                </h4>
+                                  </h4>
                                   <p className="font-size-14 mb-0">
-                                    - Skote User
-                                </p>
+                                    - Members Bounce User
+                                  </p>
                                 </div>
                               </div>
                             </div>
@@ -50,18 +50,18 @@ const CarouselPage = () => {
                               <div className="py-3">
                                 <p className="font-size-16 mb-4">
                                   "If Every Vendor on Envato are as supportive as
-                                  Themesbrand, Development with be a nice
+                                  Members Bounce, Development with be a nice
                                   experience. You guys are Wonderful. Keep us the
                                   good work. "
-                              </p>
+                                </p>
 
                                 <div>
                                   <h4 className="font-size-16 text-primary">
                                     Abs1981
-                                </h4>
+                                  </h4>
                                   <p className="font-size-14 mb-0">
-                                    - Skote User
-                                </p>
+                                    - Members Bounce User
+                                  </p>
                                 </div>
                               </div>
                             </div>

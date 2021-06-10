@@ -20,7 +20,7 @@ import "./assets/scss/theme.scss"
 import "./assets/scss/my_custom.scss"
 
 // Import Firebase Configuration file
-// import { initFirebaseBackend } from "./helpers/firebase_helper"
+import { initFirebaseBackend } from "./helpers/firebase_helper"
 
 // import fakeBackend from "./helpers/AuthType/fakeBackend"
 import AppLayout from './components/AppLayout'
@@ -30,19 +30,19 @@ import routeNames from './routes/routeNames'
 // Activating fake backend
 // fakeBackend()
 
-// const firebaseConfig = {
-//   apiKey: process.env.REACT_APP_APIKEY,
-//   authDomain: process.env.REACT_APP_AUTHDOMAIN,
-//   databaseURL: process.env.REACT_APP_DATABASEURL,
-//   projectId: process.env.REACT_APP_PROJECTID,
-//   storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-//   messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-//   appId: process.env.REACT_APP_APPID,
-//   measurementId: process.env.REACT_APP_MEASUREMENTID,
-// }
+const firebaseConfig = {
+  apiKey: "AIzaSyDfhe0w6m7yUZgkgdP5pIyYVj0nwoxbKLs",
+  authDomain: "members-bounce-abe10.firebaseapp.com",
+  projectId: "members-bounce-abe10",
+  storageBucket: "members-bounce-abe10.appspot.com",
+  messagingSenderId: "517239518560",
+  appId: "1:517239518560:web:c5fd323152d84a3ba81a05",
+  measurementId: "G-Q76FGHKK2G",
+  databaseURL: "https://members-bounce-abe10-default-rtdb.firebaseio.com/"
+};
 
 // init firebase backend
-// initFirebaseBackend(firebaseConfig)
+initFirebaseBackend(firebaseConfig);
 
 const App = props => {
   const { authenticateUser, history } = props;

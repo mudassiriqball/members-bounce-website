@@ -1,3 +1,4 @@
+import React from 'react';
 import { MetaTags } from "react-meta-tags";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";

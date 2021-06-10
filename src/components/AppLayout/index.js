@@ -81,7 +81,7 @@ class AppLayout extends Component {
             history={this.props.history}
           />
           <Navbar menuOpen={this.state.isMenuOpened} />
-          <div className="main-content">{this.props.children}</div>
+          <div className="main-content mb-5">{this.props.children}</div>
           <Footer />
         </div>
 
@@ -91,12 +91,12 @@ class AppLayout extends Component {
   }
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   return {
     ...state.AppLayout,
   }
 }
-export default connect(mapStatetoProps, {
+export default connect(mapStateToProps, {
   changeLayout,
   changeTopbarTheme,
 })(withRouter(AppLayout))

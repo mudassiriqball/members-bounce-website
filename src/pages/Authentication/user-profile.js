@@ -64,7 +64,7 @@ const UserProfile = props => {
         </MetaTags>
         <Container fluid>
           {/* Render Breadcrumb */}
-          <Breadcrumb title="Skote" breadcrumbItem="Profile" />
+          <Breadcrumb title="Members Bounce" breadcrumbItem="Profile" />
 
           <Row>
             <Col lg="12">
@@ -140,11 +140,11 @@ UserProfile.propTypes = {
   success: PropTypes.any
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   const { error, success } = state.Profile
   return { error, success }
 }
 
 export default withRouter(
-  connect(mapStatetoProps, { editProfile, resetProfileFlag })(UserProfile)
+  connect(mapStateToProps, { editProfile, resetProfileFlag })(UserProfile)
 )

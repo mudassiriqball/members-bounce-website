@@ -18,8 +18,10 @@ import profileImg from "../../../assets/images/profile-img.png"
 import logoImg from "../../../assets/images/_logo.jpeg"
 import routeNames from "../../../routes/routeNames";
 import AvForm from 'availity-reactstrap-validation/lib/AvForm';
-import getGolfCoursesRegAndProfile from '../../../hooks/getGolfCoursesRegAndProfile';
-import golfersType from '../../../constants/golfersType';
+import getGolfCoursesRegAndProfile from 'hooks/getGolfCoursesRegAndProfile';
+import { convertToDOBFormate, getMaxDateForDob } from 'helpers/dateUtility';
+import { ErrorAlert, SuccessAlert } from 'components/Common';
+import golfersType from 'helpers/golfersType';
 
 
 const schema = yup.object({
@@ -65,28 +67,35 @@ export default function Register(props) {
   const [isCodeSended, setIsCodeSended] = useState(false);
   const [isCodeVerified, setIsCodeVerified] = useState(false);
   const [country, setCountry] = useState('GB');
+  const maxDate = getMaxDateForDob();
 
   // Phone
   const phoneRef = useRef();
   const [phone, setPhone] = useState("");
 
-  const handleStepForword = async (values, errors, setFieldError, touched, setTouched, setFieldValue) => {
+  // Alerts
+  const [successAlert, setSuccessAlert] = useState(false);
+  const [errMsg, setErrMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
+  const [errorAlert, setErrorAlert] = useState(false);
+
+  const handleStepForeword = async (values, errors, setFieldError, touched, setTouched, setFieldValue) => {
     if (step === 1) {
       setTouched({
         ['email']: true, ['firstName']: true, ['lastName']: true, ['mobile']: true, ['dob']: true,
       });
       if (values.phone) {
-        debugger
         setFieldError('mobile', 'Invalid Phone!');
-        // toastRef && toastRef.current && toastRef.current.show('Fix errors firts !', CONSTS.TOAST_MEDIUM_DURATION, () => {});
+        setErrorAlert(true);
+        setErrMsg('Fix error first!');
       } else if (!errors.email && !errors.firstName && !errors.lastName && !errors.mobile && !errors.dob) {
-        debugger
         setSteps(2);
       } else {
-        debugger
-        // toastRef && toastRef.current && toastRef.current.show('Fix errors firts !', CONSTS.TOAST_MEDIUM_DURATION, () => {});
+        setErrorAlert(true);
+        setErrMsg('Fix error first!');
       }
     } else if (step === 2) {
+
       // Setting Golfer Type
       if (values.role === 'courseManager') {  // Course Manager
         setFieldValue('golferType', golfersType.COURSE_MANAGER);
@@ -121,22 +130,22 @@ export default function Register(props) {
           setFieldError('courseLocation', 'Required*');
         else
           setFieldError('courseLocation', '');
-
         if (values.isMember && values.cdhId === '')
           setFieldError('cdhId', 'Required*');
         else
           setFieldError('cdhId', '');
-
         if (values.postCode === '') {
           setFieldError('postCode', 'Required*');
         } else if (!isPostCodeValid) {
           setFieldError('postCode', 'Invalid Postal Code!');
         }
-        // toastRef && toastRef.current && toastRef.current.show('Fix errors firts !', CONSTS.TOAST_MEDIUM_DURATION, () => {});
-      } else if (!errors.homeClucb && !errors.courseLocation && !errors.cdhId && !errors.password && !errors.confirm_password && !errors.postCode) {
+        setErrorAlert(true);
+        setErrMsg('Fix error first!');
+      } else if (!errors.homeClub && !errors.courseLocation && !errors.cdhId && !errors.password && !errors.confirm_password && !errors.postCode) {
         setSteps(3);
       } else {
-        // toastRef && toastRef.current && toastRef.current.show('Fix errors firts !', CONSTS.TOAST_MEDIUM_DURATION, () => {});
+        setErrorAlert(true);
+        setErrMsg('Fix error first!');
       }
     }
   }
@@ -151,6 +160,12 @@ export default function Register(props) {
           <i className="fas fa-home h2" />
         </Link>
       </div>
+      {errorAlert &&
+        <ErrorAlert msg={errMsg} onClick={() => setErrorAlert(false)} />
+      }
+      {successAlert &&
+        <SuccessAlert msg={successMsg} onClick={() => setSuccessAlert(false)} />
+      }
       <div className='account-pages my-5 pt-sm-5'>
         <Container>
           <Row className="justify-content-center">
@@ -161,7 +176,6 @@ export default function Register(props) {
                     <Col className="col-7">
                       <div className="text-primary p-4">
                         <h5 className="text-primary">Free Register</h5>
-                        <p>Get your free Skote account now.</p>
                       </div>
                     </Col>
                     <Col className="col-5 align-self-end">
@@ -207,10 +221,10 @@ export default function Register(props) {
                       role: 'customer'
                     }}
                     validationSchema={schema}
-                    onSubmit={(values, actions) => {
+                    onSubmit={async (values, actions) => {
                       values.email = values.email.toLowerCase().trim();
-
-                      axios({
+                      values.dob = convertToDOBFormate(values.dob);
+                      await axios({
                         method: 'POST',
                         url: urls.REGISTER,
                         data: values
@@ -296,6 +310,7 @@ export default function Register(props) {
                               {step === 1 ?
                                 <React.Fragment>
                                   <GeneralInfo
+                                    maxDate={maxDate}
                                     values={values}
                                     handleChange={handleChange}
                                     touched={touched}
@@ -312,12 +327,13 @@ export default function Register(props) {
                                     setPhone={setPhone}
                                     country={country}
                                     setCountry={setCountry}
+                                    setErrorAlert={setErrorAlert}
+                                    setErrMsg={setErrMsg}
+                                    setSuccessAlert={setSuccessAlert}
+                                    setSuccessMsg={setSuccessMsg}
                                   />
-                                  <div>
-                                    <Label>Already have an account ?</Label>
-                                    {/* <TouchableOpacity onClick={() => navigation.navigate('Login')} style={{ alignItems: 'center', justifyContent: 'center' }}>
-                        <Label style={[styles.text(colors), { color: colors.LINK }]}> Login</Label>
-                      </TouchableOpacity> */}
+                                  <div className='d-flex justify-content-center align-items-center'>
+                                    <Label>Already have an account ? <Link to="/login">Login</Link></Label>
                                   </div>
                                 </React.Fragment>
                                 :
@@ -335,6 +351,9 @@ export default function Register(props) {
                                       setIsCodeSended={setIsCodeSended}
                                       isCodeVerified={isCodeVerified}
                                       setIsCodeVerified={setIsCodeVerified}
+                                      setErrorAlert={setErrorAlert}
+                                      setErrMsg={setErrMsg}
+                                      setSuccessAlert={setSuccessAlert}
                                       {...props}
                                     />
                                   </React.Fragment>
@@ -359,13 +378,20 @@ export default function Register(props) {
                                 >Back</Button>
                               }
                             </Col>
-                            <Col className='d-flex justify-content-center'>
+                            <Col className='d-flex justify-content-end'>
                               {step < 3 &&
                                 <Button
                                   color='danger'
-                                  disabled={!isCodeVerified || isSubmitting}
-                                  onClick={() => handleStepForword(values, errors, setFieldError, touched, setTouched, setFieldValue)}
+                                  // disabled={!isCodeVerified || isSubmitting}
+                                  onClick={() => handleStepForeword(values, errors, setFieldError, touched, setTouched, setFieldValue)}
                                 >Next</Button>
+                              }
+                              {step === 3 &&
+                                <Button
+                                  color='success'
+                                  disabled={!isCodeVerified || isSubmitting}
+                                  onClick={() => handleStepForeword(values, errors, setFieldError, touched, setTouched, setFieldValue)}
+                                >Register</Button>
                               }
                             </Col>
                           </Row>

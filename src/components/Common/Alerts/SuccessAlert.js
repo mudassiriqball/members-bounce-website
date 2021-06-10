@@ -1,7 +1,7 @@
 import SweetAlert from "react-bootstrap-sweetalert";
 
 const SuccessAlert = (props) => {
-  const { onClick } = props;
+  const { onClick, msg } = props;
 
   return (
     <SweetAlert
@@ -12,7 +12,7 @@ const SuccessAlert = (props) => {
       onCancel={onClick}
       closeOnClickOutside={true}
     >
-      Your request was processed successfully.
+      {msg ? msg : 'Your request was processed successfully.'}
     </SweetAlert>
   )
 }

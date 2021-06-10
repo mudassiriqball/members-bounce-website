@@ -34,7 +34,7 @@ const Recoverpw = () => {
                     <Col xs={7}>
                       <div className="text-primary p-4">
                         <h5 className="text-primary"> Reset Password</h5>
-                        <p>Re-Password with Skote.</p>
+                        <p>Re-Password with Members Bounce.</p>
                       </div>
                     </Col>
                     <Col xs={5} className="align-self-end">
@@ -103,8 +103,8 @@ const Recoverpw = () => {
                   </Link>{" "}
                 </p>
                 <p>
-                  © {new Date().getFullYear()} Skote. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger"></i> by Themesbrand
+                  © {new Date().getFullYear()} Members Bounce, Crafted with{" "}
+                  <i className="mdi mdi-heart text-danger"></i> by Members Bounce
                 </p>
               </div>
             </Col>

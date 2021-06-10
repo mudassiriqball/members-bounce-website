@@ -13,9 +13,9 @@ export default function getHomeClubPlayNowOffers(token, refresh) {
   useEffect(() => {
     const CancelToken = axios.CancelToken;
     const source = CancelToken.source();
-    const getData = () => {
+    const getData = async () => {
       setLoading(true);
-      axios({
+      await axios({
         method: 'GET',
         url: urls.HOME_CLUB_PLAY_NOW_LIST,
         headers: {

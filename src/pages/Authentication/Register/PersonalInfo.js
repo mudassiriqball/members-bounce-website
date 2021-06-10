@@ -1,192 +1,341 @@
-import AvField from 'availity-reactstrap-validation/lib/AvField';
-import Error from '../../../components/Common/Error';
-import React, { useState } from 'react'
-import { Label } from 'reactstrap';
+import CustomAvField from '../../../components/Common/CustomAvField';
+import Error from "components/Common/Error"
+import React, { useState } from "react"
+import { Label, Input } from "reactstrap"
+import Switch from "react-switch"
+import { Link } from "react-router-dom"
+import CustomSelect from 'components/Common/CustomSelect';
 
 export default function PersonalInfo(props) {
-
   const {
-    GOLF_COURSES_LIST_REG_PROFILE_FOR_PICKER, COURSES_LOCATION_LIST,
-    values, handleChange, errors, setFieldError, touched, handleBlur, setFieldValue,
-  } = props;
+    GOLF_COURSES_LIST_REG_PROFILE_FOR_PICKER,
+    COURSES_LOCATION_LIST,
+    values,
+    handleChange,
+    errors,
+    setFieldError,
+    touched,
+    handleBlur,
+    setFieldValue,
+    setErrorAlert, setErrMsg, setSuccessAlert
+  } = props
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   // Switch
-  const [isCourseManager, setIsCourseManager] = useState(false);
-  const [isMember, setIsMember] = useState(false);
-  const [isTermsOfUse, setIsTermsOfUse] = useState(false);
-  const [isPrivacy, setIsPrivacy] = useState(false);
+  const [isCourseManager, setIsCourseManager] = useState(false)
+  const [isMember, setIsMember] = useState(false)
+  const [isTermsOfUse, setIsTermsOfUse] = useState(false)
+  const [isPrivacy, setIsPrivacy] = useState(false)
+  // my siwthch
+  const [checkedCM, setCheckedCM] = useState(false)
+  const [checkedNM, setCheckedNM] = useState(false)
+  const [checkedTOU, setCheckedTOU] = useState(false)
+  const [checkedPN, setCheckedPN] = useState(false)
 
-  const onToggleCourseManagerSwitch = (e) => {
-    setIsCourseManager(e);
+  const onToggleCourseManagerSwitch = e => {
+    setIsCourseManager(e)
     if (e) {
-      setFieldValue('role', 'courseManager');
+      setFieldValue("role", "courseManager")
     } else {
-      setFieldValue('role', 'customer');
+      setFieldValue("role", "customer")
     }
   }
-  const onToggleMemberSwitch = (e) => {
-    setIsMember(e);
+  const onToggleMemberSwitch = e => {
+    setIsMember(e)
     if (e) {
-      setFieldValue('isMember', false);
+      setFieldValue("isMember", false)
     } else {
-      setFieldValue('isMember', true);
+      setFieldValue("isMember", true)
     }
   }
-  const onToggleTermsOfUseSwitch = (e) => {
-    setIsTermsOfUse(e);
-    setFieldValue('termsOfUse', e);
+  const onToggleTermsOfUseSwitch = e => {
+    setIsTermsOfUse(e)
+    setFieldValue("termsOfUse", e)
   }
-  const onTogglePrivacySwitch = (e) => {
-    setIsPrivacy(e);
-    setFieldValue('privacy', e);
+  const onTogglePrivacySwitch = e => {
+    setIsPrivacy(e)
+    setFieldValue("privacy", e)
   }
 
   return (
     <div>
       {/* Signup As*/}
-      <div>
+      {/* <div>
         <Label>Signup as Course Manager?</Label>
-        {/* <Switch value={isCourseManager} color={colors.SEC_MAIN} onValueChange={(e) => onToggleCourseManagerSwitch(e)} /> */}
-      </div>
-
-
-      {/* Not a member */}
-      <div>
-        <Label>Not a member?</Label>
-        {/* <Switch value={isMember} color={colors.SEC_MAIN} onValueChange={(e) => onToggleMemberSwitch(e)} /> */}
-      </div>
-
-      {values.isMember &&
-        <React.Fragment>
-          {/* Home Club */}
-          {/* <CustomPicker
-            colors={colors}
-            title={'Home Club'}
-            selectedValue={values.homeClub}
-            onValueChange={(value, id, index) =>
-              setFieldValue('homeClub', value)
-            }
-            padding={-4}
-            error={errors.homeClub ? errors.homeClub && touched.homeClub ? errors.homeClub : '' : ''}
-            list={GOLF_COURSES_LIST_REG_PROFILE_FOR_PICKER}
-          /> */}
-          {/* Course Location */}
-          {/* <CustomPicker
-            mandatory
-            colors={colors}
-            title={'Course Location'}
-            selectedValue={values.courseLocation}
-            onValueChange={(value, id, index) =>
-              setFieldValue('courseLocation', value)
-            }
-            padding={-4}
-            error={errors.courseLocation ? (errors.courseLocation && touched.courseLocation) ? errors.courseLocation : '' : ''}
-            list={COURSES_LOCATION_LIST}
-          /> */}
-          {/* CDH ID / World Handicap Index*/}
-          <div className="mb-3">
-            <AvField
-              name="cdhId"
-              label="CDH ID/World Handicap Index"
-              className="form-control"
-              placeholder={'Enter CDH ID / World Handicap Index'}
-              type="text"
-              errorMessage={(touched.cdhId && errors.cdhId) ? errors.cdhId : ''}
-              onChange={(e, val) => { setFieldValue('cdhId', val) }}
-              value={values.cdhId}
-              required
+        
+      </div> */}
+      <div class="row">
+        <div class="col text-start">
+          <Label>Signup as Course Manager?</Label>
+        </div>
+        <div class="col text-end">
+          <div className="form-check form-switch form-switch-lg mb-3 d-flex justify-content-end">
+            <input
+              type="checkbox"
+              className="form-check-input text-end"
+              onChange={() => setCheckedCM(!checkedCM)}
+              checked={checkedCM}
+              id="customSwitchsizelg"
+              defaultChecked
             />
           </div>
-        </React.Fragment>
-      }
-      {/* Postal Code District (outward code/start only) */}
-      <div className="mb-3">
-        <AvField
-          name="cdhId"
-          label={'Postal Code District'}
-          className="form-control"
-          placeholder={'Enter Postal Code District (outward code/start only)'}
-          type="text"
-          errorMessage={errors.postCode ? (errors.postCode && touched.postCode) ? errors.postCode : '' : ''}
-          onChange={(e, val) => { setFieldValue('postCode', val) }}
-          value={values.postCode}
-          required
-        />
+        </div>
       </div>
-      <div className="mb-3">
-        <AvField
-          name="cdhId"
-          className="form-control"
-          label={'Industry / Occupation'}
-          placeholder={'Enter Industry / Occupation'}
-          type="text"
-          errorMessage={(touched.industry && errors.industry) ? errors.industry : ''}
-          onChange={(e, val) => { setFieldValue('industry', val) }}
-          value={values.industry}
-          required
-        />
+      <div class="row">
+        <div class="col text-start">
+          <Label>Not a member?</Label>
+        </div>
+
+        <div class="col text-end">
+          <div className="form-check form-switch form-switch-lg mb-3 d-flex justify-content-end">
+            <input
+              type="checkbox"
+              className="form-check-input text-end"
+              onChange={() => setCheckedNM(!checkedNM)}
+              checked={checkedNM}
+              id="customSwitchsizelg"
+              defaultChecked
+            />
+          </div>
+        </div>
       </div>
+      {!checkedNM ? (
+        <>
+          {/* Home Club */}
+          <CustomSelect
+            name="homeClub"
+            label='Home Club'
+            value={values.homeClub}
+            onChange={(value, id, index) => setFieldValue("homeClub", value)}
+            options={GOLF_COURSES_LIST_REG_PROFILE_FOR_PICKER}
+            error={errors.homeClub ? errors.homeClub && touched.homeClub ? errors.homeClub : '' : ''}
+            classNamePrefix="select2-selection"
+            mandatory
+          />
+          {/* Course Location */}
+          <CustomSelect
+            name="courseLocation"
+            label='Course Location'
+            value={values.courseLocation}
+            onChange={(value, id, index) =>
+              setFieldValue("courseLocation", value)
+            }
+            options={COURSES_LOCATION_LIST}
+            classNamePrefix="select2-selection"
+            error={errors.courseLocation ? (errors.courseLocation && touched.courseLocation) ? errors.courseLocation : '' : ''}
+            mandatory
+          />
+          {/* CDH ID / World Handicap Index*/}
+          <CustomAvField
+            name="cdhId"
+            label="CDH ID/World Handicap Index"
+            className="form-control"
+            placeholder={"Enter CDH ID / World Handicap Index"}
+            type="text"
+            error={touched.cdhId && errors.cdhId ? errors.cdhId : ""}
+            onChange={(e, val) => {
+              setFieldValue("cdhId", val)
+            }}
+            value={values.cdhId}
+            mandatory
+          />
+
+          {/* Postal Code District (outward code/start only) */}
+          <CustomAvField
+            name="postCode"
+            label={'Postal Code District'}
+            className="form-control"
+            placeholder={
+              "Enter Postal Code District (outward code/start only)"
+            }
+            type="text"
+            error={
+              errors.postCode && errors.postCode !== '' ?
+                errors.postCode
+                :
+                ""
+            }
+            onChange={(e, val) => {
+              setFieldValue("postCode", val)
+            }}
+            value={values.postCode}
+            mandatory
+          />
+          <CustomAvField
+            name="industry"
+            className="form-control"
+            label={'Industry / Occupation'}
+            placeholder={"Enter Industry / Occupation"}
+            type="text"
+            error={
+              touched.industry && errors.industry ? errors.industry : ""
+            }
+            onChange={(e, val) => {
+              setFieldValue("industry", val)
+            }}
+            value={values.industry}
+          />
+        </>
+      ) : (
+        // if not member
+        <>
+          {/* Postal Code District (outward code/start only) */}
+          <CustomAvField
+            name="postCode"
+            label={'Postal Code District'}
+            className="form-control"
+            placeholder={
+              "Enter Postal Code District (outward code/start only)"
+            }
+            type="text"
+            error={
+              errors.postCode
+                ? errors.postCode && touched.postCode
+                  ? errors.postCode
+                  : ""
+                : ""
+            }
+            onChange={(e, val) => {
+              setFieldValue("postCode", val)
+            }}
+            value={values.postCode}
+          />
+          <CustomAvField
+            name="industry"
+            className="form-control"
+            label={'Industry / Occupation'}
+            placeholder={"Enter Industry / Occupation"}
+            type="text"
+            error={
+              touched.industry && errors.industry ? errors.industry : ""
+            }
+            onChange={(e, val) => {
+              setFieldValue("industry", val)
+            }}
+            value={values.industry}
+          />
+        </>
+      )}
       {/* <div /> */}
       {/* Password */}
       <div className="mb-3 position-relative">
-        <AvField
+        <CustomAvField
           name="password"
           label="Password"
           type={showPassword ? "text" : "password"}
-          required
           placeholder="Enter Password"
-          errorMessage={(touched.password && errors.password) ? errors.password : ''}
-          onChange={(e, val) => setFieldValue('password', val)}
+          error={
+            touched.password && errors.password ? errors.password : ""
+          }
+          onChange={(e, val) => setFieldValue("password", val)}
           value={values.password}
+          mandatory
         />
-        <div>
-          <i onClick={() => setShowPassword(!showPassword)} className={!showPassword ? "mdi mdi-eye-outline" : "mdi mdi-eye-off-outline"} />
+        <div style={{ position: "absolute", top: 37, right: 10 }}>
+          <i
+            onClick={() => setShowPassword(!showPassword)}
+            className={
+              !showPassword ? "mdi mdi-eye-outline" : "mdi mdi-eye-off-outline"
+            }
+          />
         </div>
       </div>
       {/* Confirm Password */}
       <div className="mb-3 position-relative">
-        <AvField
+        <CustomAvField
           name="confirm_password"
           label="Confirm Password"
           type={showConfirmPassword ? "text" : "password"}
-          required
           placeholder="Re-enter Password"
-          errorMessage={(touched.confirm_password && errors.confirm_password) ? errors.confirm_password : ''}
-          // onChange={(e, val) => setConfirmPassword(val)}
+          error={
+            touched.confirm_password && errors.confirm_password
+              ? errors.confirm_password
+              : ""
+          }
+          onChange={(e, val) => setShowConfirmPassword(val)}
           value={values.confirm_password}
+          mandatory
         />
-        <div>
-          <i onClick={() => setShowConfirmPassword(!showConfirmPassword)} className={!showConfirmPassword ? "mdi mdi-eye-outline" : "mdi mdi-eye-off-outline"} />
+        <div style={{ position: "absolute", top: 37, right: 10 }}>
+          <i
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            className={
+              !showConfirmPassword
+                ? "mdi mdi-eye-outline"
+                : "mdi mdi-eye-off-outline"
+            }
+          />
         </div>
       </div>
       <div>
         <div>
-          <Label>
-            {'I confirm that am I over 18 years old and agree to the '}
-            {/* <Label onClick={() => navigation.navigate('TermsOfUse')}>{' Terms of Use'}</Label> */}
-          </Label>
+          <div class="row">
+            <div class="col text-start">
+              <p>
+                I confirm that am I over 18 years old and agree to the
+                <Link to="" style={{ color: "blue" }}>
+                  Term of User
+                </Link>
+              </p>
+            </div>
+            <div class="col text-end">
+              <div className="form-check form-switch form-switch-lg mb-3 d-flex justify-content-end">
+                <input
+                  type="checkbox"
+                  className="form-check-input text-end"
+                  onChange={() => setCheckedTOU(!checkedTOU)}
+                  checked={checkedTOU}
+                  id="customSwitchsizelg"
+                  defaultChecked
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-start">
+              <p>
+                I have read and accept the{" "}
+                <Link to="" style={{ color: "blue" }}>
+                  Privacy Notice
+                </Link>
+              </p>
+            </div>
+            <div class="col text-end">
+              <div className="form-check form-switch form-switch-lg mb-3 d-flex justify-content-end">
+                <input
+                  type="checkbox"
+                  className="form-check-input text-end"
+                  onChange={() => setCheckedPN(!checkedPN)}
+                  checked={checkedPN}
+                  id="customSwitchsizelg"
+                  defaultChecked
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <div >
-          {/* <Switch value={isTermsOfUse} color={colors.SEC_MAIN} onValueChange={(e) => onToggleTermsOfUseSwitch(e)} /> */}
-        </div>
+        {/* <div >
+          <Switch value={isTermsOfUse} onValueChange={(e) => onToggleTermsOfUseSwitch(e)} />
+        </div> */}
       </div>
-      {(errors.termsOfUse && touched.termsOfUse) && Error(errors.termsOfUse)}
+      {errors.termsOfUse && touched.termsOfUse && Error(errors.termsOfUse)}
 
       <div>
         <div>
-          <Label>
-            {'I have read and accept the '}
-            {/* <Label onClick={() => navigation.navigate('PrivacyPolicy')}>{' Privacy Notice'}</Label> */}
-          </Label>
+          {/* <Label>
+            {"I have read and accept the "}
+            <Label onClick={() => navigation.navigate("PrivacyPolicy")}>
+              {" Privacy Notice"}
+            </Label>
+          </Label> */}
         </div>
-        <div >
-          {/* <Switch value={isPrivacy} color={colors.SEC_MAIN} onValueChange={(e) => onTogglePrivacySwitch(e)} /> */}
+        <div>
+          {/* <Switch value={isPrivacy} onValueChange={(e) => onTogglePrivacySwitch(e)} /> */}
         </div>
       </div>
-      {(errors.privacy && touched.privacy) && Error(errors.privacy)}
+      {errors.privacy && touched.privacy && Error(errors.privacy)}
     </div>
   )
 }

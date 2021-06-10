@@ -48,7 +48,7 @@ const Register = props => {
                     <Col className="col-7">
                       <div className="text-primary p-4">
                         <h5 className="text-primary">Free Register</h5>
-                        <p>Get your free Skote account now.</p>
+                        <p>Get your free Members Bounce account now.</p>
                       </div>
                     </Col>
                     <Col className="col-5 align-self-end">
@@ -133,7 +133,7 @@ const Register = props => {
 
                       <div className="mt-4 text-center">
                         <p className="mb-0">
-                          By registering you agree to the Skote{" "}
+                          By registering you agree to the Members Bounce{" "}
                           <Link to="#" className="text-primary">
                             Terms of Use
                           </Link>
@@ -152,8 +152,8 @@ const Register = props => {
                   </Link>{" "}
                 </p>
                 <p>
-                  © {new Date().getFullYear()} Skote. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger" /> by Themesbrand
+                  © {new Date().getFullYear()} Members Bounce. Crafted with{" "}
+                  <i className="mdi mdi-heart text-danger" /> by Members Bounce
                 </p>
               </div>
             </Col>
@@ -171,12 +171,12 @@ Register.propTypes = {
   user: PropTypes.any,
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   const { user, registrationError, loading } = state.Account
   return { user, registrationError, loading }
 }
 
-export default connect(mapStatetoProps, {
+export default connect(mapStateToProps, {
   registerUser,
   apiError,
   registerUserFailed,

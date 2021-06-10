@@ -5,7 +5,7 @@ const tasks = [
     tasks: [
       {
         id: 11,
-        description: "Create a Skote Dashboard UI",
+        description: "Create a Members Bounce Dashboard UI",
         members: [
           {
             username: "",
@@ -40,7 +40,7 @@ const tasks = [
       },
       {
         id: 13,
-        description: "Create a Skote Logo",
+        description: "Create a Members Bounce Logo",
         members: [
           {
             username: "Fransis",

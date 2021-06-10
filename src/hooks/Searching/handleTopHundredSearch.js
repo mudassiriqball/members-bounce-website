@@ -2,6 +2,7 @@
 export default function handleTopHundredSearch(list, val, setQuery, setIsSearch, setSearchList) {
   setQuery(val);
   if (val === '') {
+    setQuery('');
     setIsSearch(false);
     setSearchList([]);
   }

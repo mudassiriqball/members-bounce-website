@@ -4,7 +4,7 @@ const Error = (props) => {
   const { children, center } = props;
 
   return (
-    <Label style={{ color: 'red', fontSize: '12px', textAlign: center ? 'center' : 'left', width: '100%' }}>
+    <Label style={{ color: 'red', fontSize: '12px', textAlign: center ? 'center' : 'left', width: '100%', fontWeight: 'normal' }}>
       {children}
     </Label>
   )

@@ -48,16 +48,12 @@ const Sidebar = props => {
   )
 }
 
-Sidebar.propTypes = {
-  type: PropTypes.string,
-}
-
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   return {
     layout: state.Layout,
   }
 }
 export default connect(
-  mapStatetoProps,
+  mapStateToProps,
   {}
 )(withRouter(withTranslation()(Sidebar)))

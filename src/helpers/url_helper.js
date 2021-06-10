@@ -1,5 +1,5 @@
-const baseUrl = 'http://18.134.246.3:5000/api';
-// const baseUrl = 'http://localhost:5000/api';
+// const baseUrl = 'http://18.134.246.3:5000/api';
+const baseUrl = 'http://localhost:5000/api';
 
 export default {
   LOGIN: baseUrl + '/users/auth/login-user',
@@ -51,7 +51,7 @@ export default {
   ACCEPT_REQUEST_PLAY_NOW_OFFER: baseUrl + '/play-now-offers/my-listing/accept-offer/',
   DECLINE_REQUEST_PLAY_NOW_OFFER: baseUrl + '/play-now-offers/my-listing/decline-offer/',
   REQUEST_PLAY_NOW_OFFER: baseUrl + '/play-now-offers/request/play-now/offer/',
-  DELETE_MY_LISTNING_OFFER: baseUrl + '/play-now-offers/delete-item/by-id/',
+  DELETE_MY_LISTING_OFFER: baseUrl + '/play-now-offers/delete-item/by-id/',
   DELETE_MY_PLAY_NOW_REQUEST: baseUrl + '/play-now-offers/my-request/delete/',
   UPDATE_PLAY_NOW_MATCH_STATUS: baseUrl + '/play-now-offers/match/update-status/',
 

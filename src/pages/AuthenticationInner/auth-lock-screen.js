@@ -105,8 +105,8 @@ const LockScreen = () => {
                   </Link>{" "}
                 </p>
                 <p>
-                  © 2021 Skote. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger" /> by Themesbrand
+                  © 2021 Members Bounce, Crafted with{" "}
+                  <i className="mdi mdi-heart text-danger" /> by Members Bounce
                 </p>
               </div>
             </Col>

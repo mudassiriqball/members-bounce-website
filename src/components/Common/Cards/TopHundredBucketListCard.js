@@ -4,67 +4,51 @@ import Button from '../Button';
 import CardListItem from './CardListItem';
 import Switch from "react-switch"
 
-const Offsymbol = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        fontSize: 12,
-        color: "#fff",
-        paddingRight: 2
-      }}
-    >
-      {" "}
-      No
-    </div>
-  )
-}
-
-const OnSymbol = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        fontSize: 12,
-        color: "#fff",
-        paddingRight: 2
-      }}
-    >
-      {" "}
-      Yes
-    </div>
-  )
-}
-
 export default function TopHundredBucketListCard(props) {
   const { item, user, from, loading, onClick, onCheckBoxPress } = props;
 
   return (
     <Card className="overflow-hidden">
-      <CardBody className="">
-        <div>
+      <CardBody className="d-flex flex-column justify-content-between h-100">
+        <>
           <CardListItem label={'Course Name'} value={item && item.course} />
           <CardListItem label={'Region'} value={item && item.region || 'none'} />
           <CardListItem label={'Green Fee'} value={item && item.greenFee || 0} />
           <CardListItem label={'Course Type'} value={item && item.courseType || 'none'} />
-          <hr />
-          <div className='flex-end'>
-            {from === 'CreateBucketList' ?
-              <div>
-                <Button
-                  disabled={loading}
-                  onClick={onClick}
-                >Add to Bucket-list</Button>
-              </div>
+        </>
+        <hr />
+        <div className='flex-end'>
+          {from === 'CreateBucketList' ?
+            <div>
+              <Button
+                disabled={loading}
+                onClick={onClick}
+              >Add to Bucket-list</Button>
+            </div>
+            :
+            from === 'MyBucketList' ?
+              <Row className='d-flex justify-content-between align-items-center'>
+                <Col className='d-flex justify-content-between align-items-center'>
+                  <Label className=''>Played</Label>
+                  <Switch
+                    className="me-1 mb-sm-8 mb-2"
+                    onColor="#02a499"
+                    height={20}
+                    width={45}
+                    onChange={onCheckBoxPress}
+                    checked={item && item.played}
+                  />
+                </Col>
+                <Col className='d-flex justify-content-end'>
+                  <Button
+                    disabled={loading}
+                    onClick={onClick}
+                  >Remove</Button>
+                </Col>
+              </Row>
               :
-              from === 'MyBucketList' ?
-                <Row className='d-flex justify-content-between align-items-center'>
+              from === 'TopHundredPlayed' ?
+                <Row>
                   <Col className='d-flex justify-content-between align-items-center'>
                     <Label className=''>Played</Label>
                     <Switch
@@ -76,32 +60,10 @@ export default function TopHundredBucketListCard(props) {
                       checked={item && item.played}
                     />
                   </Col>
-                  <Col className='d-flex justify-content-end'>
-                    <Button
-                      disabled={loading}
-                      onClick={onClick}
-                    >Remove</Button>
-                  </Col>
                 </Row>
                 :
-                from === 'TopHundredPlayed' ?
-                  <Row>
-                    <Col className='d-flex justify-content-between align-items-center'>
-                      <Label className=''>Played</Label>
-                      <Switch
-                        className="me-1 mb-sm-8 mb-2"
-                        onColor="#02a499"
-                        height={20}
-                        width={45}
-                        onChange={onCheckBoxPress}
-                        checked={item && item.played}
-                      />
-                    </Col>
-                  </Row>
-                  :
-                  null
-            }
-          </div>
+                null
+          }
         </div>
       </CardBody>
     </Card>

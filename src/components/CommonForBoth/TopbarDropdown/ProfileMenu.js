@@ -15,6 +15,7 @@ import { withRouter, Link } from "react-router-dom"
 
 // users
 import userPlaceholder from "../../../assets/images/users/avatar-1.jpg"
+import { authenticateUser } from "store/actions"
 
 const ProfileMenu = props => {
   const { user } = props;
@@ -22,6 +23,10 @@ const ProfileMenu = props => {
   const [menu, setMenu] = useState(false)
 
   const [username, setUsername] = useState('')
+
+  useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
 
   useEffect(() => {
     setUsername(user && (user.firstName + ' ' + user.lastName))
@@ -82,7 +87,7 @@ ProfileMenu.propTypes = {
   t: PropTypes.any
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   const { error, success } = state.Profile;
   const { user } = state.User;
 
@@ -90,5 +95,5 @@ const mapStatetoProps = state => {
 }
 
 export default withRouter(
-  connect(mapStatetoProps, {})(withTranslation()(ProfileMenu))
+  connect(mapStateToProps, {})(withTranslation()(ProfileMenu))
 )

@@ -200,9 +200,4 @@ const SidebarContent = props => {
   )
 }
 
-SidebarContent.propTypes = {
-  location: PropTypes.object,
-  t: PropTypes.any,
-}
-
 export default withRouter(withTranslation()(SidebarContent))

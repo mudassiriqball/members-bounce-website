@@ -1,115 +1,79 @@
-import Button from '../../../components/Common/Button';
-import React, { useState } from 'react';
-import { Label } from 'reactstrap';
+import Button from "components/Common/Button"
+import React, { useState } from "react"
+import { Label } from "reactstrap"
+import AvField from "availity-reactstrap-validation/lib/AvField"
 
 export default function RegisterReview(props) {
-  const { values, handleRegister, isSubmitting } = props;
-  const [showPassword, setShowPassword] = useState(false);
+  const { values, handleRegister, isSubmitting } = props
+  const [showPassword, setShowPassword] = useState(false)
 
   return (
     <div>
-      {/* <Input
-        mandatory
-        colors={colors}
-        label={'Signup as'}
-        error={''}
-        editable={false}
-        value={values.role === 'customer' ? 'Customer' : values.role === 'courseManager' ? 'Course Manager' : ''}
+      <AvField
+        label={"Signup as"}
+        value={
+          values.role === "customer"
+            ? "Customer"
+            : values.role === "courseManager"
+              ? "Course Manager"
+              : ""
+        }
+        disabled
       />
-      <Input
-        mandatory
-        colors={colors}
-        label={'Email'}
-        error={''}
-        editable={false}
-        value={values.email}
-      />
-      <Input
-        mandatory
-        colors={colors}
-        label={'First Name'}
-        editable={false}
-        error={''}
-        value={values.firstName}
-      />
-      <Input
-        mandatory
-        colors={colors}
-        label={'Last Name'}
-        editable={false}
-        error={''}
-        value={values.lastName}
-      />
-      <Input
-        mandatory
-        colors={colors}
-        label={'Date Of Birth'}
-        editable={false}
-        error={''}
-        value={values.dob}
-      />
-      <Input
-        mandatory
-        colors={colors}
-        label={'Mobile'}
-        editable={false}
-        error={''}
-        value={values.mobile}
-      />
-      <Input
-        colors={colors}
-        label={'Industry / Occupation'}
-        editable={false}
-        error={''}
+      <AvField label={"Email"} value={values.email} disabled />
+      <AvField label={"First Name"} value={values.firstName} disabled />
+      <AvField label={"Last Name"} value={values.lastName} disabled />
+      <AvField label={"Date Of Birth"} value={values.dob} disabled />
+      <AvField label={"Mobile"} value={values.mobile} disabled />
+      <AvField
+        label={"Industry / Occupation"}
         value={values.industry}
+        disabled
       />
-      {values.postCode !== '' && <Input
-        colors={colors}
-        label={'Postal Code District'}
-        editable={false}
-        error={''}
-        value={values.postCode}
-      />}
-      <Input
-        mandatory
-        colors={colors}
-        label={'Home Club'}
-        editable={false}
-        error={''}
-        value={values.homeClub}
-      />
-      <Input
-        mandatory
-        colors={colors}
-        label={'Course Location'}
+      {values.postCode !== "" && (
+        <AvField
+          label={"Postal Code District"}
+          value={values.postCode}
+          disabled
+        />
+      )}
+      <AvField label={"Home Club"} value={values.homeClub} disabled />
+      <AvField
+        label={"Course Location"}
         value={values.courseLocation}
-        editable={false}
-        error={''}
+        disabled
       />
-      <Input
-        mandatory
-        colors={colors}
-        label={'CDH ID/World Handicap Index'}
-        editable={false}
-        error={''}
+      <AvField
+        label={"CDH ID/World Handicap Index"}
         value={values.cdhId}
+        disabled
       />
-      <Input
-        colors={colors}
-        mandatory
-        label={'Password'}
-        value={values.password}
-        editable={false}
-        error={''}
-        secureTextEntry={showPassword ? false : true}
-        right={<TextInput.Icon name={showPassword ? 'eye-off' : 'eye'} size={20} color={colors.SEC_MAIN} onClick={() => setShowPassword(!showPassword)} />}
-      /> */}
+      <div className="mb-3 position-relative">
+        <AvField
+          name="password"
+          label="Password"
+          type={showPassword ? "text" : "password"}
+          required
+          value={values.password}
+          disabled
+        />
+        <div style={{ position: "absolute", top: 37, right: 10 }}>
+          <i
+            onClick={() => setShowPassword(!showPassword)}
+            className={
+              !showPassword ? "mdi mdi-eye-outline" : "mdi mdi-eye-off-outline"
+            }
+          />
+        </div>
+      </div>
       <div style={{ height: 30 }} />
       <Button
         loading={isSubmitting}
         disabled={isSubmitting}
         onClick={() => handleRegister()}
-      >Register</Button>
+      >
+        Register
+      </Button>
     </div>
-  )
+  );
 }

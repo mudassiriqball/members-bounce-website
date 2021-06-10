@@ -111,7 +111,7 @@ const Top100BucketListPlayed = (props) => {
                 </Col>
                 {list.map((item, index) => {
                   return (
-                    <Col lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
                       <TopHundredBucketListCard
                         item={item}
                         user={user}
@@ -136,7 +136,7 @@ const Top100BucketListPlayed = (props) => {
                 </Col>
                 {searchList.map((item, index) => {
                   return (
-                    <Col lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
                       <TopHundredBucketListCard
                         item={item}
                         user={user}

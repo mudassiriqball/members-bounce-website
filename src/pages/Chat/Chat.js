@@ -144,7 +144,7 @@ const Chat = props => {
         </MetaTags>
         <Container fluid>
           {/* Render Breadcrumb */}
-          <Breadcrumbs title="Skote" breadcrumbItem="Chat" />
+          <Breadcrumbs title="Members Bounce" breadcrumbItem="Chat" />
 
           <Row>
             <Col lg="12">

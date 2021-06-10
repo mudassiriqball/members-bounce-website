@@ -219,7 +219,7 @@ const Header = props => {
             <ProfileMenu />
 
             <div
-              onClick={toggleTopDrawer} disabled={open}
+              onClick={toggleTopDrawer}
               className="dropdown d-inline-block"
             >
               <button
@@ -246,7 +246,7 @@ const Header = props => {
   )
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   const {
     layoutType,
     showRightSidebar,
@@ -256,7 +256,7 @@ const mapStatetoProps = state => {
   return { layoutType, showRightSidebar, leftMenu, leftSideBarType }
 }
 
-export default connect(mapStatetoProps, {
+export default connect(mapStateToProps, {
   showRightSidebarAction,
   toggleLeftmenu,
   changeSidebarType,

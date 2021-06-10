@@ -186,7 +186,7 @@ const ForgetPasswordPage = props => {
                     <Col xs={7}>
                       <div className="text-primary p-4">
                         <h5 className="text-primary">Welcome Back !</h5>
-                        <p>Sign in to continue to Skote.</p>
+                        <p>Sign in to continue to Members Bounce.</p>
                       </div>
                     </Col>
                     <Col className="col-5 align-self-end">
@@ -368,11 +368,11 @@ ForgetPasswordPage.propTypes = {
   userForgetPassword: PropTypes.func
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   const { forgetError, forgetSuccessMsg } = state.ForgetPassword;
   return { forgetError, forgetSuccessMsg }
 }
 
 export default withRouter(
-  connect(mapStatetoProps, { userForgetPassword })(ForgetPasswordPage)
+  connect(mapStateToProps, { userForgetPassword })(ForgetPasswordPage)
 )

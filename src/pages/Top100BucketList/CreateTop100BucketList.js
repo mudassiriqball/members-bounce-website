@@ -18,6 +18,7 @@ import { AccessDeniedAlert, ErrorAlert, SuccessAlert } from '../../components/Co
 import { BucketListSearchFilter } from '../../components/Common';
 import handleTopHundredSearch from '../../hooks/Searching/handleTopHundredSearch';
 import applyTopHundredFilters from '../../hooks/Filtering/applyTopHundredFilters';
+import { authenticateUser } from 'store/actions';
 
 const CreateTop100BucketList = (props) => {
   const { isLoggedIn, user } = props;
@@ -41,6 +42,10 @@ const CreateTop100BucketList = (props) => {
   const [filterBy, setFilterBy] = useState('');
 
   useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
+
+  useEffect(() => {
     if (BUCKET_LIST)
       setList(BUCKET_LIST);
     return () => {}
@@ -54,7 +59,7 @@ const CreateTop100BucketList = (props) => {
 
   // Add to bucket-list
   const addToBucketList = async (item, index) => {
-    if (user.level < 1) {
+    if (user && user.level < 1) {
       setAccessAlert(true);
     } else {
       setIsLoading(true);
@@ -122,7 +127,7 @@ const CreateTop100BucketList = (props) => {
                     return;
                   }
                   return (
-                    <Col lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
                       <TopHundredBucketListCard
                         item={item}
                         user={user}
@@ -152,13 +157,15 @@ const CreateTop100BucketList = (props) => {
                     return;
                   }
                   return (
-                    <TopHundredBucketListCard
-                      item={item}
-                      user={user}
-                      from={'CreateBucketList'}
-                      loading={isLoading}
-                      onClick={() => addToBucketList(item, index)}
-                    />
+                    <Col key={index} lg={4} md={6} sm={12} className='d-grid align-items-stretch'>
+                      <TopHundredBucketListCard
+                        item={item}
+                        user={user}
+                        from={'CreateBucketList'}
+                        loading={isLoading}
+                        onClick={() => addToBucketList(item, index)}
+                      />
+                    </Col>
                   )
                 })}
               </Row>
@@ -174,11 +181,11 @@ const CreateTop100BucketList = (props) => {
   )
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   const { isLoggedIn, user } = state.User;
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
 };
 
-export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(CreateTop100BucketList));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateTop100BucketList));

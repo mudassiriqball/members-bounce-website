@@ -392,7 +392,7 @@ const Header = props => {
 
             <div className="dropdown d-inline-block">
               <button
-                onClick={toggleTopDrawer} disabled={open}
+                onClick={toggleTopDrawer}
                 type="button"
                 className="btn header-item noti-icon right-bar-toggle "
               >
@@ -402,13 +402,14 @@ const Header = props => {
           </div>
         </div>
       </header>
-      <ReactDrawer
+      {open && <ReactDrawer
         open={open}
         position={position}
         onClose={onDrawerClose}
       >
         <RightSidebar onClose={onDrawerClose} />
       </ReactDrawer>
+      }
     </React.Fragment>
   )
 }
@@ -421,12 +422,12 @@ Header.propTypes = {
   toggleLeftmenu: PropTypes.func
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   const { layoutType, showRightSidebar, leftMenu } = state.Layout
   return { layoutType, showRightSidebar, leftMenu }
 }
 
-export default connect(mapStatetoProps, {
+export default connect(mapStateToProps, {
   showRightSidebarAction,
   toggleLeftmenu,
 })(withTranslation()(Header))
