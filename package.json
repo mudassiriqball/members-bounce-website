@@ -108,8 +108,10 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build ",
+    "start1": "react-scripts start",
+    "build1": "react-scripts build ",
+    "start": "react-scripts --max_old_space_size=4096 start",
+    "build": "react-scripts --max_old_space_size=4096 build",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,jsx,json,md,html,css,less,scss}\"",
     "test": "react-scripts test",
