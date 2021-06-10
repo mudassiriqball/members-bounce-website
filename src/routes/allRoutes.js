@@ -101,7 +101,7 @@ const userRoutes = [
   { path: routeNames.Private.ReferFriend, component: ReferFriend },
 
   // this route should be at the end of all other routes
-  { path: "/", exact: true, component: () => <Redirect to={routeNames.Dashboard} /> },
+  { path: "/", exact: true, component: () => <Redirect to={routeNames.CreateTop100BucketList} /> },
 ]
 
 const authRoutes = [
