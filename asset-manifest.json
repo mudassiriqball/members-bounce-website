@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "https://github.com/mudassiriqball/members-bounce-website/home/static/css/main.d805982c.chunk.css",
-    "main.js": "https://github.com/mudassiriqball/members-bounce-website/home/static/js/main.46e9350e.chunk.js",
-    "main.js.map": "https://github.com/mudassiriqball/members-bounce-website/home/static/js/main.46e9350e.chunk.js.map",
+    "main.js": "https://github.com/mudassiriqball/members-bounce-website/home/static/js/main.cfc783de.chunk.js",
+    "main.js.map": "https://github.com/mudassiriqball/members-bounce-website/home/static/js/main.cfc783de.chunk.js.map",
     "runtime-main.js": "https://github.com/mudassiriqball/members-bounce-website/home/static/js/runtime-main.d970cd1f.js",
     "runtime-main.js.map": "https://github.com/mudassiriqball/members-bounce-website/home/static/js/runtime-main.d970cd1f.js.map",
     "static/css/2.423a2ba7.chunk.css": "https://github.com/mudassiriqball/members-bounce-website/home/static/css/2.423a2ba7.chunk.css",
@@ -45,6 +45,6 @@
     "static/css/2.423a2ba7.chunk.css",
     "static/js/2.e169bed2.chunk.js",
     "static/css/main.d805982c.chunk.css",
-    "static/js/main.46e9350e.chunk.js"
+    "static/js/main.cfc783de.chunk.js"
   ]
 }
