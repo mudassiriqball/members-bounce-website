@@ -126,7 +126,6 @@ export default function Register(props) {
       if ((values.isMember && (values.courseLocation === '' || values.cdhId === '')) ||
         values.termsOfUse === false || values.privacy === false ||
         (values.postCode !== '' && !isPostCodeValid)) {
-        debugger
         if (values.isMember && values.courseLocation === '')
           setFieldError('courseLocation', 'Required*');
         else
@@ -136,16 +135,13 @@ export default function Register(props) {
         else
           setFieldError('cdhId', '');
         if (values.postCode === '') {
-          debugger
           setFieldError('postCode', 'Required*');
         } else if (!isPostCodeValid) {
-          debugger
           setFieldError('postCode', 'Invalid Postal Code!');
         }
         setErrorAlert(true);
         setErrMsg('Fix error first!');
       } else if (!errors.homeClub && !errors.courseLocation && !errors.cdhId && !errors.password && !errors.confirm_password && !errors.postCode) {
-        debugger
         setSteps(3);
       } else {
         setErrorAlert(true);

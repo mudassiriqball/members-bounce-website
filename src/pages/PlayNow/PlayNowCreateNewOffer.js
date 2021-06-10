@@ -15,6 +15,8 @@ import AvForm from "availity-reactstrap-validation/lib/AvForm";
 import golfersType from "helpers/golfersType";
 import { getDateAfter3Months } from "helpers/dateUtility";
 import moment from 'moment';
+import { REGEX, urls } from "helpers";
+import axios from "axios";
 
 const PlayNowCreateNewOffer = (props) => {
   const { user } = props;
@@ -22,8 +24,8 @@ const PlayNowCreateNewOffer = (props) => {
   const [dateType, setDateType] = useState('');
   const [dateTypeIndex, setDateTypeIndex] = useState(null);
   const [values, setValues] = useState({
-    club: user && user.homeClub ? user.homeClub : user.homeClub2 ? user.homeClub2 : user.homeClub3 ? user.homeClub3 : '' || '',
-    region: user && user.homeClub ? user.courseLocation : user.homeClub2 ? user.courseLocation2 : user.homeClub3 ? user.courseLocation3 : '' || '',
+    club: user && (user.homeClub ? user.homeClub : user.homeClub2 ? user.homeClub2 : user.homeClub3 ? user.homeClub3 : '' || ''),
+    region: user && (user.homeClub ? user.courseLocation : user.homeClub2 ? user.courseLocation2 : user.homeClub3 ? user.courseLocation3 : '' || ''),
     date: '',
     golferType: '',
     playWithHomeClub: false,
@@ -44,11 +46,8 @@ const PlayNowCreateNewOffer = (props) => {
 
   const [HOME_CLUB_LIST, setHOME_CLUB_LIST] = useState([]);
   const [courseForPicker, setCourseForPicker] = useState('');
-  const [golferTypeForPicker, setGolferTypeForPicker] = useState('');
-  const [showDateTimePicker, setShowDateTimePicker] = useState(false);
   const [date, setDate] = useState(new Date());
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedCourseForPicker, setSelectedCourseForPicker] = useState('');
 
   // Alerts
   const [successAlert, setSuccessAlert] = useState(false);
@@ -57,9 +56,10 @@ const PlayNowCreateNewOffer = (props) => {
 
   const { BUCKET_LIST } = getTopHundredBucketList(token, 0);
   useEffect(() => {
-    setHOME_CLUB_LIST([{
-      id: 1, value: user.homeClub
+    user && setHOME_CLUB_LIST([{
+      label: user.homeClub, value: user.homeClub
     }]);
+    user && setCourseForPicker({ label: user.homeClub, value: user.homeClub });
     if (user && user.homeClub && user.homeClub2 && user.homeClub3) {
       setHOME_CLUB_LIST([
         {
@@ -204,6 +204,7 @@ const PlayNowCreateNewOffer = (props) => {
         data: values
       }).then(res => {
         setValues({ ...values, date: '', playWithHomeClub: false, size: '', golferType: '', greenFee: '' });
+        setDateTypeIndex('');
         setIsLoading(false);
         setSuccessAlert(true);
       }).catch(err => {
@@ -215,7 +216,6 @@ const PlayNowCreateNewOffer = (props) => {
   }
 
   const handleGolferType = (item) => {
-    setGolferTypeForPicker(item);
     let id = item.value;
     setErrors({ ...errors, golferType: '' });
     if (id === 0) {
@@ -288,7 +288,7 @@ const PlayNowCreateNewOffer = (props) => {
                       type="text"
                       onChange={() => {}}
                       disabled={true}
-                      selected={values.region}
+                      value={values.region}
                       error={values.region === '' ? 'First add Course Location in your profile!' : ''}
                       mandatory
                     />
@@ -319,9 +319,9 @@ const PlayNowCreateNewOffer = (props) => {
                         setErrors({ ...errors, size: '' });
                       }}
                       options={[
-                        { label: 1, value: 2 },
-                        { label: 2, value: 3 },
-                        { label: 3, value: 4 },
+                        { label: 2, value: 2 },
+                        { label: 3, value: 3 },
+                        { label: 4, value: 4 },
                       ]}
                       classNamePrefix="select2-selection"
                       error={errors.size}
@@ -335,7 +335,7 @@ const PlayNowCreateNewOffer = (props) => {
                       selected={values.golferType}
                       onChange={handleGolferType}
                       options={
-                        user.level > 0 ?
+                        user && user.level > 0 ?
                           [
                             { value: 0, label: 'Play only with home club members' },
                             { value: 1, label: 'Any and All' },
@@ -421,7 +421,6 @@ const PlayNowCreateNewOffer = (props) => {
                       onChange={(e, text) => setValues({ ...values, description: text })}
                       selected={values.description}
                       error={values.description}
-                      mandatory
                     />
                   </Col>
                 </Row>
@@ -433,7 +432,7 @@ const PlayNowCreateNewOffer = (props) => {
                       loading={isLoading}
                       width='100%'
                       onClick={() => handleCreateNewOffer()}
-                    >Create</Button>
+                    >Create Offer</Button>
                   </Col>
                 </Row>
 
@@ -445,7 +444,6 @@ const PlayNowCreateNewOffer = (props) => {
     </>
   )
 }
-
 
 const mapStateToProps = state => {
   const { isLoggedIn, user } = state.User;

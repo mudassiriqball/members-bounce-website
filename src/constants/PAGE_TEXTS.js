@@ -9,7 +9,7 @@ export default {
   PLAY_NOW_HOME_CLUB_OFFER: 'This area is limited to the users home club members only. Send a message to your home club members to arrange a round - This will open an instant chat to arrange a time to play.',
   PLAY_NOW_PRIVATE_MUNICIPAL_OFFER: 'See below a full list of play now offers from course members. Click to see the members limited profile details before requesting to play',
   PLAY_NOW_TOP_HUNDRED_OFFER: 'See below a of Play Now offers from Top Hundred Courses.',
-  PLAY_NOW_MY_LISTNING: 'See below your listings and view your matches.',
+  PLAY_NOW_MY_LISTING: 'See below your listings and view your matches.',
   PLAY_NOW_MY_REQUESTS: 'See below for available Play Now Offers',
 
   // Reciprocal Play

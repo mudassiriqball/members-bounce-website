@@ -25,11 +25,12 @@ const PlayNowTop100 = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {}
-};
-
+const mapStateToProps = state => {
+  const { isLoggedIn, user } = state.User;
+  return { isLoggedIn, user }
+}
 const mapDispatchToProps = {
 };
+
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlayNowTop100));

@@ -34,6 +34,8 @@ export default {
     PlayNow_HomeClub: '/play-now/home-club',
     PlayNow_MyRequests: '/play-now/my-requests',
     PlayNow_MyListings: '/play-now/my-listings',
+    PlayNow_ViewMatches: '/play-now/view-matches',
+    PlayNow_ViewAndRequest: '/play-now/view-and-request',
 
     // Reciprocal Golf
     ReciprocalGolf_CreateNewRequest: '/reciprocal-golf/create-new-request',

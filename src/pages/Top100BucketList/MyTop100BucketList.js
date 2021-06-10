@@ -26,7 +26,7 @@ const MyTop100BucketList = (props) => {
   const [refresh, setRefresh] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [list, setList] = useState([]);
-  const [serachList, setSearchList] = useState([]);
+  const [searchList, setSearchList] = useState([]);
   const { IS_LOADING, MY_BUCKET_LIST } = getMyBucketList(token, refresh, user && user._id);
 
   // Filters
@@ -111,7 +111,6 @@ const MyTop100BucketList = (props) => {
           />
           <BucketListSearchFilter
             from={'TopHundredBucketList'}
-            colors={colors}
             query={query}
             handleSearch={(val) => handleTopHundredSearch(list, val, setQuery, setIsSearch, setSearchList)}
             // Filter

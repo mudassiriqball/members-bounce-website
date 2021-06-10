@@ -54,13 +54,15 @@ import PlayNowCreateNewOffer from "pages/PlayNow/PlayNowCreateNewOffer"
 import PlayNowPrivateAndMunicipal from "pages/PlayNow/PlayNowPrivateAndMunicipal"
 import PlayNowTop100 from "pages/PlayNow/PlayNowTop100"
 import PlayNowHomeClub from "pages/PlayNow/PlayNowHomeClub"
-import PlayNowMyRequests from "pages/PlayNow/PlayNowMyRequests"
-import PlayNowMyListings from "pages/PlayNow/PlayNowMyListings"
+import PlayNowMyRequests from "pages/PlayNow/PlayNowMyRequests/index"
+import PlayNowMyListings from "pages/PlayNow/PlayNowMyListings/index"
 import ReciprocalGolfCreateNewRequest from "pages/ReciprocalGolf/ReciprocalGolfCreateNewRequest"
 import ReciprocalGolfAllRequests from "pages/ReciprocalGolf/ReciprocalGolfAllRequests"
 import ReciprocalGolfMyRequests from "pages/ReciprocalGolf/ReciprocalGolfMyRequests"
 import ReciprocalGolfMyListings from "pages/ReciprocalGolf/ReciprocalGolfMyListings"
 import ReferFriend from "pages/ReferFriend"
+import ViewMatches from "pages/PlayNow/PlayNowMyListings/ViewMatches"
+import ViewAndRequest from "pages/PlayNow/ViewAndRequest"
 
 const userRoutes = [
   { path: routeNames.Private.Dashboard, component: Dashboard },
@@ -82,6 +84,8 @@ const userRoutes = [
   { path: routeNames.Private.PlayNow_HomeClub, component: PlayNowHomeClub },
   { path: routeNames.Private.PlayNow_MyRequests, component: PlayNowMyRequests },
   { path: routeNames.Private.PlayNow_MyListings, component: PlayNowMyListings },
+  { path: routeNames.Private.PlayNow_ViewMatches, component: ViewMatches },
+  { path: routeNames.Private.PlayNow_ViewAndRequest, component: ViewAndRequest },
 
   // Reciprocal Golf
   { path: routeNames.Private.ReciprocalGolf_CreateNewRequest, component: ReciprocalGolfCreateNewRequest },

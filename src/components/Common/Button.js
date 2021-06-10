@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Spinner } from "reactstrap";
+import { Button as RButton, Spinner } from "reactstrap";
 import classnames from "classnames";
 
-export default ({ children, loading, block, color, width, ...rest }) => (
-  <Button {...rest} color={color ? color : 'primary'} block={block} style={{ width: width ? width : '100%' }}>
+const Button = ({ children, loading, block, color, width, ...rest }) => (
+  <RButton {...rest} color={color ? color : 'primary'} block={block} style={{ width: width ? width : '100%' }}>
     {loading && <Spinner
       className={classnames({
         "position-relative": true,
@@ -14,5 +14,7 @@ export default ({ children, loading, block, color, width, ...rest }) => (
       size="sm"
     />}
     {!loading && children}
-  </Button>
+  </RButton>
 );
+
+export default Button;

@@ -15,8 +15,8 @@ export default function RegisterReview(props) {
           values.role === "customer"
             ? "Customer"
             : values.role === "courseManager"
-            ? "Course Manager"
-            : ""
+              ? "Course Manager"
+              : ""
         }
         disabled
       />
@@ -48,13 +48,6 @@ export default function RegisterReview(props) {
         value={values.cdhId}
         disabled
       />
-      {/* <AvField
-        label={'Password'}
-        value={values.password}
-        secureTextEntry={showPassword ? false : true}
-        right={<TextInput.Icon name={showPassword ? 'eye-off' : 'eye'} size={20} color={colors.SEC_MAIN} onClick={() => setShowPassword(!showPassword)} />}
-        disabled
-      /> */}
       <div className="mb-3 position-relative">
         <AvField
           name="password"

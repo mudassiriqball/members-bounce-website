@@ -5,18 +5,18 @@ import { Container } from "reactstrap";
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb"
 
-const PlayNowMyListings = (props) => {
+const PlayNowMyRequests = (props) => {
   return (
     <>
       <div className='page-content'>
         <MetaTags>
-          <title>My Listings | Members Bounce</title>
+          <title>My Requests | Members Bounce</title>
         </MetaTags>
         <Container fluid>
           {/* Render Breadcrumb */}
           <Breadcrumbs
             title={'Play Now'}
-            breadcrumbItem={'My Listings'}
+            breadcrumbItem={'My Requests'}
           />
 
         </Container>
@@ -25,11 +25,12 @@ const PlayNowMyListings = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {}
-};
-
+const mapStateToProps = state => {
+  const { isLoggedIn, user } = state.User;
+  return { isLoggedIn, user }
+}
 const mapDispatchToProps = {
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlayNowMyListings));
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlayNowMyRequests));

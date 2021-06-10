@@ -32,7 +32,7 @@ export default function getMyListings(token, refresh, _id, isHistory) {
         console.log('getMyListings  Error:', err);
       });
     }
-    if (token) {
+    if (token && _id) {
       getData();
     }
     return () => {

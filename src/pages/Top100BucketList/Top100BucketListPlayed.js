@@ -93,7 +93,6 @@ const Top100BucketListPlayed = (props) => {
           />
           <BucketListSearchFilter
             from={'TopHundredBucketList'}
-            colors={colors}
             query={query}
             handleSearch={(val) => handleTopHundredSearch(list, val, setQuery, setIsSearch, setSearchList)}
             // Filter

@@ -80,9 +80,21 @@
   border-radius: 5px;
 }
 
-.abc {
-  border-color: #a94442;
+.tab-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: medium;
+  font-weight: bold;
+  padding: 1%;
 }
-.bca {
-  border-color: #a94442;
+
+.tab-row {
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  margin-right: 5px;
+  margin-left: 5px;
 }

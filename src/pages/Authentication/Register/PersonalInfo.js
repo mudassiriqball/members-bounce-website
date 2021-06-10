@@ -317,7 +317,7 @@ export default function PersonalInfo(props) {
           </div>
         </div>
         {/* <div >
-          <Switch value={isTermsOfUse} color={colors.SEC_MAIN} onValueChange={(e) => onToggleTermsOfUseSwitch(e)} />
+          <Switch value={isTermsOfUse} onValueChange={(e) => onToggleTermsOfUseSwitch(e)} />
         </div> */}
       </div>
       {errors.termsOfUse && touched.termsOfUse && Error(errors.termsOfUse)}
@@ -332,7 +332,7 @@ export default function PersonalInfo(props) {
           </Label> */}
         </div>
         <div>
-          {/* <Switch value={isPrivacy} color={colors.SEC_MAIN} onValueChange={(e) => onTogglePrivacySwitch(e)} /> */}
+          {/* <Switch value={isPrivacy} onValueChange={(e) => onTogglePrivacySwitch(e)} /> */}
         </div>
       </div>
       {errors.privacy && touched.privacy && Error(errors.privacy)}
