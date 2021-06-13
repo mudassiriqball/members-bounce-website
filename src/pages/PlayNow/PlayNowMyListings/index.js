@@ -10,7 +10,7 @@ import { Breadcrumbs } from "../../../components/Common"
 import Matches from "./Matches";
 
 const PlayNowMyListings = (props) => {
-  const { user } = props;
+  const { user, authenticateUser } = props;
   const token = getBearerToken();
   const [reload, setReload] = useState(0);
   const [isTabOne, setIsTabOne] = useState(true);
@@ -65,6 +65,7 @@ const mapStateToProps = state => {
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
+  authenticateUser
 };
 
 

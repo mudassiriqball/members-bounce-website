@@ -2,24 +2,24 @@ import moment from "moment";
 const SERVER_FORMATE = 'DD-MM-YYYY HH:mm:ss';
 const SERVER_FORMATE_ONLY_DATE = 'DD-MM-YYYY';
 const DOB_PICKER_FORMATE = 'MM-DD-YYYY';
-const SERVER_ALPHABAT_FORMATE = 'Do MMM YYYY h:mm a';
-const SERVER_ALPHABAT_FORMATE_ONLY_DATE = 'Do MMM YYYY';
+const SERVER_ALPHABET_FORMATE = 'Do MMM YYYY h:mm a';
+const SERVER_ALPHABET_FORMATE_ONLY_DATE = 'Do MMM YYYY';
 
-export const converToServerFormate = date => {
+export const convertToServerFormate = date => {
   return moment(date).format('DD-MM-YYYY');
 }
-export const converToServerFormatDateOnly = date => {
+export const convertToServerFormatDateOnly = date => {
   return moment(date).format(SERVER_FORMATE);
 }
-export const converToServerAlphabatFormat = date => {
-  return moment(date).format(SERVER_ALPHABAT_FORMATE);
+export const convertToServerAlphabetFormat = date => {
+  return moment(date).format(SERVER_ALPHABET_FORMATE);
 }
 
-export const converToAlphabatFromServerFormat = (date, isOnlyDate) => {
+export const convertToAlphabetFromServerFormat = (date, isOnlyDate) => {
   if (isOnlyDate)
-    return moment(date, SERVER_FORMATE_ONLY_DATE).format(SERVER_ALPHABAT_FORMATE_ONLY_DATE);
+    return moment(date, SERVER_FORMATE_ONLY_DATE).format(SERVER_ALPHABET_FORMATE_ONLY_DATE);
   else
-    return moment(date, SERVER_FORMATE).format(SERVER_ALPHABAT_FORMATE);
+    return moment(date, SERVER_FORMATE).format(SERVER_ALPHABET_FORMATE);
 }
 
 export const getMaxDateForDob = () => {
@@ -31,7 +31,7 @@ export const convertToDOBFormate = () => {
 }
 
 export const convertFromDbToServerAlphabet = (date) => {
-  return moment(date).format(SERVER_ALPHABAT_FORMATE);
+  return moment(date).format(SERVER_ALPHABET_FORMATE);
 }
 
 export const getDateAfter3Months = () => {

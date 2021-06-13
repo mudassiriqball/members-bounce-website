@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from 'prop-types'
 import ReactDrawer from 'react-drawer';
 
@@ -30,17 +30,24 @@ import dribbble from "../../assets/images/brands/dribbble.png"
 import dropbox from "../../assets/images/brands/dropbox.png"
 import mail_chimp from "../../assets/images/brands/mail_chimp.png"
 import slack from "../../assets/images/brands/slack.png"
+import { authenticateUser } from 'store/actions';
 
 //i18n
 import { withTranslation } from "react-i18next"
 import routeNames from "../../routes/routeNames";
 
 const Header = props => {
+  const { user, authenticateUser } = props;
   const [menu, setMenu] = useState(false)
   const [isSearch, setSearch] = useState(false)
   const [socialDrp, setsocialDrp] = useState(false)
   const [position, setPosition] = useState();
   const [open, setOpen] = useState(false);
+
+
+  useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
 
   const toggleTopDrawer = () => {
     setPosition('right');
@@ -414,20 +421,14 @@ const Header = props => {
   )
 }
 
-Header.propTypes = {
-  leftMenu: PropTypes.any,
-  showRightSidebar: PropTypes.any,
-  showRightSidebarAction: PropTypes.func,
-  t: PropTypes.any,
-  toggleLeftmenu: PropTypes.func
-}
-
 const mapStateToProps = state => {
   const { layoutType, showRightSidebar, leftMenu } = state.Layout
-  return { layoutType, showRightSidebar, leftMenu }
+  const { isLoggedIn, user } = state.User;
+  return { layoutType, showRightSidebar, leftMenu, isLoggedIn, user }
 }
 
 export default connect(mapStateToProps, {
   showRightSidebarAction,
   toggleLeftmenu,
+  authenticateUser,
 })(withTranslation()(Header))

@@ -9,9 +9,16 @@ import {
 } from 'helpers/requestStatus';
 import { MetaTags } from 'react-meta-tags';
 import { Container, Row, Col, Label } from "reactstrap";
+import { withRouter } from 'react-router-dom';
+import { connect } from 'formik';
+import { authenticateUser } from 'store/actions';
+import { getBearerToken } from 'helpers/authentication';
+import Swal from 'sweetalert2';
+import theme from 'constants/theme';
 
-export default function ViewMatches(props) {
-  const { user, token, navigation } = props;
+const ViewMatches = (props) => {
+  const { user, authenticateUser, history } = props;
+  const token = getBearerToken();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +27,10 @@ export default function ViewMatches(props) {
   const [isHistory, setIsHistory] = useState(false);
   const [showRatingReviewModel, setShowRatingReviewModel] = useState(false);
   const [data, setData] = useState(null);
+
+  useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
 
   useEffect(() => {
     setRequests([]);
@@ -73,150 +84,175 @@ export default function ViewMatches(props) {
 
   // Handle Accept Request
   const handleAcceptRequest = async (element) => {
-    alert(
-      'Accept Play Now Request?',
-      'Are you sure you want to accept this offer?',
-      [
-        { text: "Cancel", style: 'cancel', onClick: () => {} },
-        {
-          text: 'Confirm',
-          style: 'default',
-          onClick: async () => {
-            setIsLoading(true);
-            await axios({
-              method: 'PUT',
-              url: urls.ACCEPT_REQUEST_PLAY_NOW_OFFER + item._id,
-              headers: {
-                'authorization': token
-              },
-              data: {
-                size: item.size,
-                req_id: element.reqData._id,
-                homeClub: true,
-              }
-            }).then(res => {
-              setIsLoading(false);
-              if (res.data.code == 202) {
-                // toastRef && toastRef.current && toastRef.current.show('Group deleted or full!', CONSTS.TOAST_MEDIUM_DURATION, () => {});
-              } else if (res.data.code == 201) {
-                // toastRef && toastRef.current && toastRef.current.show('Group is full !', CONSTS.TOAST_MEDIUM_DURATION, () => {});
-              } else {
-                sendNotification(
-                  token,
-                  element.user._id,
-                  user._id,
-                  Notifications.PLAY_NOW_TITLE,
-                  Notifications.PLAY_NOW_ACCEPTED_BODY,
-                  { req_id: item._id, type: Notifications.PLAY_NOW, sub_type: Notifications.LISTING }
-                );
-                // toastRef && toastRef.current && toastRef.current.show('Your request was processed successfully.', CONSTS.TOAST_MEDIUM_DURATION, () => {
-                //   navigation.navigate('Members');
-                // });
-              }
-            }).catch(err => {
-              console.log('handleAcceptRequest:', err);
-              setIsLoading(false);
-              // toastRef && toastRef.current && toastRef.current.show('Something wents wrong, Please try again later!', CONSTS.TOAST_MEDIUM_DURATION, () => {});
-            });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: ' You want to accept this Play Now request?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: theme.LightThemeColors.RED,
+      confirmButtonText: 'Yes, accept',
+      cancelButtonColor: theme.LightThemeColors.SUCCESS,
+      cancelButtonText: 'Cancel '
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        setIsLoading(true);
+        await axios({
+          method: 'PUT',
+          url: urls.ACCEPT_REQUEST_PLAY_NOW_OFFER + item._id,
+          headers: {
+            'authorization': token
           },
-        },
-      ]
-    );
+          data: {
+            size: item.size,
+            req_id: element.reqData._id,
+            homeClub: true,
+          }
+        }).then(res => {
+          setIsLoading(false);
+          if (res.data.code == 202) {
+            Swal.fire(
+              'Error!',
+              'Group deleted or is full!',
+              'error'
+            )
+          } else if (res.data.code == 201) {
+            Swal.fire(
+              'Error!',
+              'Group is full!',
+              'error'
+            )
+          } else {
+            sendNotification(
+              token,
+              element.user._id,
+              user._id,
+              Notifications.PLAY_NOW_TITLE,
+              Notifications.PLAY_NOW_ACCEPTED_BODY,
+              { req_id: item._id, type: Notifications.PLAY_NOW, sub_type: Notifications.LISTING }
+            );
+            Swal.fire(
+              'Success!',
+              'Your request processed successfully',
+              'success'
+            )
+          }
+        }).catch(err => {
+          console.log('handleAcceptRequest:', err);
+          setIsLoading(false);
+          Swal.fire(
+            'Error',
+            'Something went wrong, Please try again later!',
+            'error'
+          )
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {}
+    });
   }
 
   // Handle Decline Request
   const handleDeclineRequest = async (element) => {
-    alert(
-      'Decline Play Now Request?',
-      'If you decline, The request will deleted permanently and can\'t be reterived again?',
-      [
-        { text: "Cancel", style: 'cancel', onClick: () => {} },
-        {
-          text: 'Confirm',
-          style: 'default',
-          onClick: async () => {
-            setIsLoading(true);
-            await axios({
-              method: 'PUT',
-              url: urls.DECLINE_REQUEST_PLAY_NOW_OFFER + item._id,
-              headers: {
-                'authorization': token
-              },
-              data: {
-                req_id: element.reqData._id,
-              }
-            }).then(res => {
-              setIsLoading(false);
-              sendNotification(
-                token,
-                element.user._id,
-                user._id,
-                Notifications.PLAY_NOW_TITLE,
-                Notifications.PLAY_NOW_DECLINED_BODY,
-                { req_id: item._id, type: Notifications.PLAY_NOW, sub_type: Notifications.LISTING }
-              );
-              // toastRef && toastRef.current && toastRef.current.show('Your request was processed successfully.', CONSTS.TOAST_MEDIUM_DURATION, () => {
-              //   navigation.navigate('Members');
-              // });
-            }).catch(err => {
-              console.log('ernnr:', err);
-              setIsLoading(false);
-              // toastRef && toastRef.current && toastRef.current.show('Something wents wrong, Please try again later!', CONSTS.TOAST_MEDIUM_DURATION, () => {});
-            });
+    Swal.fire({
+      title: 'Decline Reciprocal Play Request?',
+      text: ' If you decline, The request will deleted permanently and can\'t be retrieved again?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: theme.LightThemeColors.RED,
+      confirmButtonText: 'Yes, accept',
+      cancelButtonColor: theme.LightThemeColors.SUCCESS,
+      cancelButtonText: 'Cancel '
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        setIsLoading(true);
+        await axios({
+          method: 'PUT',
+          url: urls.DECLINE_REQUEST_PLAY_NOW_OFFER + item._id,
+          headers: {
+            'authorization': token
           },
-        },
-      ]
-    );
+          data: {
+            req_id: element.reqData._id,
+          }
+        }).then(res => {
+          setIsLoading(false);
+          sendNotification(
+            token,
+            element.user._id,
+            user._id,
+            Notifications.PLAY_NOW_TITLE,
+            Notifications.PLAY_NOW_DECLINED_BODY,
+            { req_id: item._id, type: Notifications.PLAY_NOW, sub_type: Notifications.LISTING }
+          );
+          Swal.fire(
+            'Success!',
+            'Your request processed successfully',
+            'success'
+          )
+        }).catch(err => {
+          console.log('ernnr:', err);
+          setIsLoading(false);
+          Swal.fire(
+            'Error',
+            'Something went wrong, Please try again later!',
+            'error'
+          )
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {}
+    });
   }
 
   // Set Match Started or Played
   const handleUpdateMatchStatus = async (status) => {
-    alert(
-      'Warning',
-      'Are you sure?',
-      [
-        {
-          text: "Cancel", style: 'cancel', onClick: () => {}
-        },
-        {
-          text: "Confirm", style: 'destructive', onClick: async () => {
-            setIsLoading(true);
-            await axios({
-              method: 'PUT',
-              url: urls.UPDATE_PLAY_NOW_MATCH_STATUS + item._id,
-              headers: {
-                'authorization': token
-              },
-              data: { status }
-            }).then(res => {
-              setIsLoading(false);
-              item.requests.forEach(data => {
-                if (data.status === REQUEST_ACCEPTED)
-                  sendNotification(
-                    token,
-                    data.user_id,
-                    user._id,
-                    Notifications.PLAY_NOW_TITLE,
-                    status === MATCH_STARTED ?
-                      Notifications.PLAY_NOW_MATCH_STARTED_BODY
-                      :
-                      Notifications.PLAY_NOW_MATCH_FINISHED_BODY,
-                    { req_id: item._id, type: Notifications.PLAY_NOW, sub_type: Notifications.LISTING }
-                  );
-              });
-              // toastRef.current.show('Your request was processed successfully.', CONSTS.TOAST_MEDIUM_DURATION, () => {
-              //   navigation.navigate('Members');
-              // });
-            }).catch(err => {
-              console.log('handleDeleteMyOffer err:', err);
-              setIsLoading(false);
-              // toastRef.current.show('Something went wrong, Please try again later!', CONSTS.TOAST_MEDIUM_DURATION, () => {
-              // });
-            });
-          }
-        },
-      ]
-    );
+    Swal.fire({
+      title: 'Are you sure?',
+      text: ' You want to start the match.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: theme.LightThemeColors.RED,
+      confirmButtonText: 'Yes, accept',
+      cancelButtonColor: theme.LightThemeColors.SUCCESS,
+      cancelButtonText: 'Cancel '
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        setIsLoading(true);
+        await axios({
+          method: 'PUT',
+          url: urls.UPDATE_PLAY_NOW_MATCH_STATUS + item._id,
+          headers: {
+            'authorization': token
+          },
+          data: { status }
+        }).then(res => {
+          setIsLoading(false);
+          item.requests.forEach(data => {
+            if (data.status === REQUEST_ACCEPTED)
+              sendNotification(
+                token,
+                data.user_id,
+                user._id,
+                Notifications.PLAY_NOW_TITLE,
+                status === MATCH_STARTED ?
+                  Notifications.PLAY_NOW_MATCH_STARTED_BODY
+                  :
+                  Notifications.PLAY_NOW_MATCH_FINISHED_BODY,
+                { req_id: item._id, type: Notifications.PLAY_NOW, sub_type: Notifications.LISTING }
+              );
+          });
+          Swal.fire(
+            'Success!',
+            'Your request processed successfully',
+            'success'
+          )
+        }).catch(err => {
+          console.log('handleDeleteMyOffer err:', err);
+          setIsLoading(false);
+          Swal.fire(
+            'Error',
+            'Something went wrong, Please try again later!',
+            'error'
+          )
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {}
+    });
   }
 
   if (loading) {
@@ -263,7 +299,11 @@ export default function ViewMatches(props) {
                       {item.requests[index].status === REQUEST_ACCEPTED_AND_PAID &&
                         <Button
                           disabled={user._id === element.user._id}
-                          onClick={() => navigation.navigate('ChatScreen', { sender: user, receiver: element.user })}
+                          onClick={() => history.push({
+                            pathname: routeNames.Private.Chat,
+                            sender: user,
+                            receiver: element.user
+                          })}
                         >Chat</Button>
                       }
                       {(item.requests[index].status === REQUEST_PENDING || item.requests[index].status === REQUEST_ACCEPTED) &&
@@ -309,3 +349,15 @@ export default function ViewMatches(props) {
     </>
   )
 }
+
+
+const mapStateToProps = state => {
+  const { isLoggedIn, user } = state.User;
+  return { isLoggedIn, user }
+}
+const mapDispatchToProps = {
+  authenticateUser
+};
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ViewMatches));

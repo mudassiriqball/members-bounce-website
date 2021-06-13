@@ -84,7 +84,6 @@ class AppLayout extends Component {
           <div className="main-content mb-5">{this.props.children}</div>
           <Footer />
         </div>
-
         {this.props.showRightSidebar ? <Rightbar hideOptions={true} /> : null}
       </React.Fragment>
     )

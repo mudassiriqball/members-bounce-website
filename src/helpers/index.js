@@ -3,6 +3,7 @@ import REGEX from './regex';
 import PAYMENT from './payment';
 import { getGolferType } from './golfersType';
 import Notifications from './notifications';
+import firebase from './firebase';
 
 export {
   urls,
@@ -10,4 +11,5 @@ export {
   PAYMENT,
   getGolferType,
   Notifications,
+  firebase,
 }

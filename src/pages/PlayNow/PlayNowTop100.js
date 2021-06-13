@@ -10,9 +10,10 @@ import { withRouter } from "react-router-dom";
 import { Col, Container, Row, Label } from "reactstrap";
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb"
+import { authenticateUser } from 'store/actions';
 
 const PlayNowTop100 = (props) => {
-  const { user } = props;
+  const { user, authenticateUser } = props;
   const token = getBearerToken();
   const [isSearch, setIsSearch] = useState(false);
   const [query, setQuery] = useState('');
@@ -24,6 +25,10 @@ const PlayNowTop100 = (props) => {
   // Filters
   const [filterType, setFilterType] = useState('');
   const [filterBy, setFilterBy] = useState('');
+
+  useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
 
   useEffect(() => {
     const clearTimeout = setTimeout(() => {
@@ -145,6 +150,7 @@ const mapStateToProps = state => {
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
+  authenticateUser
 };
 
 

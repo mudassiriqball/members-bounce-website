@@ -1,3 +1,4 @@
 export const AUTHENTICATE_USER = 'AUTHENTICATE_USER'
 export const SET_LOGGED_IN = "SET_LOGGED_IN"
 export const SET_USER = "SET_USER"
+export const VERIFY_USER_ACTION = 'VERIFY_USER_ACTION'

@@ -21,7 +21,6 @@ const PlayNowSearchFilter = (props) => {
               value={query}
               className="form-control bg-white text-black-50 search"
               placeholder={"Search here"}
-              placeholderColor={'red'}
               onChange={(e) => handleSearch(e.target.value)}
             />
             {query !== '' ?

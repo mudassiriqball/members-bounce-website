@@ -9,6 +9,8 @@ import Breadcrumbs from './Breadcrumb';
 import UserDetailsCard from './UserDetailsCard';
 import RateAndReviewModel from './Modals/RateAndReviewModel';
 import ConfirmPlayNowRequestModal from './Modals/ConfirmPlayNowRequestModal';
+import NotificationCard from './Cards/NotificationCard';
+import ReciprocalPlayCard from './Cards/ReciprocalPlayCard';
 
 export {
   AccessDeniedAlert,
@@ -25,4 +27,6 @@ export {
   UserDetailsCard,
   RateAndReviewModel,
   ConfirmPlayNowRequestModal,
+  NotificationCard,
+  ReciprocalPlayCard,
 }

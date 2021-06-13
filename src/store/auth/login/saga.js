@@ -11,6 +11,7 @@ import { setIsLoggedIn, setUser } from "../user/actions"
 import { postRequest } from "../../../helpers/api_helper";
 import routeNames from "../../../routes/routeNames";
 import { urls } from "../../../helpers";
+import { changeLayout } from "store/layout/actions";
 
 function* loginUser({ payload: { user, history } }) {
   try {
@@ -25,6 +26,7 @@ function* loginUser({ payload: { user, history } }) {
       yield put(loginSuccess(response.token)),
       yield put(setUser(_token.data)),
       yield put(setIsLoggedIn(true)),
+      yield put(changeLayout('vertical')),
     ]);
     history.push(routeNames.Private.Dashboard);
   } catch (error) {
@@ -34,7 +36,7 @@ function* loginUser({ payload: { user, history } }) {
 
 function* logoutUser({ payload: { history } }) {
   try {
-    localStorage.removeItem("authUser");
+    localStorage.removeItem("accessToken");
     yield all([
       yield put(setUser(null)),
       yield put(setIsLoggedIn(false)),

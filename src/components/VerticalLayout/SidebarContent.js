@@ -186,13 +186,31 @@ const SidebarContent = props => {
               </ul>
             </li>
             {/* End Of Members */}
+
+            {/* Chat */}
+            <li>
+              <Link to={routeNames.Private.Chat} className="">
+                <i className="bx bx-chat"></i>
+                <span>{"Chat"}</span>
+              </Link>
+            </li>
+
+            {/* Notifications */}
+            <li>
+              <Link to={routeNames.Private.Notifications} className="">
+                <i className="bx bx-bell"></i>
+                <span>{"Notifications"}</span>
+              </Link>
+            </li>
+
+            {/* Refer Friend */}
             <li>
               <Link to={routeNames.Private.ReferFriend} className="">
                 <i className="mdi mdi-golf-tee"></i>
                 <span>{"Refer Friend"}</span>
               </Link>
             </li>
-            {/* Refer Friend */}
+
           </ul>
         </div>
       </SimpleBar>

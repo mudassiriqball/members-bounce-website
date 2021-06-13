@@ -11,9 +11,6 @@ import { withRouter, Link } from "react-router-dom"
 // availity-reactstrap-validation
 import { AvForm, AvField } from "availity-reactstrap-validation"
 
-// action
-import { userForgetPassword } from "../../store/actions"
-
 // import images
 import profile from "../../assets/images/profile-img.png"
 import logo from "../../assets/images/logo.svg"
@@ -24,10 +21,6 @@ import Error from '../../components/Common/Error';
 
 const ForgetPasswordPage = props => {
   const { history } = props;
-
-  // function handleValidSubmit(event, values) {
-  //   props.userForgetPassword(values, props.history)
-  // }
   const [email, setEmail] = useState('');
   const [emailErr, setEmailErr] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -361,18 +354,9 @@ const ForgetPasswordPage = props => {
   )
 }
 
-ForgetPasswordPage.propTypes = {
-  forgetError: PropTypes.any,
-  forgetSuccessMsg: PropTypes.any,
-  history: PropTypes.object,
-  userForgetPassword: PropTypes.func
-}
-
 const mapStateToProps = state => {
-  const { forgetError, forgetSuccessMsg } = state.ForgetPassword;
-  return { forgetError, forgetSuccessMsg }
 }
 
 export default withRouter(
-  connect(mapStateToProps, { userForgetPassword })(ForgetPasswordPage)
+  connect(mapStateToProps, {})(ForgetPasswordPage)
 )

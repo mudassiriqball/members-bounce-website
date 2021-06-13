@@ -4,20 +4,12 @@ import { all, fork } from "redux-saga/effects"
 import UserSaga from './auth/user/saga'
 
 //public
-import AccountSaga from "./auth/register/saga"
 import AuthSaga from "./auth/login/saga"
-import ForgetSaga from "./auth/forgetpwd/saga"
-import ProfileSaga from "./auth/profile/saga"
 import LayoutSaga from "./layout/saga"
-import ecommerceSaga from "./e-commerce/saga"
-import calendarSaga from "./calendar/saga"
 import chatSaga from "./chat/saga"
-import cryptoSaga from "./crypto/saga"
-import invoiceSaga from "./invoices/saga"
-import projectsSaga from "./projects/saga"
-import mailsSaga from "./mails/saga"
-import tasksSaga from "./tasks/saga"
-import contactsSaga from "./contacts/saga"
+
+// Notifications
+import notificationSaga from './notifications/saga';
 
 export default function* rootSaga() {
   yield all([
@@ -25,19 +17,11 @@ export default function* rootSaga() {
     UserSaga(),
 
     //public
-    AccountSaga(),
     fork(AuthSaga),
-    ProfileSaga(),
-    ForgetSaga(),
     LayoutSaga(),
-    fork(ecommerceSaga),
-    fork(calendarSaga),
-    fork(chatSaga),
-    fork(cryptoSaga),
-    fork(invoiceSaga),
-    fork(projectsSaga),
-    fork(mailsSaga),
-    fork(tasksSaga),
-    fork(contactsSaga),
+    chatSaga(),
+
+    // Notifications
+    notificationSaga(),
   ])
 }

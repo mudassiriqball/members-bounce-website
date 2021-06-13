@@ -9,6 +9,7 @@ import { userRoutes, authRoutes } from "./routes/allRoutes"
 
 // Import all middleware
 import Authmiddleware from "./routes/middleware/Authmiddleware"
+import UserMiddleware from 'routes/middleware/UserMiddleware'
 
 // layouts Format
 import VerticalLayout from "./components/VerticalLayout/"
@@ -20,35 +21,17 @@ import "./assets/scss/theme.scss"
 import "./assets/scss/my_custom.scss"
 
 // Import Firebase Configuration file
-import { initFirebaseBackend } from "./helpers/firebase_helper"
 
 // import fakeBackend from "./helpers/AuthType/fakeBackend"
 import AppLayout from './components/AppLayout'
-import { authenticateUser } from './store/actions';
+import { verifyUserAction } from './store/actions';
 import routeNames from './routes/routeNames'
 
-// Activating fake backend
-// fakeBackend()
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDfhe0w6m7yUZgkgdP5pIyYVj0nwoxbKLs",
-  authDomain: "members-bounce-abe10.firebaseapp.com",
-  projectId: "members-bounce-abe10",
-  storageBucket: "members-bounce-abe10.appspot.com",
-  messagingSenderId: "517239518560",
-  appId: "1:517239518560:web:c5fd323152d84a3ba81a05",
-  measurementId: "G-Q76FGHKK2G",
-  databaseURL: "https://members-bounce-abe10-default-rtdb.firebaseio.com/"
-};
-
-// init firebase backend
-initFirebaseBackend(firebaseConfig);
-
 const App = props => {
-  const { authenticateUser, history } = props;
+  const { verifyUserAction, history } = props;
 
   useEffect(() => {
-    authenticateUser();
+    verifyUserAction();
   }, []);
 
   function getLayout() {
@@ -84,7 +67,7 @@ const App = props => {
           ))}
 
           {userRoutes.map((route, idx) => (
-            <Authmiddleware
+            <UserMiddleware
               path={route.path}
               layout={Layout}
               component={route.component}
@@ -110,4 +93,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { authenticateUser })(App);
+export default connect(mapStateToProps, { verifyUserAction })(App);

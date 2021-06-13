@@ -2,7 +2,8 @@ import React from "react"
 import { Redirect } from "react-router-dom"
 
 // // Pages Component
-import Chat from "../pages/Chat/Chat"
+import Chat from "../pages/Chat/index"
+import Notifications from '../pages/Notifications/index';
 
 // Profile
 import UserProfile from "../pages/Authentication/user-profile"
@@ -63,7 +64,9 @@ import ReciprocalGolfMyListings from "pages/ReciprocalGolf/ReciprocalGolfMyListi
 import ReferFriend from "pages/ReferFriend/index"
 import ViewMatches from "pages/PlayNow/PlayNowMyListings/ViewMatches"
 import ViewAndRequest from "pages/PlayNow/ViewAndRequest"
-
+import ReciprocalPlayViewAndRequest from "pages/ReciprocalGolf/ReciprocalPlayViewAndRequest";
+import ViewReciprocalMatches from "pages/ReciprocalGolf/ReciprocalGolfMyListings/ViewReciprocalMatches";
+// import ReciprocalPlayViewAndRequest
 const userRoutes = [
   { path: routeNames.Private.Dashboard, component: Dashboard },
 
@@ -92,7 +95,8 @@ const userRoutes = [
   { path: routeNames.Private.ReciprocalGolf_AllRequests, component: ReciprocalGolfAllRequests },
   { path: routeNames.Private.ReciprocalGolf_MyRequests, component: ReciprocalGolfMyRequests },
   { path: routeNames.Private.ReciprocalGolf_MyListings, component: ReciprocalGolfMyListings },
-
+  { path: routeNames.Private.ReciprocalPlay_ViewMatches, component: ViewReciprocalMatches },
+  { path: routeNames.Private.ReciprocalPlay_ViewAndRequest, component: ReciprocalPlayViewAndRequest },
 
   // Refer
   { path: routeNames.Private.ReferFriend, component: ReferFriend },
@@ -100,6 +104,7 @@ const userRoutes = [
   // Profile
   { path: routeNames.Private.UserProfile, component: UserProfile },
   { path: routeNames.Private.Chat, component: Chat },
+  { path: routeNames.Private.Notifications, component: Notifications },
 
 
   // this route should be at the end of all other routes

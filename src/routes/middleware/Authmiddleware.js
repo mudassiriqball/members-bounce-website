@@ -13,10 +13,10 @@ const Authmiddleware = ({
   <Route
     {...rest}
     render={props => {
-      if (isAuthProtected && !localStorage.getItem("authUser")) {
+      if (localStorage.getItem("accessToken") && props.location.pathname !== '/logout') {
         return (
           <Redirect
-            to={{ pathname: routeNames.Home, state: { from: props.location } }}
+            to={{ pathname: routeNames.Private.Dashboard, state: { from: props.location } }}
           />
         )
       }

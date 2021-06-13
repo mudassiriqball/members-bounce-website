@@ -22,6 +22,7 @@ import logo from "../../assets/images/logo.svg"
 import logoLight from "../../assets/images/logo-light.png"
 import logoLightSvg from "../../assets/images/logo-light.svg"
 import logoDark from "../../assets/images/logo-dark.png"
+import { authenticateUser } from 'store/actions';
 
 // Components
 import Button from '../Common/Button';
@@ -31,13 +32,17 @@ import { withTranslation } from "react-i18next"
 import routeNames from "../../routes/routeNames";
 
 const Header = props => {
-  const { isLoggedIn, user, history } = props;
+  const { isLoggedIn, user, history, authenticateUser } = props;
 
   const [menu, setMenu] = useState(false)
   const [isSearch, setSearch] = useState(false)
   const [socialDrp, setsocialDrp] = useState(false)
   const [position, setPosition] = useState('right');
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
 
   const toggleTopDrawer = () => {
     setOpen(!open)
@@ -178,4 +183,5 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   showRightSidebarAction,
   toggleLeftmenu,
+  authenticateUser,
 })(withTranslation()(Header))

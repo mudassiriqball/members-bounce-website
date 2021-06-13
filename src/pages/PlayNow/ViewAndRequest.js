@@ -15,7 +15,7 @@ import { authenticateUser } from 'store/actions';
 
 const ViewAndRequest = (props) => {
   const { MEMBERS_ONLY_CLUBS } = getMembersOnlyClubs();
-  const { user } = props;
+  const { user, authenticateUser } = props;
   const token = getBearerToken();
   const [item, setItem] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -177,7 +177,7 @@ const ViewAndRequest = (props) => {
                       Swal.fire(
                         'Access Denied',
                         'Sorry you can not request for members only club, Only users with level 2 can access them, upgrade your account to access.',
-                        'warning',
+                        'error',
                       )
                     } else {
                       setShowConfirmRequestModel(true);
@@ -200,6 +200,7 @@ const mapStateToProps = state => {
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
+  authenticateUser
 };
 
 

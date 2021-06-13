@@ -7,15 +7,10 @@ import { logoutUser } from "../../store/actions"
 
 const Logout = props => {
   useEffect(() => {
-    props.logoutUser(props.history)
+    props.logoutUser(props.history);
   })
 
   return <React.Fragment></React.Fragment>
-}
-
-Logout.propTypes = {
-  history: PropTypes.object,
-  logoutUser: PropTypes.func
 }
 
 export default withRouter(connect(null, { logoutUser })(Logout))

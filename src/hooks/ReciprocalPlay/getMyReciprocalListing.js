@@ -24,6 +24,7 @@ export default function getMyReciprocalListing(token, refresh, _id, isHistory) {
         params: { history: isHistory },
         cancelToken: source.token
       }).then(res => {
+        debugger
         setLoading(false)
         setList(res.data.data);
       }).catch(err => {
@@ -32,7 +33,7 @@ export default function getMyReciprocalListing(token, refresh, _id, isHistory) {
         console.log('getMyReciprocalListing  Error:', err);
       });
     }
-    if (token) {
+    if (token && _id) {
       getData();
     }
     return () => {

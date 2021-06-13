@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Card, CardBody, Container, Row, Col, Label } from "reactstrap";
 //Import Breadcrumb
+import React from 'react';
 import Breadcrumbs from "../../components/Common/Breadcrumb"
 import CustomSelect from "components/Common/CustomSelect";
 import CustomAvField from "components/Common/CustomAvField";
@@ -426,7 +427,7 @@ const PlayNowCreateNewOffer = (props) => {
                       type="textarea"
                       onChange={(e, text) => setValues({ ...values, description: text })}
                       selected={values.description}
-                      error={values.description}
+                      error={''}
                     />
                   </Col>
                 </Row>
@@ -456,6 +457,7 @@ const mapStateToProps = state => {
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
+  authenticateUser
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlayNowCreateNewOffer));

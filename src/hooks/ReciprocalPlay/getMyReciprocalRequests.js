@@ -32,7 +32,7 @@ export default function getMyReciprocalRequests(token, refresh, _id, isHistory) 
         console.log('getMyReciprocalRequests  Error:', err);
       });
     }
-    if (token) {
+    if (token && _id) {
       getData();
     }
     return () => {

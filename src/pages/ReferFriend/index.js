@@ -200,7 +200,7 @@ const ReferFriend = (props) => {
                       width='100%'
                       loading={isLoading}
                       disabled={isLoading}
-                      onPress={() => handleRefer()}
+                      onClick={() => handleRefer()}
                     >Submit</Button>
 
                   </Row>
@@ -219,6 +219,7 @@ const mapStateToProps = state => {
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
+  authenticateUser
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ReferFriend));

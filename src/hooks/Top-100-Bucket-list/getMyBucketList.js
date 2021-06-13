@@ -31,7 +31,7 @@ export default function getMyBucketList(token, refresh, _id) {
         console.log('getMyBucketList  Error:', err);
       });
     }
-    if (token) {
+    if (token && _id) {
       getData();
     }
     return () => {

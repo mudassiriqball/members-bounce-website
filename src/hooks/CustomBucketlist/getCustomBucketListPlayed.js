@@ -31,7 +31,7 @@ export default function getCustomBucketListPlayed(token, refresh, _id) {
         console.log('getCustomBucketListPlayed  Error:', err);
       });
     }
-    if (token) {
+    if (token && _id) {
       getData();
     }
     return () => {

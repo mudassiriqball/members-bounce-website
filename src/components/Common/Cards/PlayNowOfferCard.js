@@ -3,7 +3,7 @@ import { Card, Label, Row, Col, CardBody } from 'reactstrap';
 import { Button } from '..';
 import { PAYMENT, getGolferType } from '../../../helpers';
 import { getRequestStatusColor, getRequestStatusText, REQUEST_ACCEPTED, getMatchStatusColor, getMatchStatusText, REQUEST_PENDING, REQUEST_DELETED, MATCH_PENDING, REQUEST_ACCEPTED_AND_PAID } from '../../../helpers/requestStatus';
-import { converToAlphabatFromServerFormat, convertFromDbToServerAlphabet } from '../../../helpers/dateUtility';
+import { convertToAlphabetFromServerFormat, convertFromDbToServerAlphabet } from '../../../helpers/dateUtility';
 import CardListItem from './CardListItem';
 import routeNames from 'routes/routeNames';
 
@@ -54,7 +54,7 @@ export default function PlayNowOfferCard(props) {
           <CardListItem label={'Date'} value={item && item.date === 'To be agreed' ?
             item.date
             :
-            item && item.date && item.date.length && converToAlphabatFromServerFormat(item.date, item.date.length === 10)}
+            item && item.date && item.date.length && convertToAlphabetFromServerFormat(item.date, item.date.length === 10)}
           />
           {item && item.description !== '' &&
             <CardListItem label={'Description'} value={item && item.description} />
@@ -89,7 +89,11 @@ export default function PlayNowOfferCard(props) {
                 }
                 <Button
                   disabled={loading}
-                  onClick={() => browserHistory.push(routeNames.Private.PlayNow_ViewMatches)}
+                  onClick={() => browserHistory.push({
+                    pathname: routeNames.Private.PlayNow_ViewMatches,
+                    item: item,
+                    history
+                  })}
                 >{'View Matches'}</Button>
               </>
             }
@@ -102,7 +106,11 @@ export default function PlayNowOfferCard(props) {
                       <>
                         <Button
                           disabled={loading}
-                        // onClick={() => navigation.navigate('Payment', { offer: item, from: PAYMENT.PLAY_NOW_PAYMENT })}
+                          onClick={() => browserHistory.push({
+                            pathname: routeNames.Private.PAYMENT,
+                            offer: item,
+                            from: PAYMENT.PLAY_NOW_PAYMENT
+                          })}
                         >
                           {'Pay'}
                         </Button>
@@ -118,7 +126,10 @@ export default function PlayNowOfferCard(props) {
                     }
                     {!history && reqStatus === REQUEST_ACCEPTED_AND_PAID &&
                       <Button
-                        onClick={() => browserHistory.push(routeNames.Private.PlayNow_ViewAndChat)}
+                        onClick={() => browserHistory.push({
+                          pathname: routeNames.Private.PlayNow_ViewAndChat,
+                          item: item,
+                        })}
                       >
                         {'View & Chat'}
                       </Button>
@@ -182,13 +193,21 @@ export default function PlayNowOfferCard(props) {
               <>
                 {!history && reqStatus === REQUEST_ACCEPTED_AND_PAID &&
                   <Button
-                    onClick={() => navigation.navigate('ViewAndChat', { item: item, history })}
+                    onClick={() => browserHistory.push({
+                      pathname: routeNames.Private.ViewAndChat,
+                      item: item,
+                      history,
+                    })}
                   >{'View & Chat'}</Button>
                 }
                 {!history && reqStatus === REQUEST_ACCEPTED &&
                   <>
                     <Button
-                      onClick={() => navigation.navigate('Payment', { offer: item, from: PAYMENT.PLAY_NOW_PAYMENT })}
+                      onClick={() => browserHistory.push({
+                        pathname: routeNames.Private.Payment,
+                        offer: item,
+                        from: PAYMENT.PLAY_NOW_PAYMENT
+                      })}
                     >{'Pay'}</Button>
                     <Button
                       color='danger'

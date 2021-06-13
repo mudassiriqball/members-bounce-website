@@ -10,7 +10,7 @@ import { Breadcrumbs } from "../../../components/Common"
 import MyRequests from "./MyRequests";
 
 const PlayNowMyRequests = (props) => {
-  const { user } = props;
+  const { user, authenticateUser } = props;
   const token = getBearerToken();
   const [isTabOne, setIsTabOne] = useState(true);
 
@@ -60,6 +60,7 @@ const mapStateToProps = state => {
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
+  authenticateUser
 };
 
 

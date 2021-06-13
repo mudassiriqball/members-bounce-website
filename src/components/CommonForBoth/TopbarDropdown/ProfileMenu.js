@@ -82,16 +82,10 @@ const ProfileMenu = props => {
   )
 }
 
-ProfileMenu.propTypes = {
-  success: PropTypes.any,
-  t: PropTypes.any
-}
-
 const mapStateToProps = state => {
-  const { error, success } = state.Profile;
   const { user } = state.User;
 
-  return { error, success, user }
+  return { user }
 }
 
 export default withRouter(

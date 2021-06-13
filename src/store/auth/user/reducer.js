@@ -1,5 +1,6 @@
 import {
   AUTHENTICATE_USER,
+  VERIFY_USER_ACTION,
   SET_LOGGED_IN,
   SET_USER,
 } from "./actionTypes"
@@ -13,6 +14,11 @@ const initialState = {
 const User = (state = initialState, action) => {
   switch (action.type) {
     case AUTHENTICATE_USER:
+      state = {
+        ...state,
+        loading: true,
+      }
+    case VERIFY_USER_ACTION:
       state = {
         ...state,
         loading: true,

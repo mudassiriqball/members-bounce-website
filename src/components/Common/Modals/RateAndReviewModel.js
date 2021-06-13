@@ -36,7 +36,6 @@ const RateAndReviewModel = props => {
     }).catch(err => {
       console.log('handleRateReview err:', err);
       setIsLoading(false);
-      // setToastType('err');
       // toastRef.current.show('Something wents wrong, Please try again later!', CONSTS.TOAST_MEDIUM_DURATION, () => {
       // });
     });

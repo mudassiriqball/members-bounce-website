@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import { connect } from "react-redux"
 import { Row, Col } from "reactstrap"
@@ -23,6 +23,7 @@ import dribbble from "../../assets/images/brands/dribbble.png"
 import dropbox from "../../assets/images/brands/dropbox.png"
 import mail_chimp from "../../assets/images/brands/mail_chimp.png"
 import slack from "../../assets/images/brands/slack.png"
+import { authenticateUser } from 'store/actions';
 
 //i18n
 import { withTranslation } from "react-i18next"
@@ -35,6 +36,7 @@ import {
 } from "../../store/actions"
 
 const Header = props => {
+  const { user, authenticateUser } = props;
   const [search, setsearch] = useState(false)
   const [socialDrp, setsocialDrp] = useState(false)
 
@@ -42,6 +44,10 @@ const Header = props => {
 
   const [position, setPosition] = useState();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
 
   const toggleTopDrawer = () => {
     setPosition('right');
@@ -253,11 +259,13 @@ const mapStateToProps = state => {
     leftMenu,
     leftSideBarType,
   } = state.Layout
-  return { layoutType, showRightSidebar, leftMenu, leftSideBarType }
+  const { isLoggedIn, user } = state.User;
+  return { layoutType, showRightSidebar, leftMenu, leftSideBarType, isLoggedIn, user }
 }
 
 export default connect(mapStateToProps, {
   showRightSidebarAction,
   toggleLeftmenu,
   changeSidebarType,
+  authenticateUser,
 })(withTranslation()(Header))

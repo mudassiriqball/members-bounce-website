@@ -186,6 +186,7 @@ const mapStateToProps = state => {
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
+  authenticateUser
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateTop100BucketList));

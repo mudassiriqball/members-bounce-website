@@ -1,5 +1,5 @@
 import React from 'react'
-import { convertFromDbToServerAlphabet, converToServerAlphabatFormat } from 'helpers/dateUtility'
+import { convertFromDbToServerAlphabet, convertToServerAlphabetFormat } from 'helpers/dateUtility'
 import CardListItem from './Cards/CardListItem'
 import { getRequestStatusColor, REQUEST_DECLINED, REQUEST_DELETED } from 'helpers//requestStatus';
 import { Card, CardBody, Row, Col, Label } from 'reactstrap';

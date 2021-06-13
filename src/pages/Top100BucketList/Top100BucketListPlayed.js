@@ -18,9 +18,10 @@ import getTopHundredPlayed from '../../hooks/Top-100-Bucket-list/getTopHundredPl
 import { BucketListSearchFilter } from '../../components/Common';
 import handleTopHundredSearch from '../../hooks/Searching/handleTopHundredSearch';
 import applyTopHundredFilters from '../../hooks/Filtering/applyTopHundredFilters';
+import { authenticateUser } from 'store/actions';
 
 const Top100BucketListPlayed = (props) => {
-  const { user, isLoggedIn } = props;
+  const { user, isLoggedIn, authenticateUser } = props;
   const token = getBearerToken();
   const [isSearch, setIsSearch] = useState(false);
   const [query, setQuery] = useState('');
@@ -38,6 +39,9 @@ const Top100BucketListPlayed = (props) => {
   const [successAlert, setSuccessAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
 
+  useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
 
   useEffect(() => {
     if (TOP_HUNDRED_PLAYED)
@@ -165,6 +169,7 @@ const mapStateToProps = state => {
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
+  authenticateUser
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Top100BucketListPlayed));

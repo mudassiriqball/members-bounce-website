@@ -54,7 +54,6 @@ const Matches = props => {
             'authorization': token
           },
         }).then(res => {
-          setToastType('success');
           Swal.fire(
             'Deleted!',
             'Your request processed successfully',
@@ -91,10 +90,14 @@ const Matches = props => {
           setFilterType={setFilterType}
         />
       }
-      <Row className='tab-row'>
-        <Col onClick={() => setIsTabOne(true)} className={isTabOne ? 'bg-primary tab-col text-white' : 'bg-white tab-col'}>My Listing</Col>
-        <Col onClick={() => setIsTabOne(false)} className={!isTabOne ? 'bg-primary tab-col text-white' : 'bg-white tab-col'}>History</Col>
-      </Row>
+      <Card>
+        <CardBody className='p-0'>
+          <Row className='p-0 m-0'>
+            <Col onClick={() => setIsTabOne(true)} className={isTabOne ? 'bg-primary tab-col text-white' : 'bg-white tab-col'}>My Listing</Col>
+            <Col onClick={() => setIsTabOne(false)} className={!isTabOne ? 'bg-primary tab-col text-white' : 'bg-white tab-col'}>History</Col>
+          </Row>
+        </CardBody>
+      </Card>
       {!isSearch ?
         list && list.length > 0 ?
           <Row>

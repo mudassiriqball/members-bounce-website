@@ -42,6 +42,11 @@ export default {
     ReciprocalGolf_AllRequests: '/reciprocal-golf/all-requests',
     ReciprocalGolf_MyRequests: '/reciprocal-golf/my-requests',
     ReciprocalGolf_MyListings: '/reciprocal-golf/my-listings',
+    ReciprocalPlay_ViewAndRequest: '',
+    ReciprocalPlay_ViewMatches: '',
+
+    // View & Chat
+    ViewAndChat: '/view-and-chat',
 
     // Refer
     ReferFriend: '/refer-friend',
@@ -51,6 +56,12 @@ export default {
 
     // UserProfile
     UserProfile: '/profile',
+
+    // Notifications
+    Notifications: '/notifications',
+
+    // Payment
+    PAYMENT: '/payment',
   }
 
 }

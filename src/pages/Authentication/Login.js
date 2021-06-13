@@ -134,7 +134,7 @@ const Login = props => {
                       </div>
 
                       <div className="mt-3 d-grid">
-                        <Button block type="submit" loading={loading}>Log In</Button>
+                        <Button block type="submit" loading={loading} disabled={loading}>Log In</Button>
                       </div>
 
                       <div className="mt-4 text-center">

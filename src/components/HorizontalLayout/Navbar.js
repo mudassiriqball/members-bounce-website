@@ -15,7 +15,7 @@ const Navbar = props => {
   const [showTop100BucketList, setsHowTop100BucketList] = useState(false)
   const [showPlayNow, setShowPlayNow] = useState(false)
   const [showReciprocal, setShowReciprocal] = useState(false)
-  const [showRefer, setShowRefer] = useState(false)
+  const [showOthers, setShowOthers] = useState(false);
 
 
   useEffect(() => {
@@ -77,13 +77,9 @@ const Navbar = props => {
                 <li className="nav-item dropdown">
                   <Link
                     className="nav-link dropdown-toggle arrow-none"
-                    onClick={e => {
-                      e.preventDefault()
-                      setsHowTop100BucketList(!showTop100BucketList)
-                    }}
                     to={'/#'}
                   >
-                    <i className="bx bx-home-circle me-2"></i>
+                    <i className="bx bx-basket me-2"></i>
                     {'Top 100 Bucket-list'} {props.menuOpen}
                     <div className="arrow-down"></div>
                   </Link>
@@ -106,13 +102,9 @@ const Navbar = props => {
                 <li className="nav-item dropdown">
                   <Link
                     className="nav-link dropdown-toggle arrow-none"
-                    onClick={e => {
-                      e.preventDefault()
-                      setShowCustomBucketList(!customBucketList)
-                    }}
                     to={'/#'}
                   >
-                    <i className="bx bx-home-circle me-2"></i>
+                    <i className="bx bx-basket me-2"></i>
                     {'Custom Bucket-list'} {props.menuOpen}
                     <div className="arrow-down"></div>
                   </Link>
@@ -135,13 +127,9 @@ const Navbar = props => {
                 <li className="nav-item dropdown">
                   <Link
                     to="/#"
-                    onClick={e => {
-                      e.preventDefault()
-                      setShowPlayNow(!showPlayNow)
-                    }}
                     className="nav-link dropdown-togglez arrow-none"
                   >
-                    <i className="bx bx-customize me-2"></i>
+                    <i className="mdi mdi-golf me-2"></i>
                     {'Play Now'} <div className="arrow-down"></div>
                   </Link>
                   <div className={classname("dropdown-menu", { show: showPlayNow })}>
@@ -170,13 +158,9 @@ const Navbar = props => {
                 <li className="nav-item dropdown">
                   <Link
                     to="/#"
-                    onClick={e => {
-                      e.preventDefault()
-                      setShowReciprocal(!showReciprocal)
-                    }}
                     className="nav-link dropdown-togglez arrow-none"
                   >
-                    <i className="bx bx-customize me-2"></i>
+                    <i className="mdi mdi-golf-tee me-2"></i>
                     {'Reciprocal Golf'} <div className="arrow-down"></div>
                   </Link>
                   <div className={classname("dropdown-menu", { show: showReciprocal })}>
@@ -194,20 +178,36 @@ const Navbar = props => {
                     </Link>
                   </div>
                 </li>
+
+                {/* Others */}
                 <li className="nav-item dropdown">
                   <Link
                     to="/#"
-                    onClick={e => {
-                      e.preventDefault()
-                      setShowRefer(!showRefer)
-                    }}
                     className="nav-link dropdown-togglez arrow-none"
                   >
                     <i className="bx bx-customize me-2"></i>
-                    {'Refer Friend'} <div className="arrow-down"></div>
+                    {'Other'} <div className="arrow-down"></div>
                   </Link>
-                  <div className={classname("dropdown-menu", { show: showReciprocal })}>
-                    <Link to={routeNames.Private.ReferFriend} className="dropdown-item">
+                  <div className={classname("dropdown-menu", { show: showOthers })}>
+                    {/* Chat */}
+                    <Link
+                      to={routeNames.Private.Chat}
+                      className="dropdown-item"
+                    >
+                      {'Chat'}
+                    </Link>
+                    {/* Notifications */}
+                    <Link
+                      to={routeNames.Private.Notifications}
+                      className="dropdown-item"
+                    >
+                      {'Notifications'}
+                    </Link>
+                    {/* Refer Friend */}
+                    <Link
+                      to={routeNames.Private.ReferFriend}
+                      className="dropdown-item"
+                    >
                       {'Refer Friend'}
                     </Link>
                   </div>

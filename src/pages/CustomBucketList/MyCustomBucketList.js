@@ -15,9 +15,10 @@ import { urls } from '../../helpers';
 import { ErrorAlert, SuccessAlert } from '../../components/Common/Alerts';
 import { BucketListSearchFilter } from '../../components/Common';
 import { applyTopHundredFilters, getMyCustomBucketList, handleTopHundredSearch } from '../../hooks';
+import { authenticateUser } from 'store/actions';
 
 const MyCustomBucketList = (props) => {
-  const { user, isLoggedIn } = props;
+  const { user, isLoggedIn, authenticateUser } = props;
   const token = getBearerToken();
   const [isSearch, setIsSearch] = useState(false);
   const [query, setQuery] = useState('');
@@ -34,6 +35,10 @@ const MyCustomBucketList = (props) => {
   // Alerts
   const [successAlert, setSuccessAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
+
+  useEffect(() => {
+    if (!user) authenticateUser();
+  }, []);
 
   useEffect(() => {
     if (MY_BUCKET_LIST)
@@ -183,6 +188,7 @@ const mapStateToProps = state => {
   return { isLoggedIn, user }
 }
 const mapDispatchToProps = {
+  authenticateUser
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MyCustomBucketList));
